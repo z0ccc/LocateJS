@@ -1,38 +1,115 @@
+:root {
+  --main: #943ec5;
+  --grey: #9fa6b2;
+  --text: #4b5563;
+  --border: #ddd;
+  --issueBackground: #f8d7da;
+  --issueHover: #f4c1c6;
+  --issueBorder: #f5c6cb;
+  --issueText: #721c24;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(87, 35, 117);
+  background: linear-gradient(
+    165deg,
+    rgba(87, 35, 117, 1) 0%,
+    rgba(148, 62, 197, 1) 55%,
+    rgba(211, 176, 231, 1) 100%
+  );
+  z-index: -1;
+}
+/* 
 .App {
-  text-align: center;
-}
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(87, 35, 117);
+  background: linear-gradient(
+    165deg,
+    rgba(87, 35, 117, 1) 0%,
+    rgba(148, 62, 197, 1) 55%,
+    rgba(211, 176, 231, 1) 100%
+  );
+} */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.centerBlockOuter {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex: 1 0 auto;
+  margin: 0 18px;
 }
 
-.App-link {
-  color: #61dafb;
+.centerBlockInner {
+  width: 650px;
+  margin: 24px 0 0 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.contentBlock {
+  color: var(--text);
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: 0 0 24px 0;
+}
+
+.contentItem {
+  display: flex;
+}
+
+.contentItem:not(:last-child) {
+  margin: 0 0 24px 0;
+}
+
+.contentText {
+  line-height: 24px;
+}
+
+h1 {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+p {
+  margin: 12px 0 0 0;
+}
+
+b {
+  font-weight: 600;
+}
+
+.tableWrap {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+tbody:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 12px;
+}
+
+td:nth-child(2):first-letter {
+  text-transform: uppercase;
+}
+
+td:first-child {
+  width: 180px;
+  font-weight: 600;
+  word-break: normal;
 }

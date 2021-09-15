@@ -1,12 +1,12 @@
 // import Logo from './Logo';
 // import StartBlock from './StartBlock';
-// import ScanBlocks from './ScanBlocks';
+import Blocks from './Blocks';
 
 const MainColumn = () => (
   <div className="centerBlockOuter">
     <div className="centerBlockInner">
-      hello
       {/* <Logo /> */}
+      <Blocks />
     </div>
   </div>
 );
