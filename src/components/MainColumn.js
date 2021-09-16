@@ -1,11 +1,10 @@
-// import Logo from './Logo';
-// import StartBlock from './StartBlock';
+import Logo from './Logo';
 import Blocks from './Blocks';
 
 const MainColumn = () => (
   <div className="centerBlockOuter">
     <div className="centerBlockInner">
-      {/* <Logo /> */}
+      <Logo />
       <Blocks />
     </div>
   </div>
