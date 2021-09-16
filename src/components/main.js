@@ -1,4 +1,4 @@
-export { fetchAPI, getConnection, getSystemData, checkWebWorker };
+export { fetchAPI, getConnection, getSystemData, getWebWorker };
 
 const fetchAPI = (setData) => {
   fetch('https://api.vytal.io/ip/')
@@ -49,74 +49,76 @@ const getConnection = (json) => {
   return data;
 };
 
-const getSystemData = () => [
-  getLocale(),
-  getTimezone(),
-  getTimezoneOffset(),
-  getDate(),
-  getLanguage(),
-  getLanguages(),
+const getSystemData = (workerData) => [
+  getLocale(workerData.locale),
+  getTimezone(workerData.timeZone),
+  getTimezoneOffset(workerData.timezoneOffset),
+  getDate(workerData.date),
+  getLanguage(workerData.language),
+  getLanguages(workerData.languages),
 ];
 
-const getLocale = () => ({
+const getLocale = (locale) => ({
   key: 'Locale',
   code: 'Intl.DateTimeFormat().resolvedOptions().locale',
-  value: Intl.DateTimeFormat().resolvedOptions().locale,
-  issues: [],
+  value: locale,
+  issues: [
+    checkWebWorker(Intl.DateTimeFormat().resolvedOptions().locale, locale),
+  ],
 });
 
-const getTimezone = () => ({
+const getTimezone = (timeZone) => ({
   key: 'Time zone',
   code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
-  value: Intl.DateTimeFormat().resolvedOptions().timeZone,
-  issues: [],
+  value: timeZone,
+  issues: [
+    checkWebWorker(Intl.DateTimeFormat().resolvedOptions().timeZone, timeZone),
+  ],
 });
 
-const getTimezoneOffset = () => ({
+const getTimezoneOffset = (timezoneOffset) => ({
   key: 'Time zone offset',
   code: 'new Date().getTimezoneOffset()',
-  value: new Date().getTimezoneOffset(),
-  issues: [],
-  // issues: [
-  //   checkNavigatorProperties('languages'),
-  //   checkNavigatorValue('languages'),
-  //   checkNavigatorPrototype('languages'),
-  // ],
+  value: timezoneOffset,
+  issues: [checkWebWorker(new Date().getTimezoneOffset(), timezoneOffset)],
 });
 
-const getDate = () => ({
+const getDate = (date) => ({
   key: 'Date',
   code: 'new Date().toString()',
-  value: new Date().toString(),
-  issues: [],
-  // issues: [
-  //   checkNavigatorProperties('languages'),
-  //   checkNavigatorValue('languages'),
-  //   checkNavigatorPrototype('languages'),
-  // ],
+  value: date,
+  issues: [checkWebWorker(new Date().toString(), date)],
 });
 
-const getLanguage = () => ({
+const getLanguage = (language) => ({
   key: 'Language',
   code: 'navigator.language',
-  value: navigator.language,
+  value: language,
   issues: [
+    checkWebWorker(navigator.language, language),
     checkNavigatorProperties('language'),
     checkNavigatorValue('language'),
     checkNavigatorPrototype('language'),
   ],
 });
 
-const getLanguages = () => ({
+const getLanguages = (languages) => ({
   key: 'Languages',
   code: 'navigator.languages',
-  value: navigator.languages.join(', '),
+  value: languages.join(', '),
   issues: [
+    checkWebWorker(navigator.languages, languages),
     checkNavigatorProperties('languages'),
     checkNavigatorValue('languages'),
     checkNavigatorPrototype('languages'),
   ],
 });
+
+const checkWebWorker = (original, value) => {
+  console.log(original, value);
+  if (original !== value) return `Did not match web worker (${original})`;
+  return null;
+};
 
 const checkNavigatorProperties = (key) => {
   if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
@@ -145,14 +147,13 @@ const checkNavigatorPrototype = (key) => {
   }
 };
 
-const checkWebWorker = () => {
+const getWebWorker = (setWorkerData) => {
   let w;
   if (typeof w === 'undefined') {
     w = new Worker('/worker.js');
   }
 
   w.onmessage = (event) => {
-    console.log(event.data);
-    // setWorkerData(event.data.toString());
+    setWorkerData(event.data);
   };
 };

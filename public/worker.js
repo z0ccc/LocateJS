@@ -4,7 +4,7 @@ const data = {
   timezoneOffset: new Date().getTimezoneOffset(),
   date: new Date().toString(),
   language: navigator.language,
-  languages: navigator.languages.join(', '),
+  languages: navigator.languages,
 };
 
 postMessage(data);
