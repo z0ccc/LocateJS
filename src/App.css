@@ -13,12 +13,12 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgb(87, 35, 117);
+  background: rgb(62, 25, 83);
   background: linear-gradient(
     165deg,
-    rgba(87, 35, 117, 1) 0%,
-    rgba(148, 62, 197, 1) 55%,
-    rgba(211, 176, 231, 1) 100%
+    rgba(62, 25, 83, 1) 0%,
+    rgba(87, 35, 117, 1) 40%,
+    rgba(148, 62, 197, 1) 100%
   );
   z-index: -1;
 }
@@ -110,4 +110,15 @@ td:first-child {
   width: 180px;
   font-weight: 600;
   word-break: normal;
+}
+
+td:nth-child(3) {
+  width: 40px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+.circleButton {
+  display: flex;
+  width: 20px;
 }
