@@ -116,7 +116,9 @@ const getLanguages = (languages) => ({
 
 const checkWebWorker = (original, value) => {
   console.log(original, value);
-  if (original !== value) return `Did not match web worker (${original})`;
+  if (original.toString() !== value.toString()) {
+    return `Did not match web worker (${original})`;
+  }
   return null;
 };
 

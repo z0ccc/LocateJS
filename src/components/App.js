@@ -6,7 +6,6 @@ const App = () => (
   <div className="App">
     <div className="background" />
     <MainColumn />
-    <div className="stars" />
   </div>
 );
 

@@ -122,3 +122,12 @@ td:nth-child(3) {
   display: flex;
   width: 20px;
 }
+
+.issueButton {
+  cursor: pointer;
+  fill: #f5c6cb;
+}
+
+.issueButton:hover {
+  fill: #ea8590;
+}

@@ -39,5 +39,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-bitwise': 'off',
     'react/no-array-index-key': 'off',
+    'nonblock-statement-body-position': 'off',
   },
 };
