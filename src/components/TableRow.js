@@ -3,8 +3,9 @@ import Modal from 'react-modal';
 import { useState, useEffect } from 'react';
 import { ReactComponent as XCircle } from '../xCircle.svg';
 import { ReactComponent as CheckCircle } from '../checkCircle.svg';
+import { ReactComponent as X } from '../x.svg';
 
-const customStyles = {
+const modalStyles = {
   content: {
     top: '50%',
     left: '50%',
@@ -12,19 +13,21 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    padding: '18px',
+    border: '1px solid var(--border)',
+    borderRadius: '6px',
   },
 };
 
 Modal.setAppElement('#root');
 
 const TableRow = ({ item }) => {
+  const issues = item.issues.filter(Boolean).length !== 0;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
-    if (item.issues.filter(Boolean).length !== 0) setIsOpen(true);
+    if (issues) setIsOpen(true);
   };
-
-  const afterOpenModal = () => {};
 
   const closeModal = () => {
     setIsOpen(false);
@@ -34,7 +37,7 @@ const TableRow = ({ item }) => {
       <td>{item.key}</td>
       <td>{item.value}</td>
       <td>
-        {item.issues.filter(Boolean).length !== 0 ? (
+        {issues ? (
           <XCircle className="circleButton issueButton" onClick={openModal} />
         ) : (
           <CheckCircle className="circleButton" />
@@ -42,21 +45,19 @@ const TableRow = ({ item }) => {
       </td>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
+        style={modalStyles}
+        contentLabel="Issues Modal"
       >
-        <button type="submit" onClick={closeModal}>
-          close
-        </button>
-        <>
-          {item.issues.map((ele, index) => (
-            <div className="newline" key={index}>
-              {ele}
-            </div>
+        <div className="modalHeader">
+          <div className="modalTitle">{item.key} issues</div>
+          <X className="closeButton" onClick={closeModal} />
+        </div>
+        <ul>
+          {item.issues.filter(Boolean).map((ele, index) => (
+            <li key={index}>{ele}</li>
           ))}
-        </>
+        </ul>
       </Modal>
     </tr>
   );

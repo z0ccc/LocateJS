@@ -1,8 +1,8 @@
 :root {
   --main: #943ec5;
-  --grey: #9fa6b2;
   --text: #4b5563;
   --border: #ddd;
+  --grey: #c4c4c4;
   --issueBackground: #f8d7da;
   --issueHover: #f4c1c6;
   --issueBorder: #f5c6cb;
@@ -30,7 +30,7 @@
 }
 
 .logo {
-  width: 270px;
+  width: 220px;
   margin: 0 0 14px 0;
 }
 
@@ -130,4 +130,31 @@ td:nth-child(3) {
 
 .issueButton:hover {
   fill: #ea8590;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 6px 0;
+}
+
+.modalTitle {
+  font-weight: 600;
+}
+
+.closeButton {
+  fill: var(--border);
+  display: flex;
+  width: 12px;
+  cursor: pointer;
+  margin: -12px 0 0 0;
+}
+
+.closeButton:hover {
+  fill: var(--grey);
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0px;
 }
