@@ -16,7 +16,7 @@ const PredictionBlock = () => {
 
   return (
     <Block>
-      <h1>Connection</h1>
+      <h1>Location Prediction</h1>
       {connectionData ? (
         <Table data={getConnection(connectionData, workerData)} />
       ) : (
