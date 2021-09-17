@@ -97,7 +97,10 @@ const getTimezoneOffset = (timezoneOffset) => ({
   key: 'Time zone offset',
   code: 'new Date().getTimezoneOffset()',
   value: timezoneOffset,
-  issues: [checkWebWorker(new Date().getTimezoneOffset(), timezoneOffset)],
+  issues: [
+    checkWebWorker(new Date().getTimezoneOffset(), timezoneOffset),
+    checkDatePrototype(),
+  ],
 });
 
 const getDate = (date) => ({
@@ -139,9 +142,7 @@ const checkWebWorker = (original, value) => {
 };
 
 const checkDatePrototype = () => {
-  if (
-    Date.prototype.setDate.toString() !== 'function setDate() { [native code] }'
-  ) {
+  if (!Date.prototype.setDate.toString().includes('[native code]')) {
     return 'Failed Date.prototype.setDate.toString()';
   }
   return null;

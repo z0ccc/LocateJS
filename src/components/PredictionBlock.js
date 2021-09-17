@@ -3,7 +3,7 @@ import Block from './Block';
 import Table from './Table';
 import { fetchAPI, getConnection, getWebWorker } from './main';
 
-const ConnectionBlock = () => {
+const PredictionBlock = () => {
   const [connectionData, setConnectionData] = useState('');
   const [workerData, setWorkerData] = useState();
 
@@ -30,4 +30,4 @@ const ConnectionBlock = () => {
   );
 };
 
-export default ConnectionBlock;
+export default PredictionBlock;
