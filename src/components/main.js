@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-export { fetchAPI, getConnection, getSystemData, getWebWorker, getPrediction };
+export { fetchAPI, getConnection, getSystemData, getWebWorker };
 
 const fetchAPI = (setData) => {
   fetch('https://api.vytal.io/ip/')
@@ -14,76 +14,47 @@ const getConnection = (connectionData, workerData) => {
     connectionData.timezone,
     workerData.timeZone
   );
+  const isProxy = checkProxy(connectionData.proxy);
   const data = [
     {
       key: 'IP address',
       value: connectionData.query,
-      issues: [timeZoneIssue],
+      issues: [timeZoneIssue, isProxy],
     },
     {
       key: 'Country',
       value: connectionData.country,
-      issues: [timeZoneIssue],
+      issues: [timeZoneIssue, isProxy],
     },
     {
       key: 'Region',
       value: connectionData.regionName,
-      issues: [timeZoneIssue],
+      issues: [timeZoneIssue, isProxy],
     },
     {
       key: 'City',
       value: connectionData.city,
-      issues: [timeZoneIssue],
+      issues: [timeZoneIssue, isProxy],
     },
     {
       key: 'Time zone',
       value: connectionData.timezone,
-      issues: [timeZoneIssue],
+      issues: [timeZoneIssue, isProxy],
     },
     {
       key: 'Zip code',
       value: connectionData.zip,
-      issues: [timeZoneIssue],
+      issues: [timeZoneIssue, isProxy],
     },
     {
       key: 'Latitude',
       value: connectionData.lat,
-      issues: [timeZoneIssue],
+      issues: [timeZoneIssue, isProxy],
     },
     {
       key: 'Longitude',
       value: connectionData.lon,
-      issues: [timeZoneIssue],
-    },
-  ];
-  return data;
-};
-
-const getPrediction = (connectionData, workerData) => {
-  // const timeZoneIssue = compareTimeZone(
-  //   connectionData.timezone,
-  //   workerData.timeZone
-  // );
-  const data = [
-    {
-      key: 'Country',
-      value: connectionData.country,
-      percentage: 90,
-    },
-    {
-      key: 'Region',
-      value: connectionData.regionName,
-      percentage: 50,
-    },
-    {
-      key: 'City',
-      value: connectionData.city,
-      percentage: 20,
-    },
-    {
-      key: 'Time zone',
-      value: connectionData.timezone,
-      percentage: 90,
+      issues: [timeZoneIssue, isProxy],
     },
   ];
   return data;
@@ -92,6 +63,13 @@ const getPrediction = (connectionData, workerData) => {
 const compareTimeZone = (connectionTimeZone, workerTimeZone) => {
   if (connectionTimeZone !== workerTimeZone) {
     return "Connection data doesn't match system data";
+  }
+  return null;
+};
+
+const checkProxy = (proxy) => {
+  if (proxy) {
+    return 'VPN/proxy has been detected';
   }
   return null;
 };
@@ -120,6 +98,7 @@ const getTimezone = (timeZone) => ({
   value: timeZone,
   issues: [
     checkWebWorker(Intl.DateTimeFormat().resolvedOptions().timeZone, timeZone),
+    checkTimeZone(),
   ],
 });
 
@@ -130,6 +109,7 @@ const getTimezoneOffset = (timezoneOffset) => ({
   issues: [
     checkWebWorker(new Date().getTimezoneOffset(), timezoneOffset),
     checkDatePrototype(),
+    checkTimeZone(),
   ],
 });
 
@@ -167,6 +147,18 @@ const getLanguages = (languages) => ({
 const checkWebWorker = (original, value) => {
   if (original.toString() !== value.toString()) {
     return `Did not match web worker (${original})`;
+  }
+  return null;
+};
+
+const ct = require('countries-and-timezones');
+
+const checkTimeZone = () => {
+  const timezone = ct.getTimezone(
+    Intl.DateTimeFormat().resolvedOptions().timeZone
+  );
+  if (new Date().getTimezoneOffset() !== Math.abs(timezone.dstOffset)) {
+    return 'Time zone and time zone offset did not match';
   }
   return null;
 };

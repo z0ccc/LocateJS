@@ -3558,6 +3558,11 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+countries-and-timezones@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/countries-and-timezones/-/countries-and-timezones-3.2.2.tgz#c328f0b5acd717326babcf9bd9313733acfd87e0"
+  integrity sha512-bhWSUQRxYeyjJn9C3eGzo7FZe1wOt/8Efcl8rxWaD9Rqrh4r+9ofJjfRYvU2IHQ0TyjtF2lSV+TfZTmfhdTHOw==
+
 create-ecdh@^4.0.0:
   version "4.0.4"
   resolved "https://registry.npmjs.org/create-ecdh/-/create-ecdh-4.0.4.tgz"

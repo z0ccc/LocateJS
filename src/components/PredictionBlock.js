@@ -1,6 +1,6 @@
 import Block from './Block';
 import PredictionTable from './PredictionTable';
-import { getPrediction } from './main';
+import { getPrediction } from './predict';
 
 const PredictionBlock = ({ workerData, connectionData }) => (
   <Block>
