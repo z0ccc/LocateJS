@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-export { fetchAPI, getConnection, getSystemData, getWebWorker };
+export { fetchAPI, getConnection, getSystemData, getWebWorker, getPrediction };
 
 const fetchAPI = (setData) => {
   fetch('https://api.vytal.io/ip/')
@@ -54,6 +54,36 @@ const getConnection = (connectionData, workerData) => {
       key: 'Longitude',
       value: connectionData.lon,
       issues: [timeZoneIssue],
+    },
+  ];
+  return data;
+};
+
+const getPrediction = (connectionData, workerData) => {
+  // const timeZoneIssue = compareTimeZone(
+  //   connectionData.timezone,
+  //   workerData.timeZone
+  // );
+  const data = [
+    {
+      key: 'Country',
+      value: connectionData.country,
+      percentage: 90,
+    },
+    {
+      key: 'Region',
+      value: connectionData.regionName,
+      percentage: 50,
+    },
+    {
+      key: 'City',
+      value: connectionData.city,
+      percentage: 20,
+    },
+    {
+      key: 'Time zone',
+      value: connectionData.timezone,
+      percentage: 90,
     },
   ];
   return data;
