@@ -8,7 +8,9 @@ const SystemDataBlock = () => {
   const [workerData, setWorkerData] = useState();
 
   useEffect(() => {
-    getWebWorker(setWorkerData);
+    getWebWorker().onmessage = (event) => {
+      setWorkerData(event.data);
+    };
   }, []);
 
   return (

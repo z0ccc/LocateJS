@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export { fetchAPI, getConnection, getSystemData, getWebWorker };
 
 const fetchAPI = (setData) => {
@@ -8,52 +9,68 @@ const fetchAPI = (setData) => {
     });
 };
 
-const getConnection = (json) => {
+const getConnection = (connectionData, workerData) => {
+  const timeZoneIssue = compareTimeZone(
+    connectionData.timezone,
+    workerData.timeZone
+  );
   const data = [
     {
       key: 'IP address',
-      value: json.query,
-      issues: [],
+      value: connectionData.query,
+      issues: [timeZoneIssue],
     },
     {
       key: 'Country',
-      value: json.country,
-      issues: [],
+      value: connectionData.country,
+      issues: [timeZoneIssue],
     },
     {
       key: 'Region',
-      value: json.regionName,
-      issues: [],
+      value: connectionData.regionName,
+      issues: [timeZoneIssue],
     },
     {
       key: 'City',
-      value: json.city,
-      issues: [],
+      value: connectionData.city,
+      issues: [timeZoneIssue],
+    },
+    {
+      key: 'Time zone',
+      value: connectionData.timezone,
+      issues: [timeZoneIssue],
     },
     {
       key: 'Zip code',
-      value: json.zip,
-      issues: [],
+      value: connectionData.zip,
+      issues: [timeZoneIssue],
     },
     {
       key: 'Latitude',
-      value: json.lat,
-      issues: [],
+      value: connectionData.lat,
+      issues: [timeZoneIssue],
     },
     {
       key: 'Longitude',
-      value: json.lon,
-      issues: [],
+      value: connectionData.lon,
+      issues: [timeZoneIssue],
     },
   ];
   return data;
 };
 
+const compareTimeZone = (connectionTimeZone, workerTimeZone) => {
+  if (connectionTimeZone !== workerTimeZone) {
+    return "Connection data doesn't match system data";
+  }
+  return null;
+};
+
 const getSystemData = (workerData) => [
-  getLocale(workerData.locale),
   getTimezone(workerData.timeZone),
   getTimezoneOffset(workerData.timezoneOffset),
   getDate(workerData.date),
+  getLocale(workerData.locale),
   getLanguage(workerData.language),
   getLanguages(workerData.languages),
 ];
@@ -87,7 +104,7 @@ const getDate = (date) => ({
   key: 'Date',
   code: 'new Date().toString()',
   value: date,
-  issues: [checkWebWorker(new Date().toString(), date)],
+  issues: [checkWebWorker(new Date().toString(), date), checkDatePrototype()],
 });
 
 const getLanguage = (language) => ({
@@ -117,6 +134,15 @@ const getLanguages = (languages) => ({
 const checkWebWorker = (original, value) => {
   if (original.toString() !== value.toString()) {
     return `Did not match web worker (${original})`;
+  }
+  return null;
+};
+
+const checkDatePrototype = () => {
+  if (
+    Date.prototype.setDate.toString() !== 'function setDate() { [native code] }'
+  ) {
+    return 'Failed Date.prototype.setDate.toString()';
   }
   return null;
 };
@@ -153,8 +179,5 @@ const getWebWorker = (setWorkerData) => {
   if (typeof w === 'undefined') {
     w = new Worker('/worker.js');
   }
-
-  w.onmessage = (event) => {
-    setWorkerData(event.data);
-  };
+  return w;
 };
