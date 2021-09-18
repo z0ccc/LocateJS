@@ -121,7 +121,7 @@ const getDate = (date) => ({
 });
 
 const getLanguage = (language) => ({
-  key: 'Language',
+  key: 'Main language',
   code: 'navigator.language',
   value: language,
   issues: [

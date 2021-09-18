@@ -42,7 +42,9 @@ const cl = require('country-language');
 
 const checkCountry = (workerData) => {
   const timezone = ct.getTimezone(workerData.timeZone);
-  const langArr = [];
+  console.log(timezone);
+
+  let langArr = [];
   workerData.languages.forEach((language) => {
     cl.getLanguageCountries(language.slice(0, 2), (err, languages) => {
       if (err) {
@@ -57,20 +59,30 @@ const checkCountry = (workerData) => {
 
   console.log(langArr);
 
-  const duplicates = langArr.filter(
-    (val) => timezone.countries.indexOf(val) !== -1
-  );
+  workerData.languages.forEach((language) => {
+    if (language.length > 2) {
+      console.log(language.slice(-2));
+      langArr.push(language.slice(-2));
+    }
+  });
 
-  console.log(duplicates);
+  console.log(langArr);
 
-  const uniq = [...new Set(duplicates)];
+  console.log(timezone.countries);
 
-  console.log(uniq);
-  // let countries = [];
-  // uniq.forEach((code) => {
-  // let country = new Intl.DisplayNames(['en'], { type: 'region' });
+  langArr = langArr.concat(timezone.countries);
 
-  // if (timezone.countries[0]) {
-  //   // console.log('lol');
-  // }
+  console.log(langArr);
+
+  const cnts = langArr.reduce((obj, val) => {
+    // eslint-disable-next-line no-param-reassign
+    obj[val] = (obj[val] || 0) + 1;
+    return obj;
+  }, {});
+  // Use the keys of the object to get all the values of the array
+  // and sort those keys by their counts
+  const sorted = Object.keys(cnts).sort((a, b) => cnts[b] - cnts[a]);
+
+  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+  return regionNames.of(sorted[0]);
 };
