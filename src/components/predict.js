@@ -3,38 +3,36 @@
 export { getPrediction };
 
 const getPrediction = (connectionData, workerData) => {
-  // console.log(connectionData);
-  checkTimezone(connectionData, workerData);
+  let country, countryPercent, city, cityPercent, timezone, timezonePercent;
+  if (connectionData.timezone === workerData.timeZone) {
+    country = connectionData.country;
+    city = connectionData.city;
+    timezone = connectionData.timezone;
+    countryPercent = connectionData.proxy ? 80 : 90;
+  } else {
+    country = checkCountry(workerData);
+    city = connectionData.city;
+    timezone = workerData.timeZone;
+  }
+  // checkTimezone(connectionData, workerData);
   const data = [
     {
       key: 'Country',
-      value: connectionData.country,
-      percentage: '',
+      value: country,
+      percent: countryPercent,
     },
-    // {
-    //   key: 'Region',
-    //   value: connectionData.regionName,
-    //   percentage: '',
-    // },
     {
       key: 'Closest city',
-      value: connectionData.city,
-      percentage: '',
+      value: city,
+      percent: cityPercent,
     },
     {
       key: 'Time zone',
-      value: connectionData.timezone,
-      percentage: '',
+      value: timezone,
+      percent: timezonePercent,
     },
   ];
   return data;
-};
-
-const checkTimezone = (connectionData, workerData) => {
-  if (connectionData.timezone === workerData.timeZone) {
-    // console.log('true');
-  }
-  checkCountry(workerData);
 };
 
 const ct = require('countries-and-timezones');
@@ -42,7 +40,7 @@ const cl = require('country-language');
 
 const checkCountry = (workerData) => {
   const timezone = ct.getTimezone(workerData.timeZone);
-  console.log(timezone);
+  // console.log(timezone);
 
   let langArr = [];
   workerData.languages.forEach((language) => {
@@ -57,28 +55,29 @@ const checkCountry = (workerData) => {
     });
   });
 
-  console.log(langArr);
+  // console.log(langArr);
 
   workerData.languages.forEach((language) => {
     if (language.length > 2) {
-      console.log(language.slice(-2));
+      // console.log(language.slice(-2));
       langArr.push(language.slice(-2));
     }
   });
 
-  console.log(langArr);
+  // console.log(langArr);
 
-  console.log(timezone.countries);
+  // console.log(timezone.countries);
 
   langArr = langArr.concat(timezone.countries);
 
-  console.log(langArr);
+  // console.log(langArr);
 
   const cnts = langArr.reduce((obj, val) => {
     // eslint-disable-next-line no-param-reassign
     obj[val] = (obj[val] || 0) + 1;
     return obj;
   }, {});
+
   // Use the keys of the object to get all the values of the array
   // and sort those keys by their counts
   const sorted = Object.keys(cnts).sort((a, b) => cnts[b] - cnts[a]);
