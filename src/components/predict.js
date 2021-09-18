@@ -6,13 +6,22 @@ const getPrediction = (connectionData, workerData) => {
   let country, countryPercent, city, cityPercent, timezone, timezonePercent;
   if (connectionData.timezone === workerData.timeZone) {
     country = connectionData.country;
-    city = connectionData.city;
-    timezone = connectionData.timezone;
     countryPercent = connectionData.proxy ? 80 : 90;
-  } else {
-    country = checkCountry(workerData);
+
     city = connectionData.city;
+    cityPercent = connectionData.proxy ? 60 : 90;
+
+    timezone = connectionData.timezone;
+    timezonePercent = connectionData.proxy ? 80 : 90;
+  } else {
+    const countryObj = checkCountry(workerData);
+    country = countryObj.value;
+    countryPercent = countryObj.percent;
+
+    city = connectionData.city;
+
     timezone = workerData.timeZone;
+    timezonePercent = 70;
   }
   // checkTimezone(connectionData, workerData);
   const data = [
@@ -83,5 +92,8 @@ const checkCountry = (workerData) => {
   const sorted = Object.keys(cnts).sort((a, b) => cnts[b] - cnts[a]);
 
   const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-  return regionNames.of(sorted[0]);
+  return {
+    value: regionNames.of(sorted[0]),
+    percent: langArr.filter((x) => x === sorted[0]).length * 14,
+  };
 };
