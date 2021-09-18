@@ -117,7 +117,7 @@ const getDate = (date) => ({
   key: 'Date',
   code: 'new Date().toString()',
   value: date,
-  issues: [checkWebWorker(new Date().toString(), date), checkDatePrototype()],
+  issues: [checkDatePrototype()],
 });
 
 const getLanguage = (language) => ({

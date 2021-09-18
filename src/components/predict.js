@@ -3,7 +3,7 @@
 export { getPrediction };
 
 const getPrediction = (connectionData, workerData) => {
-  console.log(connectionData);
+  // console.log(connectionData);
   checkTimezone(connectionData, workerData);
   const data = [
     {
@@ -11,11 +11,11 @@ const getPrediction = (connectionData, workerData) => {
       value: connectionData.country,
       percentage: '',
     },
-    {
-      key: 'Region',
-      value: connectionData.regionName,
-      percentage: '',
-    },
+    // {
+    //   key: 'Region',
+    //   value: connectionData.regionName,
+    //   percentage: '',
+    // },
     {
       key: 'Closest city',
       value: connectionData.city,
@@ -32,17 +32,45 @@ const getPrediction = (connectionData, workerData) => {
 
 const checkTimezone = (connectionData, workerData) => {
   if (connectionData.timezone === workerData.timeZone) {
-    console.log('true');
+    // console.log('true');
   }
   checkCountry(workerData);
 };
 
 const ct = require('countries-and-timezones');
+const cl = require('country-language');
 
 const checkCountry = (workerData) => {
   const timezone = ct.getTimezone(workerData.timeZone);
-  console.log(timezone);
-  if (timezone.countries[0]) {
-    console.log('lol');
-  }
+  const langArr = [];
+  workerData.languages.forEach((language) => {
+    cl.getLanguageCountries(language.slice(0, 2), (err, languages) => {
+      if (err) {
+        console.log(err);
+      } else {
+        languages.forEach((languageCodes) => {
+          langArr.push(languageCodes.code_2);
+        });
+      }
+    });
+  });
+
+  console.log(langArr);
+
+  const duplicates = langArr.filter(
+    (val) => timezone.countries.indexOf(val) !== -1
+  );
+
+  console.log(duplicates);
+
+  const uniq = [...new Set(duplicates)];
+
+  console.log(uniq);
+  // let countries = [];
+  // uniq.forEach((code) => {
+  // let country = new Intl.DisplayNames(['en'], { type: 'region' });
+
+  // if (timezone.countries[0]) {
+  //   // console.log('lol');
+  // }
 };

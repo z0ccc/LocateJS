@@ -7,7 +7,7 @@ const PredictionTableRow = ({ item }) => {
     <tr>
       <td>{item.key}</td>
       <td>{item.value}</td>
-      <td>{item.percentage}%</td>
+      <td>{item.percentage}</td>
     </tr>
   );
 };
