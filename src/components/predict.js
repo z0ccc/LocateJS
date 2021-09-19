@@ -97,5 +97,7 @@ const checkCity = (workerData, country) => {
   };
 };
 
-const getMap = () =>
-  'https://maps.googleapis.com/maps/api/staticmap?center=oakville,canada&markers=color:red%7Clabel:%7C0,0&size=500x200&zoom=10&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk';
+const getMap = (data) => {
+  console.log(data[1].value, data[0].value);
+  return `https://maps.googleapis.com/maps/api/staticmap?center=0,${data[1].value},${data[0].value}&markers=color:red%7Clabel:%7C${data[1].value},${data[0].value}&size=500x200&zoom=10&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk`;
+};

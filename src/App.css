@@ -158,3 +158,12 @@ ul {
   padding-left: 20px;
   margin: 0px;
 }
+
+img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  display: block;
+  margin: 0 0 12px 0;
+}
