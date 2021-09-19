@@ -1,10 +1,11 @@
 import Block from './Block';
 import PredictionTable from './PredictionTable';
-import { getPrediction } from './predict';
+import { getMap, getPrediction } from './predict';
 
 const PredictionBlock = ({ workerData, connectionData }) => (
   <Block>
     <h1>Location Prediction</h1>
+    <img src={getMap()} alt="Map of current location" />
     <PredictionTable data={getPrediction(connectionData, workerData)} />
     <p>
       <b>Explanation:</b> Your IP address reveals information about your
