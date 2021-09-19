@@ -3,27 +3,22 @@
 export { getPrediction };
 
 const getPrediction = (connectionData, workerData) => {
-  let country, countryPercent, city, cityPercent, timezone, timezonePercent;
+  let country, countryPercent, city, cityPercent;
   if (connectionData.timezone === workerData.timeZone) {
     country = connectionData.country;
     countryPercent = connectionData.proxy ? 80 : 90;
 
     city = connectionData.city;
     cityPercent = connectionData.proxy ? 60 : 90;
-
-    timezone = connectionData.timezone;
-    timezonePercent = connectionData.proxy ? 80 : 90;
   } else {
     const countryObj = checkCountry(workerData);
+    const cityObj = checkCity(workerData);
     country = countryObj.value;
     countryPercent = countryObj.percent;
 
-    city = connectionData.city;
-
-    timezone = workerData.timeZone;
-    timezonePercent = 70;
+    city = cityObj.value;
+    cityPercent = cityObj.percent;
   }
-  // checkTimezone(connectionData, workerData);
   const data = [
     {
       key: 'Country',
@@ -34,11 +29,6 @@ const getPrediction = (connectionData, workerData) => {
       key: 'Closest city',
       value: city,
       percent: cityPercent,
-    },
-    {
-      key: 'Time zone',
-      value: timezone,
-      percent: timezonePercent,
     },
   ];
   return data;
@@ -95,5 +85,24 @@ const checkCountry = (workerData) => {
   return {
     value: regionNames.of(sorted[0]),
     percent: langArr.filter((x) => x === sorted[0]).length * 14,
+  };
+};
+
+const checkCity = (workerData) => {
+  let city = 'n/a';
+  let percent = 0;
+
+  if (
+    workerData.timeZone.includes('/') ||
+    workerData.timeZone.match(/universal|GMT|UCT|UTC/g) === null ||
+    /\d/.test(workerData.timeZone)
+  ) {
+    console.log(workerData.timeZone);
+    city = workerData.timeZone.split('/');
+    percent = 30;
+  }
+  return {
+    value: city[city.length - 1],
+    percent,
   };
 };
