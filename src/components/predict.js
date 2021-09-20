@@ -37,19 +37,9 @@ const cl = require('country-language');
 
 const checkCountry = (workerData) => {
   const timezone = ct.getTimezone(workerData.timeZone);
-  let countryArr = [];
+  const countryArr = checkLanguages(workerData).concat(checkTimezone(timezone));
 
-  countryArr = checkLanguages(workerData);
-
-  if (timezone) countryArr = countryArr.concat(timezone.countries);
-
-  // converts array to object of value/frequency
-  const countryObj = countryArr.reduce((obj, val) => {
-    // eslint-disable-next-line no-param-reassign
-    obj[val] = (obj[val] || 0) + 1;
-    return obj;
-  }, {});
-
+  const countryObj = handleCountryArr(countryArr);
   // Use the keys of the object to get all the values of the array
   // and sort those keys by their counts
   const sorted = Object.keys(countryObj).sort(
@@ -91,6 +81,26 @@ const checkLanguages = (workerData) => {
   return countryArr;
 };
 
+// Get countries of timezone
+const checkTimezone = (timezone) => {
+  let countryArr = [];
+  if (timezone) {
+    countryArr = countryArr // Concat multiple times to assing a greater weight to timezones
+      .concat(timezone.countries)
+      .concat(timezone.countries)
+      .concat(timezone.countries);
+  }
+  return countryArr;
+};
+
+// converts array to object of value/frequency
+const handleCountryArr = (countryArr) =>
+  countryArr.reduce((obj, val) => {
+    // eslint-disable-next-line no-param-reassign
+    obj[val] = (obj[val] || 0) + 1;
+    return obj;
+  }, {});
+
 const checkCity = (workerData, country) => {
   const timezone = ct.getTimezone(workerData.timeZone);
   let city = null;
@@ -102,13 +112,11 @@ const checkCity = (workerData, country) => {
     workerData.timeZone.match(/universal|GMT|UCT|UTC/g) === null &&
     !/\d/.test(workerData.timeZone)
   ) {
-    city = workerData.timeZone.split('/');
-    city = city[city.length - 1];
     // Check if city is in country
     if (timezone && timezone.countries.includes(country)) {
+      city = workerData.timeZone.split('/');
+      city = city[city.length - 1];
       percent = 30;
-    } else {
-      percent = 5;
     }
   }
   return {
