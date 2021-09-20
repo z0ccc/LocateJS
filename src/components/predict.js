@@ -66,19 +66,21 @@ const checkCountry = (workerData) => {
 
   if (timezone) langArr = langArr.concat(timezone.countries);
 
-  //
-  const cnts = langArr.reduce((obj, val) => {
+  // converts array to object of value/frequency
+  const countryObj = langArr.reduce((obj, val) => {
     // eslint-disable-next-line no-param-reassign
     obj[val] = (obj[val] || 0) + 1;
     return obj;
   }, {});
 
-  console.log(cnts);
-
   // Use the keys of the object to get all the values of the array
   // and sort those keys by their counts
-  const sorted = Object.keys(cnts).sort((a, b) => cnts[b] - cnts[a]);
+  const sorted = Object.keys(countryObj).sort(
+    (a, b) => countryObj[b] - countryObj[a]
+  );
+
   const percent = langArr.filter((x) => x === sorted[0]).length * 14;
+
   return {
     value: sorted[0],
     percent: percent > 90 ? 90 : percent,
