@@ -3,10 +3,11 @@ export { getMap, getPrediction };
 const getPrediction = (connectionData, workerData) => {
   const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
   let country, countryPercent, city, cityPercent;
+
+  // if connection timezone equals system data timezone
   if (connectionData.timezone === workerData.timeZone) {
     country = connectionData.country;
     countryPercent = connectionData.proxy ? 80 : 90;
-
     city = connectionData.city;
     cityPercent = connectionData.proxy ? 60 : 90;
   } else {
@@ -14,11 +15,10 @@ const getPrediction = (connectionData, workerData) => {
     const cityObj = checkCity(workerData, countryObj.value);
     country = regionNames.of(countryObj.value);
     countryPercent = countryObj.percent;
-
     city = cityObj.value;
     cityPercent = cityObj.percent;
   }
-  const data = [
+  return [
     {
       key: 'Country',
       value: country,
@@ -30,7 +30,6 @@ const getPrediction = (connectionData, workerData) => {
       percent: cityPercent,
     },
   ];
-  return data;
 };
 
 const ct = require('countries-and-timezones');
@@ -38,36 +37,14 @@ const cl = require('country-language');
 
 const checkCountry = (workerData) => {
   const timezone = ct.getTimezone(workerData.timeZone);
-  let langArr = [];
+  let countryArr = [];
 
-  if (timezone) langArr = langArr.concat(timezone.countries);
+  countryArr = checkLanguages(workerData);
 
-  // loop thru system data languages
-  workerData.languages.forEach((language) => {
-    if (language.length > 2) {
-      langArr.push(language.slice(-2));
-    }
-    // loop thru countries found in system data timezone
-    cl.getLanguageCountries(language.slice(0, 2), (err, languages) => {
-      if (err) {
-        console.log(err);
-      } else {
-        languages.forEach((languageCodes) => {
-          langArr.push(languageCodes.code_2);
-        });
-      }
-    });
-  });
-
-  // Checks if main language has country code
-  if (workerData.language.length > 2) {
-    langArr.push(workerData.language.slice(-2));
-  }
-
-  if (timezone) langArr = langArr.concat(timezone.countries);
+  if (timezone) countryArr = countryArr.concat(timezone.countries);
 
   // converts array to object of value/frequency
-  const countryObj = langArr.reduce((obj, val) => {
+  const countryObj = countryArr.reduce((obj, val) => {
     // eslint-disable-next-line no-param-reassign
     obj[val] = (obj[val] || 0) + 1;
     return obj;
@@ -79,7 +56,7 @@ const checkCountry = (workerData) => {
     (a, b) => countryObj[b] - countryObj[a]
   );
 
-  const percent = langArr.filter((x) => x === sorted[0]).length * 14;
+  const percent = countryArr.filter((x) => x === sorted[0]).length * 14;
 
   return {
     value: sorted[0],
@@ -87,12 +64,39 @@ const checkCountry = (workerData) => {
   };
 };
 
+const checkLanguages = (workerData) => {
+  const countryArr = [];
+  // loop thru system data languages
+  workerData.languages.forEach((language) => {
+    if (language.length > 2) {
+      countryArr.push(language.slice(-2));
+    }
+    // loop thru countries found in system data timezone
+    cl.getLanguageCountries(language.slice(0, 2), (err, languages) => {
+      if (err) {
+        console.log(err);
+      } else {
+        languages.forEach((languageCodes) => {
+          countryArr.push(languageCodes.code_2);
+        });
+      }
+    });
+  });
+
+  // Checks if main language has country code
+  if (workerData.language.length > 2) {
+    countryArr.push(workerData.language.slice(-2));
+  }
+
+  return countryArr;
+};
+
 const checkCity = (workerData, country) => {
   const timezone = ct.getTimezone(workerData.timeZone);
   let city = null;
   let percent = 0;
 
-  // Check timezne contaisn city info
+  // Check if timezone contains city info
   if (
     workerData.timeZone.includes('/') &&
     workerData.timeZone.match(/universal|GMT|UCT|UTC/g) === null &&
@@ -113,6 +117,7 @@ const checkCity = (workerData, country) => {
   };
 };
 
+// Return url for static map imgage
 const getMap = (data) => {
   let location, zoom;
   if (data[1].value === null) {
