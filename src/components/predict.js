@@ -40,8 +40,14 @@ const checkCountry = (workerData) => {
   const timezone = ct.getTimezone(workerData.timeZone);
   let langArr = [];
 
+  if (timezone) langArr = langArr.concat(timezone.countries);
+
+  // loop thru system data languages
   workerData.languages.forEach((language) => {
-    // loop thru system data languages
+    if (language.length > 2) {
+      langArr.push(language.slice(-2));
+    }
+    // loop thru countries found in system data timezone
     cl.getLanguageCountries(language.slice(0, 2), (err, languages) => {
       if (err) {
         console.log(err);
@@ -53,31 +59,35 @@ const checkCountry = (workerData) => {
     });
   });
 
-  workerData.languages.forEach((language) => {
-    if (language.length > 2) {
-      langArr.push(language.slice(-2));
-    }
-  });
-  langArr = langArr.concat(timezone.countries);
+  // Checks if main language has country code
+  if (workerData.language.length > 2) {
+    langArr.push(workerData.language.slice(-2));
+  }
 
+  if (timezone) langArr = langArr.concat(timezone.countries);
+
+  //
   const cnts = langArr.reduce((obj, val) => {
     // eslint-disable-next-line no-param-reassign
     obj[val] = (obj[val] || 0) + 1;
     return obj;
   }, {});
 
+  console.log(cnts);
+
   // Use the keys of the object to get all the values of the array
   // and sort those keys by their counts
   const sorted = Object.keys(cnts).sort((a, b) => cnts[b] - cnts[a]);
+  const percent = langArr.filter((x) => x === sorted[0]).length * 14;
   return {
     value: sorted[0],
-    percent: langArr.filter((x) => x === sorted[0]).length * 14,
+    percent: percent > 90 ? 90 : percent,
   };
 };
 
 const checkCity = (workerData, country) => {
   const timezone = ct.getTimezone(workerData.timeZone);
-  let city = 'N/A';
+  let city = null;
   let percent = 0;
 
   if (
@@ -85,7 +95,7 @@ const checkCity = (workerData, country) => {
     workerData.timeZone.match(/universal|GMT|UCT|UTC/g) === null &&
     !/\d/.test(workerData.timeZone)
   ) {
-    if (timezone.countries.includes(country)) {
+    if (timezone && timezone.countries.includes(country)) {
       city = workerData.timeZone.split('/');
       city = city[city.length - 1];
       percent = 30;
@@ -98,6 +108,13 @@ const checkCity = (workerData, country) => {
 };
 
 const getMap = (data) => {
-  console.log(data[1].value, data[0].value);
-  return `https://maps.googleapis.com/maps/api/staticmap?center=0,${data[1].value},${data[0].value}&markers=color:red%7Clabel:%7C${data[1].value},${data[0].value}&size=500x200&zoom=10&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk`;
+  let location, zoom;
+  if (data[1].value === null) {
+    location = data[0].value;
+    zoom = 3;
+  } else {
+    location = `${data[1].value},${data[0].value}`;
+    zoom = 6;
+  }
+  return `https://maps.googleapis.com/maps/api/staticmap?center=0,${location}&markers=color:red%7Clabel:%7C${location}&size=500x200&zoom=${zoom}&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk`;
 };

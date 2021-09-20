@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';

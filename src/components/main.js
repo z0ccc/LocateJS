@@ -157,7 +157,10 @@ const checkTimeZone = () => {
   const timezone = ct.getTimezone(
     Intl.DateTimeFormat().resolvedOptions().timeZone
   );
-  if (new Date().getTimezoneOffset() !== Math.abs(timezone.dstOffset)) {
+  if (
+    timezone &&
+    new Date().getTimezoneOffset() !== Math.abs(timezone.dstOffset)
+  ) {
     return 'Time zone and time zone offset did not match';
   }
   return null;
@@ -197,7 +200,7 @@ const checkNavigatorPrototype = (key) => {
   }
 };
 
-const getWebWorker = (setWorkerData) => {
+const getWebWorker = () => {
   let w;
   if (typeof w === 'undefined') {
     w = new Worker('/worker.js');
