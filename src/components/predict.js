@@ -92,15 +92,19 @@ const checkCity = (workerData, country) => {
   let city = null;
   let percent = 0;
 
+  // Check timezne contaisn city info
   if (
     workerData.timeZone.includes('/') &&
     workerData.timeZone.match(/universal|GMT|UCT|UTC/g) === null &&
     !/\d/.test(workerData.timeZone)
   ) {
+    city = workerData.timeZone.split('/');
+    city = city[city.length - 1];
+    // Check if city is in country
     if (timezone && timezone.countries.includes(country)) {
-      city = workerData.timeZone.split('/');
-      city = city[city.length - 1];
       percent = 30;
+    } else {
+      percent = 5;
     }
   }
   return {
