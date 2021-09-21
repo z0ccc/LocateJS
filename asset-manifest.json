@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/locatejs/static/css/main.026ab1c0.chunk.css",
-    "main.js": "/locatejs/static/js/main.4872184d.chunk.js",
-    "main.js.map": "/locatejs/static/js/main.4872184d.chunk.js.map",
+    "main.js": "/locatejs/static/js/main.6bb7111a.chunk.js",
+    "main.js.map": "/locatejs/static/js/main.6bb7111a.chunk.js.map",
     "runtime-main.js": "/locatejs/static/js/runtime-main.07f090b6.js",
     "runtime-main.js.map": "/locatejs/static/js/runtime-main.07f090b6.js.map",
     "static/js/2.65344aba.chunk.js": "/locatejs/static/js/2.65344aba.chunk.js",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.07f090b6.js",
     "static/js/2.65344aba.chunk.js",
     "static/css/main.026ab1c0.chunk.css",
-    "static/js/main.4872184d.chunk.js"
+    "static/js/main.6bb7111a.chunk.js"
   ]
 }
