@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/locatejs/static/css/main.026ab1c0.chunk.css",
+    "main.js": "/locatejs/static/js/main.4872184d.chunk.js",
+    "main.js.map": "/locatejs/static/js/main.4872184d.chunk.js.map",
+    "runtime-main.js": "/locatejs/static/js/runtime-main.07f090b6.js",
+    "runtime-main.js.map": "/locatejs/static/js/runtime-main.07f090b6.js.map",
+    "static/js/2.65344aba.chunk.js": "/locatejs/static/js/2.65344aba.chunk.js",
+    "static/js/2.65344aba.chunk.js.map": "/locatejs/static/js/2.65344aba.chunk.js.map",
+    "index.html": "/locatejs/index.html",
+    "static/css/main.026ab1c0.chunk.css.map": "/locatejs/static/css/main.026ab1c0.chunk.css.map",
+    "static/js/2.65344aba.chunk.js.LICENSE.txt": "/locatejs/static/js/2.65344aba.chunk.js.LICENSE.txt",
+    "static/media/checkCircle.7ccef9af.svg": "/locatejs/static/media/checkCircle.7ccef9af.svg",
+    "static/media/connection.323a224d.svg": "/locatejs/static/media/connection.323a224d.svg",
+    "static/media/github.66100f42.svg": "/locatejs/static/media/github.66100f42.svg",
+    "static/media/predict.bce80a8c.svg": "/locatejs/static/media/predict.bce80a8c.svg",
+    "static/media/system.f9298e72.svg": "/locatejs/static/media/system.f9298e72.svg",
+    "static/media/x.32a6a29f.svg": "/locatejs/static/media/x.32a6a29f.svg",
+    "static/media/xCircle.c4be90a4.svg": "/locatejs/static/media/xCircle.c4be90a4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.07f090b6.js",
+    "static/js/2.65344aba.chunk.js",
+    "static/css/main.026ab1c0.chunk.css",
+    "static/js/main.4872184d.chunk.js"
+  ]
+}
