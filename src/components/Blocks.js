@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
+import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
 import SystemDataBlock from './SystemDataBlock';
@@ -20,6 +20,7 @@ const Blocks = () => {
     <>
       {connectionData ? (
         <>
+          <NoteBlock />
           <PredictionBlock
             workerData={workerData}
             connectionData={connectionData}

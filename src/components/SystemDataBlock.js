@@ -9,8 +9,8 @@ const SystemDataBlock = ({ workerData }) => (
     <h1>System Data</h1>
     <Table data={getSystemData(workerData)} />
     <p>
-      <b>Explanation:</b> Your IP address reveals information about your
-      connection. Using a VPN or Tor will hide your connection info.
+      <b>Explanation:</b> Date and language data can be used to identify your
+      location. Changing the settings on your computer can prevent this.
     </p>
   </Block>
 );

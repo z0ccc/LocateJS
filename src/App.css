@@ -8,6 +8,7 @@
   --issueBorder: #f5c6cb;
   --issueText: #721c24;
   --fill: #9fa6b2;
+  --link: #0079d3;
 }
 
 .background {
@@ -206,4 +207,13 @@ h2 {
   position: fixed;
   top: 12px;
   right: 12px;
+}
+
+.url {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.url:hover {
+  text-decoration: underline;
 }

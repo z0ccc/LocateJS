@@ -11,8 +11,8 @@ const PredictionBlock = ({ workerData, connectionData }) => {
       <img src={getMap(data)} alt="Map of current location" />
       <PredictionTable data={data} />
       <p>
-        <b>Explanation:</b> Your IP address reveals information about your
-        connection. Using a VPN or Tor will hide your connection info.
+        <b>Explanation:</b> Your connection and system data can be combined and
+        analyzed to reveal your location.
       </p>
     </Block>
   );

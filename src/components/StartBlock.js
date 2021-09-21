@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import StartList from './StartList';
 import Block from './Block';
 
