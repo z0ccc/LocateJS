@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 export { fetchAPI, getConnection, getSystemData, getWebWorker };
 
+// Gets connection values
 const fetchAPI = (setData) => {
   fetch('https://api.vytal.io/ip/')
     .then((response) => response.json())
@@ -9,6 +10,7 @@ const fetchAPI = (setData) => {
     });
 };
 
+// Returns object with connection data
 const getConnection = (connectionData, workerData) => {
   const timeZoneIssue = compareTimeZone(
     connectionData.timezone,
@@ -74,6 +76,7 @@ const checkProxy = (proxy) => {
   return null;
 };
 
+// Return object of system data
 const getSystemData = (workerData) => [
   getTimezone(workerData.timeZone),
   getTimezoneOffset(workerData.timezoneOffset),
@@ -144,13 +147,6 @@ const getLanguages = (languages) => ({
   ],
 });
 
-const checkWebWorker = (original, value) => {
-  if (original.toString() !== value.toString()) {
-    return `Did not match web worker (${original})`;
-  }
-  return null;
-};
-
 const ct = require('countries-and-timezones');
 
 const checkTimeZone = () => {
@@ -198,6 +194,13 @@ const checkNavigatorPrototype = (key) => {
   } catch (err) {
     return null;
   }
+};
+
+const checkWebWorker = (original, value) => {
+  if (original.toString() !== value.toString()) {
+    return `Did not match web worker (${original})`;
+  }
+  return null;
 };
 
 const getWebWorker = () => {
