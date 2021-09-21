@@ -200,3 +200,10 @@ h2 {
   width: 32px;
   fill: var(--fill);
 }
+
+.github {
+  width: 36px;
+  position: fixed;
+  top: 12px;
+  right: 12px;
+}
