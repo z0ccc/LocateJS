@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/locatejs/static/css/main.026ab1c0.chunk.css",
-    "main.js": "/locatejs/static/js/main.6bb7111a.chunk.js",
-    "main.js.map": "/locatejs/static/js/main.6bb7111a.chunk.js.map",
+    "main.css": "/locatejs/static/css/main.29b28cd5.chunk.css",
+    "main.js": "/locatejs/static/js/main.cc9a8f12.chunk.js",
+    "main.js.map": "/locatejs/static/js/main.cc9a8f12.chunk.js.map",
     "runtime-main.js": "/locatejs/static/js/runtime-main.07f090b6.js",
     "runtime-main.js.map": "/locatejs/static/js/runtime-main.07f090b6.js.map",
     "static/js/2.65344aba.chunk.js": "/locatejs/static/js/2.65344aba.chunk.js",
     "static/js/2.65344aba.chunk.js.map": "/locatejs/static/js/2.65344aba.chunk.js.map",
     "index.html": "/locatejs/index.html",
-    "static/css/main.026ab1c0.chunk.css.map": "/locatejs/static/css/main.026ab1c0.chunk.css.map",
+    "static/css/main.29b28cd5.chunk.css.map": "/locatejs/static/css/main.29b28cd5.chunk.css.map",
     "static/js/2.65344aba.chunk.js.LICENSE.txt": "/locatejs/static/js/2.65344aba.chunk.js.LICENSE.txt",
     "static/media/checkCircle.7ccef9af.svg": "/locatejs/static/media/checkCircle.7ccef9af.svg",
     "static/media/connection.323a224d.svg": "/locatejs/static/media/connection.323a224d.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.07f090b6.js",
     "static/js/2.65344aba.chunk.js",
-    "static/css/main.026ab1c0.chunk.css",
-    "static/js/main.6bb7111a.chunk.js"
+    "static/css/main.29b28cd5.chunk.css",
+    "static/js/main.cc9a8f12.chunk.js"
   ]
 }
