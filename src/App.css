@@ -110,6 +110,7 @@ tbody:not(:last-child) {
 
 td {
   padding: 12px;
+  word-break: break-all;
 }
 
 td:first-child {
@@ -225,4 +226,70 @@ h2 {
 
 .url:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 800px) {
+  .github {
+    position: absolute;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .github {
+    width: 24px;
+    top: 8px;
+    right: 8px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .contentBlock {
+    padding: 18px;
+    margin: 0 0 18px 0;
+  }
+
+  .centerBlockInner {
+    width: 650px;
+    margin: 12px 0 0 0;
+  }
+
+  .logo {
+    width: 160px;
+    margin: 0 0 8px 0;
+  }
+
+  h1 {
+    font-size: 16px;
+  }
+
+  h2 {
+    margin: 0 0 3px 0;
+    font-size: 15px;
+  }
+
+  .contentIcon {
+    flex: none;
+    margin: 0 18px 0 0;
+    width: 28px !important;
+  }
+
+  td:first-child {
+    width: 70px;
+  }
+
+  td:nth-child(3) {
+    width: 25px;
+    font-weight: 600;
+    word-break: normal;
+  }
+
+  .boxWrap {
+    padding: 8px;
+  }
+
+  input[type='text'] {
+    width: calc(100% - 65px);
+  }
 }
