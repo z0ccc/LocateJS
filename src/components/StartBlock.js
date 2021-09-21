@@ -32,7 +32,7 @@ const StartBlock = ({ setScan }) => (
     <input
       type="submit"
       onClick={() => setScan(true)}
-      id="scanButton"
+      className="scanButton"
       value="Scan Browser"
     />
   </Block>
