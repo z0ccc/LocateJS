@@ -1,21 +1,21 @@
 /* eslint-disable no-unused-vars */
-// import ContentList from './ContentList';
+import StartList from './StartList';
 import Block from './Block';
 
-const contentItems = [
+const listItems = [
   {
-    title: 'Fingerprint',
-    icon: 'fingerprint',
+    title: 'Predict Location',
+    icon: 'predict',
     body: 'Browsers reveal bits of identifiable information. This data can be combined into a digital fingerprint which can be used to follow you around the web.',
   },
   {
     title: 'Connection',
-    icon: 'wifi',
+    icon: 'connection',
     body: 'Websites are able to access your IP address when you connect to their server. Your IP address exposes information about your connection and location.',
   },
   {
     title: 'System Info',
-    icon: 'browser',
+    icon: 'system',
     body: "JavaScript can be used to find data about your computer's software and hardware. This information can be used to create a fingerprint.",
   },
 ];
@@ -28,12 +28,12 @@ const StartBlock = ({ setScan }) => (
       web. This scan allows you to understand how easy it is to identify and
       track your browser even while using private mode.
     </div>
-    {/* <ContentList items={contentItems} /> */}
+    <StartList items={listItems} />
     <input
       type="submit"
       onClick={() => setScan(true)}
       className="scanButton"
-      value="Scan Browser"
+      value="Start Scan"
     />
   </Block>
 );

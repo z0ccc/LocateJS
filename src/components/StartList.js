@@ -11,9 +11,9 @@ const Icons = {
 const StartList = ({ items }) => (
   <div className="contentList">
     {items.map((item) => (
-      <div className="contentItem" key={item.title}>
+      <div className="listItem" key={item.title}>
         <div className="contentIcon">{Icons[item.icon]}</div>
-        <div className="contentText">
+        <div className="listText">
           <h2>{item.title}</h2>
           <div className="contentBody">{item.body}</div>
         </div>
