@@ -23,6 +23,12 @@
   z-index: -1;
 }
 
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .logoWrap {
   display: flex;
   align-items: center;
@@ -101,10 +107,6 @@ tbody:not(:last-child) {
 td {
   padding: 12px;
 }
-
-/* td:nth-child(2):first-letter {
-  text-transform: uppercase;
-} */
 
 td:first-child {
   width: 180px;
