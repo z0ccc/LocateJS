@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export { fetchAPI, getConnection, getSystemData, getWebWorker };
 
 // Gets connection values

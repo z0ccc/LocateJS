@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react';
 import Block from './Block';
 import Table from './Table';
 import { getSystemData } from './main';

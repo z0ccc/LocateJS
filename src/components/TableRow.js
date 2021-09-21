@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import Modal from 'react-modal';
-import { useState, useEffect } from 'react';
-import { ReactComponent as XCircle } from '../xCircle.svg';
-import { ReactComponent as CheckCircle } from '../checkCircle.svg';
-import { ReactComponent as X } from '../x.svg';
+import { useState } from 'react';
+import { ReactComponent as XCircle } from '../images/xCircle.svg';
+import { ReactComponent as CheckCircle } from '../images/checkCircle.svg';
+import { ReactComponent as X } from '../images/x.svg';
 
 const modalStyles = {
   content: {
