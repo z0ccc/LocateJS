@@ -8,7 +8,7 @@
   --issueBorder: #f5c6cb;
   --issueText: #721c24;
   --fill: #9fa6b2;
-  --link: #0079d3;
+  --link: #c3dcf0;
 }
 
 body {
@@ -199,6 +199,7 @@ h2 {
   margin: 24px 0 0 0;
   font-family: inherit;
   font-size: inherit;
+  -webkit-appearance: none;
 }
 
 .scanButton:hover {

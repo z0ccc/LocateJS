@@ -205,7 +205,7 @@ const checkWebWorker = (original, value) => {
 const getWebWorker = () => {
   let w;
   if (typeof w === 'undefined') {
-    w = new Worker('worker.js');
+    w = new Worker('/locatejs/worker.js');
   }
   return w;
 };
