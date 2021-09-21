@@ -1,38 +1,202 @@
+:root {
+  --main: #943ec5;
+  --text: #4b5563;
+  --border: #ddd;
+  --grey: #c4c4c4;
+  --issueBackground: #f8d7da;
+  --issueHover: #f4c1c6;
+  --issueBorder: #f5c6cb;
+  --issueText: #721c24;
+  --fill: #9fa6b2;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(62, 25, 83);
+  background: linear-gradient(
+    165deg,
+    rgba(62, 25, 83, 1) 0%,
+    rgba(87, 35, 117, 1) 40%,
+    rgba(148, 62, 197, 1) 100%
+  );
+  z-index: -1;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.logoWrap {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  width: 225px;
+  margin: 0 0 14px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.centerBlockOuter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+  margin: 0 18px;
+}
+
+.centerBlockInner {
+  width: 650px;
+  margin: 24px 0 0 0;
+}
+
+.contentBlock {
+  color: var(--text);
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 24px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin: 0 0 24px 0;
+}
+
+.listItem {
+  display: flex;
+  margin: 24px 0 0 0;
+}
+
+h1 {
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+p {
+  margin: 12px 0 0 0;
+}
+
+b {
+  font-weight: 600;
+}
+
+.tableWrap {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+tbody:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 12px;
+}
+
+td:first-child {
+  width: 180px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+td:nth-child(3) {
+  width: 40px;
+  font-weight: 600;
+  word-break: normal;
+}
+
+.circleButton {
+  display: flex;
+  width: 20px;
+}
+
+.issueButton {
+  cursor: pointer;
+  fill: #f5c6cb;
+}
+
+.issueButton:hover {
+  fill: #ea8590;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 6px 0;
+}
+
+.modalTitle {
+  font-weight: 600;
+}
+
+.closeButton {
+  fill: var(--border);
+  display: flex;
+  width: 12px;
+  cursor: pointer;
+  margin: -12px 0 0 0;
+}
+
+.closeButton:hover {
+  fill: var(--grey);
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0px;
+}
+
+img {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  display: block;
+  margin: 0 0 12px 0;
+}
+
+h2 {
+  margin: 0 0 4px 0;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.listText {
+  line-height: 24px;
+}
+
+.scanButton {
+  display: block;
+  background-color: var(--main);
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin: 24px 0 0 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.scanButton:hover {
+  opacity: 0.7;
+}
+
+.contentIcon {
+  flex: none;
+  margin: 0 24px 0 0;
+  width: 32px;
+  fill: var(--fill);
 }
