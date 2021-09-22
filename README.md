@@ -24,7 +24,7 @@ You should select a language that has no country associated with it (‘en’ in
 
 Although adding multiple random languages will help obscure your location, it's not the best idea as it will give you a very unique [device fingerprint](https://en.wikipedia.org/wiki/Device_fingerprint).
 
-It's also a good idea to make sure your connection data matches your system data because if there are contradictions in the data it would reveal that some of your data is inaccurate. 
+It's also a good idea to make sure your connection data matches your system data because if there are contradictions it would reveal that you are attempting to hide your location. 
 
 
 ## Dev
