@@ -19,7 +19,6 @@ const getPrediction = (connectionData, workerData) => {
     const countryObj = checkCountry(workerData);
     const cityObj = checkCity(workerData, countryObj.value);
     country = regionNames ? regionNames.of(countryObj.value) : countryObj.value;
-    country = regionNames.of(countryObj.value);
     countryPercent = countryObj.percent;
     city = cityObj.value;
     cityPercent = cityObj.percent;
