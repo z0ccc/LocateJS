@@ -25,7 +25,7 @@ const StartBlock = ({ setScan }) => (
     <div className="contentBody">
       LocateJS predicts your location by analyzing your connection and system
       data. This scan allows you to understand how your location can be
-      pinpointed even while using a vpn, location spoofer or private mode.
+      pinpointed even while using a VPN, location spoofer or private mode.
     </div>
     <StartList items={listItems} />
     <input
