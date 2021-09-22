@@ -23,7 +23,7 @@ const StartBlock = ({ setScan }) => (
   <Block>
     <h2>About</h2>
     <div className="contentBody">
-      LocateJS predicts your location by analysing your connection and system
+      LocateJS predicts your location by analyzing your connection and system
       data. This scan allows you to understand how your location can be
       pinpointed even while using a vpn, location spoofer or private mode.
     </div>
