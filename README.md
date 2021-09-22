@@ -4,7 +4,7 @@ Check it out here: [https://z0ccc.github.io/LocateJS/](https://z0ccc.github.io/L
 
 ## About
 
-LocateJS predicts your location by analysing your connection and system data. This scan allows you to understand how your location can be pinpointed even while using a vpn, location spoofer or private mode.
+LocateJS predicts your location by analyzing your connection and system data. This scan allows you to understand how your location can be pinpointed even while using a vpn, location spoofer or private mode.
 
 Accuracy of the location prediction depends on how much authentic info your computer is exposing. LocateJS will not be able to detect your location 100% of the time.
 
@@ -23,4 +23,18 @@ Timezone/location spoofing extensions will not help as they cannot spoof data in
 You should select a language that has no country associated with it (‘en’ instead of ‘en-US’). You should remove all other languages. 
 
 Although adding multiple random languages will help obscure your location, it's not the best idea as it will give you a very unique [device fingerprint](https://en.wikipedia.org/wiki/Device_fingerprint).
-It's also a good idea to make sure your connection data matches your system data because if the data contradicts each other it would reveal that some of your data is inaccurate. 
+It's also a good idea to make sure your connection data matches your system data because if there are contradictions in the data it would reveal that some of your data is inaccurate. 
+
+
+## Dev
+
+This application is built with Javascript and React.
+
+Clone this repo and run these commands to start the development server. 
+
+```
+yarn
+yarn run start
+```
+
+The website can then be accessed at http://localhost:3000/.
