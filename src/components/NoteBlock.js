@@ -12,7 +12,7 @@ const NoteBlock = () => (
         target="_blank"
         rel="noreferrer"
         alt="Link to Github page"
-        href="https://github.com/z0ccc/LocateJS"
+        href="https://github.com/z0ccc/LocateJS#locatejs"
       >
         GitHub
       </a>
