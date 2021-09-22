@@ -1,8 +1,13 @@
 export { getMap, getPrediction };
 
 const getPrediction = (connectionData, workerData) => {
-  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-  let country, countryPercent, city, cityPercent;
+  let country, countryPercent, city, cityPercent, regionNames;
+
+  try {
+    regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+  } catch (e) {
+    regionNames = null;
+  }
 
   // if connection timezone equals system data timezone
   if (connectionData.timezone === workerData.timeZone) {
@@ -13,6 +18,7 @@ const getPrediction = (connectionData, workerData) => {
   } else {
     const countryObj = checkCountry(workerData);
     const cityObj = checkCity(workerData, countryObj.value);
+    country = regionNames ? regionNames.of(countryObj.value) : countryObj.value;
     country = regionNames.of(countryObj.value);
     countryPercent = countryObj.percent;
     city = cityObj.value;
