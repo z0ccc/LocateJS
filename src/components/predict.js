@@ -97,6 +97,7 @@ const checkTimezone = (timezone) => {
   if (timezone) {
     countryArr = countryArr // Concat multiple times to assing a greater weight to timezones
       .concat(timezone.countries)
+      .concat(timezone.countries)
       .concat(timezone.countries);
   }
   return countryArr;
@@ -124,7 +125,7 @@ const checkCity = (workerData, country) => {
     // Check if city is in country
     if (timezone && timezone.countries.includes(country)) {
       city = workerData.timeZone.split('/');
-      city = city[city.length - 1];
+      city = city[city.length - 1].replace('_', ' ');
       percent = 30;
     }
   }

@@ -12,7 +12,7 @@ const Blocks = () => {
   useEffect(() => {
     getWebWorker().onmessage = (event) => {
       setWorkerData(event.data);
-      fetchAPI(setConnectionData, workerData);
+      fetchAPI(setConnectionData);
     };
   }, []);
 
