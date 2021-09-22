@@ -173,6 +173,7 @@ img {
   box-sizing: border-box;
   display: block;
   margin: 0 0 12px 0;
+  height: 240px;
 }
 
 h2 {
@@ -232,6 +233,10 @@ h2 {
 @media screen and (max-width: 800px) {
   .github {
     position: absolute;
+  }
+
+  img {
+    height: auto;
   }
 }
 
