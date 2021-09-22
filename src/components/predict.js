@@ -10,14 +10,16 @@ const getPrediction = (connectionData, workerData) => {
   }
 
   // if connection timezone equals system data timezone
-  if (
-    !connectionData.proxy &&
-    connectionData.timezone === workerData.timeZone
-  ) {
+  if (!connectionData.proxy) {
     country = connectionData.country;
-    countryPercent = connectionData.proxy ? 80 : 90;
     city = connectionData.city;
-    cityPercent = connectionData.proxy ? 60 : 90;
+    if (connectionData.timezone === workerData.timeZone) {
+      countryPercent = 90;
+      cityPercent = 90;
+    } else {
+      countryPercent = 80;
+      cityPercent = 60;
+    }
   } else {
     const countryObj = checkCountry(workerData);
     const cityObj = checkCity(workerData, countryObj.value);
