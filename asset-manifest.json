@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/locatejs/static/css/main.550c8c0f.chunk.css",
-    "main.js": "/locatejs/static/js/main.0e791fce.chunk.js",
-    "main.js.map": "/locatejs/static/js/main.0e791fce.chunk.js.map",
-    "runtime-main.js": "/locatejs/static/js/runtime-main.07f090b6.js",
-    "runtime-main.js.map": "/locatejs/static/js/runtime-main.07f090b6.js.map",
-    "static/js/2.65344aba.chunk.js": "/locatejs/static/js/2.65344aba.chunk.js",
-    "static/js/2.65344aba.chunk.js.map": "/locatejs/static/js/2.65344aba.chunk.js.map",
-    "index.html": "/locatejs/index.html",
-    "static/css/main.550c8c0f.chunk.css.map": "/locatejs/static/css/main.550c8c0f.chunk.css.map",
-    "static/js/2.65344aba.chunk.js.LICENSE.txt": "/locatejs/static/js/2.65344aba.chunk.js.LICENSE.txt",
-    "static/media/checkCircle.7ccef9af.svg": "/locatejs/static/media/checkCircle.7ccef9af.svg",
-    "static/media/connection.323a224d.svg": "/locatejs/static/media/connection.323a224d.svg",
-    "static/media/github.66100f42.svg": "/locatejs/static/media/github.66100f42.svg",
-    "static/media/logo.1777930c.svg": "/locatejs/static/media/logo.1777930c.svg",
-    "static/media/predict.bce80a8c.svg": "/locatejs/static/media/predict.bce80a8c.svg",
-    "static/media/system.f9298e72.svg": "/locatejs/static/media/system.f9298e72.svg",
-    "static/media/x.32a6a29f.svg": "/locatejs/static/media/x.32a6a29f.svg",
-    "static/media/xCircle.c4be90a4.svg": "/locatejs/static/media/xCircle.c4be90a4.svg"
+    "main.css": "/LocateJS/static/css/main.09dd7ebe.chunk.css",
+    "main.js": "/LocateJS/static/js/main.5f82f9db.chunk.js",
+    "main.js.map": "/LocateJS/static/js/main.5f82f9db.chunk.js.map",
+    "runtime-main.js": "/LocateJS/static/js/runtime-main.9e1d6452.js",
+    "runtime-main.js.map": "/LocateJS/static/js/runtime-main.9e1d6452.js.map",
+    "static/js/2.2eecef86.chunk.js": "/LocateJS/static/js/2.2eecef86.chunk.js",
+    "static/js/2.2eecef86.chunk.js.map": "/LocateJS/static/js/2.2eecef86.chunk.js.map",
+    "index.html": "/LocateJS/index.html",
+    "static/css/main.09dd7ebe.chunk.css.map": "/LocateJS/static/css/main.09dd7ebe.chunk.css.map",
+    "static/js/2.2eecef86.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.2eecef86.chunk.js.LICENSE.txt",
+    "static/media/checkCircle.7ccef9af.svg": "/LocateJS/static/media/checkCircle.7ccef9af.svg",
+    "static/media/connection.323a224d.svg": "/LocateJS/static/media/connection.323a224d.svg",
+    "static/media/github.66100f42.svg": "/LocateJS/static/media/github.66100f42.svg",
+    "static/media/logo.1777930c.svg": "/LocateJS/static/media/logo.1777930c.svg",
+    "static/media/predict.bce80a8c.svg": "/LocateJS/static/media/predict.bce80a8c.svg",
+    "static/media/system.f9298e72.svg": "/LocateJS/static/media/system.f9298e72.svg",
+    "static/media/x.32a6a29f.svg": "/LocateJS/static/media/x.32a6a29f.svg",
+    "static/media/xCircle.c4be90a4.svg": "/LocateJS/static/media/xCircle.c4be90a4.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.07f090b6.js",
-    "static/js/2.65344aba.chunk.js",
-    "static/css/main.550c8c0f.chunk.css",
-    "static/js/main.0e791fce.chunk.js"
+    "static/js/runtime-main.9e1d6452.js",
+    "static/js/2.2eecef86.chunk.js",
+    "static/css/main.09dd7ebe.chunk.css",
+    "static/js/main.5f82f9db.chunk.js"
   ]
 }
