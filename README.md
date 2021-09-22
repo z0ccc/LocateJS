@@ -23,6 +23,7 @@ Timezone/location spoofing extensions will not help as they cannot spoof data in
 You should select a language that has no country associated with it (‘en’ instead of ‘en-US’). You should remove all other languages. 
 
 Although adding multiple random languages will help obscure your location, it's not the best idea as it will give you a very unique [device fingerprint](https://en.wikipedia.org/wiki/Device_fingerprint).
+
 It's also a good idea to make sure your connection data matches your system data because if there are contradictions in the data it would reveal that some of your data is inaccurate. 
 
 
