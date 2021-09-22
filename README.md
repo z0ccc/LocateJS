@@ -2,69 +2,25 @@
 
 Check it out here: [https://z0ccc.github.io/LocateJS/](https://z0ccc.github.io/LocateJS/).
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+LocateJS predicts your location by analysing your connection and system data. This scan allows you to understand how your location can be pinpointed even while using a vpn, location spoofer or private mode.
 
-### `yarn start`
+Accuracy of the location prediction depends on how much authentic info your computer is exposing. LocateJS will not be able to detect your location 100% of the time.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to hide location
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The best way to hide your location is to use [Tor](https://www.torproject.org/). Tor will completely hide both your connection and system data.
 
-### `yarn test`
+As it's not always practical to use Tor (slow speeds, captcha loops, etc) the following are instructions on how to obscure your location without Tor.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To hide your connection data you will need to use a VPN or proxy
 
-### `yarn build`
+To hide your system data you will need to change your system settings. You can change your timezone to one with the same timezone offset so that the date on your computer stays the same. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Timezone/location spoofing extensions will not help as they cannot spoof data in [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers). 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You should select a language that has no country associated with it (‘en’ instead of ‘en-US’). You should remove all other languages. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Although adding multiple random languages will help obscure your location, it's not the best idea as it will give you a very unique [device fingerprint](https://en.wikipedia.org/wiki/Device_fingerprint).
+It's also a good idea to make sure your connection data matches your system data because if the data contradicts each other it would reveal that some of your data is inaccurate. 
