@@ -95,7 +95,6 @@ const checkTimezone = (timezone) => {
   if (timezone) {
     countryArr = countryArr // Concat multiple times to assing a greater weight to timezones
       .concat(timezone.countries)
-      .concat(timezone.countries)
       .concat(timezone.countries);
   }
   return countryArr;
