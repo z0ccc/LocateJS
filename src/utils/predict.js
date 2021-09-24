@@ -4,7 +4,7 @@ const getPrediction = (connectionData, workerData) => {
   let country, countryPercent, city, cityPercent, regionNames;
 
   // if connection timezone equals system data timezone
-  if (!connectionData.proxy) {
+  if (connectionData && !connectionData.proxy) {
     country = connectionData.country;
     city = connectionData.city;
     if (connectionData.timezone === workerData.timeZone) {

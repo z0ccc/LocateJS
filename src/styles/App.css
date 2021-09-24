@@ -229,6 +229,15 @@ h2 {
   text-decoration: underline;
 }
 
+.checkBox {
+  margin: 0 0 12px 0;
+  display: block;
+}
+
+input[type='checkbox'] {
+  margin: 0 6px 0 0;
+}
+
 @media screen and (max-width: 800px) {
   .gitHubButton {
     position: absolute;
@@ -240,8 +249,7 @@ h2 {
 }
 
 @media screen and (max-width: 500px) {
-  .github {
-    width: 24px;
+  .gitHubButton {
     top: 8px;
     right: 8px;
   }
