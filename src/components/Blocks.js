@@ -25,11 +25,11 @@ const Blocks = () => {
             workerData={workerData}
             connectionData={connectionData}
           />
+          <SystemDataBlock workerData={workerData} />
           <ConnectionBlock
             workerData={workerData}
             connectionData={connectionData}
           />
-          <SystemDataBlock workerData={workerData} />
         </>
       ) : (
         <div className="contentBlock">

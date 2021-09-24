@@ -214,8 +214,7 @@ h2 {
   fill: var(--fill);
 }
 
-.github {
-  width: 36px;
+.gitHubButton {
   position: fixed;
   top: 12px;
   right: 12px;
@@ -231,7 +230,7 @@ h2 {
 }
 
 @media screen and (max-width: 800px) {
-  .github {
+  .gitHubButton {
     position: absolute;
   }
 

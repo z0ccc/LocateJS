@@ -3,12 +3,6 @@ export { getMap, getPrediction };
 const getPrediction = (connectionData, workerData) => {
   let country, countryPercent, city, cityPercent, regionNames;
 
-  try {
-    regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-  } catch (e) {
-    regionNames = null;
-  }
-
   // if connection timezone equals system data timezone
   if (!connectionData.proxy) {
     country = connectionData.country;
@@ -21,6 +15,12 @@ const getPrediction = (connectionData, workerData) => {
       cityPercent = 60;
     }
   } else {
+    try {
+      regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+    } catch (e) {
+      regionNames = null;
+    }
+
     const countryObj = checkCountry(workerData);
     const cityObj = checkCity(workerData, countryObj.value);
     country = regionNames ? regionNames.of(countryObj.value) : countryObj.value;
@@ -74,7 +74,7 @@ const checkLanguages = (workerData) => {
     // loop thru countries found in system data timezone
     cl.getLanguageCountries(language.slice(0, 2), (err, languages) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
       } else {
         languages.forEach((languageCodes) => {
           countryArr.push(languageCodes.code_2);
