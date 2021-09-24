@@ -1,6 +1,6 @@
 import Block from './Block';
 import Table from './Table';
-import { getConnection } from './main';
+import { getConnection } from '../utils/main';
 
 const ConnectionBlock = ({ workerData, connectionData }) => (
   <Block>
