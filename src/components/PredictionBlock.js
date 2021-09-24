@@ -21,7 +21,7 @@ const PredictionBlock = ({ workerData, connectionData }) => {
           name="systemOnly"
           onClick={(e) => handleCheckBox(e)}
         />
-        Only system data for prediction
+        Only use system data for prediction
       </label>
       <img src={getMap(data)} alt="Map of current location" />
       <PredictionTable data={data} />

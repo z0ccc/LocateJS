@@ -231,14 +231,15 @@ h2 {
 
 .checkBox {
   margin: 0 0 12px 0;
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 input[type='checkbox'] {
   margin: 0 6px 0 0;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .gitHubButton {
     position: absolute;
   }
