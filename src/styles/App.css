@@ -231,8 +231,7 @@ h2 {
 
 .checkBox {
   margin: 0 0 12px 0;
-  display: flex;
-  align-items: center;
+  display: block;
 }
 
 input[type='checkbox'] {

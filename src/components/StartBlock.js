@@ -5,17 +5,17 @@ const listItems = [
   {
     title: 'Predict Location',
     icon: 'predict',
-    body: 'Connection and system data can be examined to determine if the info is accurate. Accurate info can then be further evaluated to determine location.',
+    body: 'Connection and system data can be analyzed to predict your location. If the data is accurate then your location can be easily identified.',
+  },
+  {
+    title: 'System Data',
+    icon: 'system',
+    body: "JavaScript can be used to find data about your computer's software and hardware. Some of this information can reveal your location.",
   },
   {
     title: 'Connection',
     icon: 'connection',
     body: 'Every device connecting to the internet is assigned an ip address. Information about your location can be exposed by analyzing your ip address.',
-  },
-  {
-    title: 'System Data',
-    icon: 'system',
-    body: "JavaScript can be used to find data about your computer's software and hardware. This information can be used to create a fingerprint.",
   },
 ];
 
