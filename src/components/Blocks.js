@@ -3,7 +3,8 @@ import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
 import SystemDataBlock from './SystemDataBlock';
-import { getWebWorker, fetchAPI } from '../utils/main';
+import { getWebWorker } from '../utils/main';
+import { fetchAPI } from '../utils/connection';
 
 const Blocks = () => {
   const [workerData, setWorkerData] = useState();
