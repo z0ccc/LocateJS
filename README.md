@@ -28,7 +28,7 @@ It's also a good idea to make sure your connection data matches your system data
 
 ## FAQ
 
-### Why did nothing change when ‘Only use system data for prediction’ was selected
+### Why did nothing change when ‘Only use system data for prediction’ was selected?
 
 If the values do not change when this option is selected it means that the connection values were already removed from the prediction due to being detected as inaccurate.
 
