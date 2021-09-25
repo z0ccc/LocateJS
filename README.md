@@ -6,7 +6,7 @@ Check it out here: [https://z0ccc.github.io/LocateJS/](https://z0ccc.github.io/L
 
 LocateJS predicts your location by analyzing your connection and system data. This scan allows you to understand how your location can be pinpointed even while using a VPN, location spoofer or private mode.
 
-Accuracy of the location prediction depends on how much authentic info your computer is exposing. LocateJS will not be able to detect your location 100% of the time.
+Accuracy of the location prediction is dependant on how well you have concealed your location data. The prediction can be anywhere from spot-on to inaccurate depending on how much identifiable and authentic info your exposing.
 
 ## How to hide location
 
@@ -25,6 +25,18 @@ You should select a language that has no country associated with it (‘en’ in
 Although adding multiple random languages will help obscure your location, it's not the best idea as it will give you a very unique [device fingerprint](https://en.wikipedia.org/wiki/Device_fingerprint).
 
 It's also a good idea to make sure your connection data matches your system data because if there are contradictions it would reveal that you are attempting to hide your location.
+
+## FAQ
+
+### Why did nothing change when ‘Only use system data for prediction’ was selected
+
+If the values do not change when this option is selected it means that the connection values were already removed from the prediction due to being detected as inaccurate.
+
+### What do the green and red circles mean?
+
+A red circle indicates that the data in that row has been tampered with. If the true value cannot be derived then it is assumed to be inaccurate and will be left out of the location prediction. You can click on the red circle to see what types of issues have been detected.
+
+A green circle indicates that no object tampering has been detected and that the value is legitimate.
 
 ## Dev
 
