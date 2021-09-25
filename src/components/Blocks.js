@@ -3,7 +3,7 @@ import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
 import SystemDataBlock from './SystemDataBlock';
-import { getWebWorker } from '../utils/main';
+import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
 
 const Blocks = () => {

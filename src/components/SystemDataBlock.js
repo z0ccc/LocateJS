@@ -1,6 +1,6 @@
 import Block from './Block';
 import Table from './Table';
-import { getSystemData } from '../utils/main';
+import { getSystemData } from '../utils/system';
 
 const SystemDataBlock = ({ workerData }) => (
   <Block>
