@@ -1,3 +1,4 @@
+import './MainColumn.css';
 import { useState } from 'react';
 import Logo from './Logo';
 import Blocks from './Blocks';
@@ -15,4 +16,5 @@ const MainColumn = () => {
     </div>
   );
 };
+
 export default MainColumn;

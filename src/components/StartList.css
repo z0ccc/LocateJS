@@ -1,0 +1,19 @@
+.listItem {
+  display: flex;
+  margin: 24px 0 0 0;
+}
+
+.contentIcon {
+  flex: none;
+  margin: 0 24px 0 0;
+  width: 32px;
+  fill: var(--fill);
+}
+
+@media screen and (max-width: 500px) {
+  .contentIcon {
+    flex: none;
+    margin: 0 18px 0 0;
+    width: 28px !important;
+  }
+}

@@ -1,0 +1,17 @@
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 225px;
+  margin: 0 0 14px 0;
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 160px;
+    margin: 0 0 8px 0;
+  }
+}

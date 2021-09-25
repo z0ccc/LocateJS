@@ -1,3 +1,4 @@
+import './TableRow.css';
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { ReactComponent as XCircle } from '../images/xCircle.svg';

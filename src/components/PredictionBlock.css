@@ -1,0 +1,15 @@
+.mapImg {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+  display: block;
+  margin: 0 0 12px 0;
+  height: 240px;
+}
+
+@media screen and (max-width: 900px) {
+  .mapImg {
+    height: auto;
+  }
+}

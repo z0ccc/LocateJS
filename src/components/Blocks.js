@@ -1,3 +1,4 @@
+import './Blocks.css';
 import { useState, useEffect } from 'react';
 import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';

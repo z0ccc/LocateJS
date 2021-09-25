@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react';
+import './PredictionBlock.css';
+import { useState } from 'react';
 import Block from './Block';
 import PredictionTable from './PredictionTable';
 import { getMap, getPrediction } from '../utils/predict';
@@ -23,7 +23,11 @@ const PredictionBlock = ({ workerData, connectionData }) => {
         />
         Only use system data for prediction
       </label>
-      <img src={getMap(data)} alt="Map of current location" />
+      <img
+        className="mapImg"
+        src={getMap(data)}
+        alt="Map of current location"
+      />
       <PredictionTable data={data} />
       <p>
         <b>Explanation:</b> Your connection and system data can be combined and

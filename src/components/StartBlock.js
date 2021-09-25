@@ -1,3 +1,4 @@
+import './StartBlock.css';
 import StartList from './StartList';
 import Block from './Block';
 
@@ -22,7 +23,7 @@ const listItems = [
 const StartBlock = ({ setScan }) => (
   <Block>
     <h2>About</h2>
-    <div className="contentBody">
+    <div>
       LocateJS predicts your location by analyzing your connection and system
       data. This scan allows you to understand how your location can be
       pinpointed even while using a VPN, location spoofer or private mode.

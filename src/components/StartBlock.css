@@ -1,0 +1,20 @@
+.scanButton {
+  display: block;
+  background-color: var(--main);
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin: 24px 0 0 0;
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+}
+
+.scanButton:hover {
+  opacity: 0.7;
+}

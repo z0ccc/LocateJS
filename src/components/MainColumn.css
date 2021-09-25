@@ -1,0 +1,19 @@
+.centerBlockOuter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+  margin: 0 18px;
+}
+
+.centerBlockInner {
+  width: 650px;
+  margin: 24px 0 0 0;
+}
+
+@media screen and (max-width: 500px) {
+  .centerBlockInner {
+    width: 650px;
+    margin: 12px 0 0 0;
+  }
+}

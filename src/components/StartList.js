@@ -1,3 +1,4 @@
+import './StartList.css';
 import { ReactComponent as PredictIcon } from '../images/predict.svg';
 import { ReactComponent as ConnectionIcon } from '../images/connection.svg';
 import { ReactComponent as SystemIcon } from '../images/system.svg';
@@ -13,9 +14,9 @@ const StartList = ({ items }) => (
     {items.map((item) => (
       <div className="listItem" key={item.title}>
         <div className="contentIcon">{Icons[item.icon]}</div>
-        <div className="listText">
+        <div>
           <h2>{item.title}</h2>
-          <div className="contentBody">{item.body}</div>
+          <div>{item.body}</div>
         </div>
       </div>
     ))}

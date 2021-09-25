@@ -1,10 +1,10 @@
-import '../styles/App.css';
-import Github from './Github';
+import './App.css';
+import GitHub from './GitHub';
 import MainColumn from './MainColumn';
 
 const App = () => (
   <div className="App">
-    <Github />
+    <GitHub />
     <div className="background" />
     <MainColumn />
   </div>

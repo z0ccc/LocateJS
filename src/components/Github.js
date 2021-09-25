@@ -1,6 +1,7 @@
+import './GitHub.css';
 import GitHubButton from 'react-github-btn';
 
-const Github = () => (
+const GitHub = () => (
   <div className="gitHubButton">
     <GitHubButton
       href="https://github.com/z0ccc/LocateJS"
@@ -12,4 +13,4 @@ const Github = () => (
   </div>
 );
 
-export default Github;
+export default GitHub;
