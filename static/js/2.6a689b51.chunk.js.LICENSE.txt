@@ -22,6 +22,12 @@ object-assign
  * http://api.jqueryui.com/category/ui-core/
  */
 
+/*!
+ * github-buttons v2.19.1
+ * (c) 2021 なつき
+ * @license BSD-2-Clause
+ */
+
 /** @license React v0.20.2
  * scheduler.production.min.js
  *

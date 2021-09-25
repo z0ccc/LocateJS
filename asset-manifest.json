@@ -1,19 +1,18 @@
 {
   "files": {
-    "main.css": "/LocateJS/static/css/main.09dd7ebe.chunk.css",
-    "main.js": "/LocateJS/static/js/main.bdf4ad17.chunk.js",
-    "main.js.map": "/LocateJS/static/js/main.bdf4ad17.chunk.js.map",
+    "main.css": "/LocateJS/static/css/main.bb738b73.chunk.css",
+    "main.js": "/LocateJS/static/js/main.5204ab22.chunk.js",
+    "main.js.map": "/LocateJS/static/js/main.5204ab22.chunk.js.map",
     "runtime-main.js": "/LocateJS/static/js/runtime-main.9e1d6452.js",
     "runtime-main.js.map": "/LocateJS/static/js/runtime-main.9e1d6452.js.map",
-    "static/js/2.2eecef86.chunk.js": "/LocateJS/static/js/2.2eecef86.chunk.js",
-    "static/js/2.2eecef86.chunk.js.map": "/LocateJS/static/js/2.2eecef86.chunk.js.map",
+    "static/js/2.6a689b51.chunk.js": "/LocateJS/static/js/2.6a689b51.chunk.js",
+    "static/js/2.6a689b51.chunk.js.map": "/LocateJS/static/js/2.6a689b51.chunk.js.map",
     "index.html": "/LocateJS/index.html",
-    "static/css/main.09dd7ebe.chunk.css.map": "/LocateJS/static/css/main.09dd7ebe.chunk.css.map",
-    "static/js/2.2eecef86.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.2eecef86.chunk.js.LICENSE.txt",
+    "static/css/main.bb738b73.chunk.css.map": "/LocateJS/static/css/main.bb738b73.chunk.css.map",
+    "static/js/2.6a689b51.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.6a689b51.chunk.js.LICENSE.txt",
     "static/media/checkCircle.7ccef9af.svg": "/LocateJS/static/media/checkCircle.7ccef9af.svg",
     "static/media/connection.323a224d.svg": "/LocateJS/static/media/connection.323a224d.svg",
-    "static/media/github.66100f42.svg": "/LocateJS/static/media/github.66100f42.svg",
-    "static/media/logo.1777930c.svg": "/LocateJS/static/media/logo.1777930c.svg",
+    "static/media/logo.eb29cc7a.svg": "/LocateJS/static/media/logo.eb29cc7a.svg",
     "static/media/predict.bce80a8c.svg": "/LocateJS/static/media/predict.bce80a8c.svg",
     "static/media/system.f9298e72.svg": "/LocateJS/static/media/system.f9298e72.svg",
     "static/media/x.32a6a29f.svg": "/LocateJS/static/media/x.32a6a29f.svg",
@@ -21,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.9e1d6452.js",
-    "static/js/2.2eecef86.chunk.js",
-    "static/css/main.09dd7ebe.chunk.css",
-    "static/js/main.bdf4ad17.chunk.js"
+    "static/js/2.6a689b51.chunk.js",
+    "static/css/main.bb738b73.chunk.css",
+    "static/js/main.5204ab22.chunk.js"
   ]
 }
