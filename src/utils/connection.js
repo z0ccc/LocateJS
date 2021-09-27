@@ -16,7 +16,7 @@ const getConnection = (connectionData, workerData) => {
     workerData.timeZone
   );
   const isProxy = checkProxy(connectionData.proxy);
-  const data = [
+  return [
     {
       key: 'IP address',
       value: connectionData.query,
@@ -58,7 +58,6 @@ const getConnection = (connectionData, workerData) => {
       issues: [timeZoneIssue, isProxy],
     },
   ];
-  return data;
 };
 
 const compareTimeZone = (connectionTimeZone, workerTimeZone) => {
