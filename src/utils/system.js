@@ -25,7 +25,7 @@ const getTimezone = (timeZone) => ({
   value: timeZone,
   issues: [
     checkWebWorker(Intl.DateTimeFormat().resolvedOptions().timeZone, timeZone),
-    checkTimeZone(),
+    // checkTimeZone(),
   ],
 });
 
@@ -36,7 +36,7 @@ const getTimezoneOffset = (timezoneOffset) => ({
   issues: [
     checkWebWorker(new Date().getTimezoneOffset(), timezoneOffset),
     checkDatePrototype(),
-    checkTimeZone(),
+    // checkTimeZone(),
   ],
 });
 
@@ -71,20 +71,20 @@ const getLanguages = (languages) => ({
   ],
 });
 
-const ct = require('countries-and-timezones');
+// const ct = require('countries-and-timezones');
 
-const checkTimeZone = () => {
-  const timezone = ct.getTimezone(
-    Intl.DateTimeFormat().resolvedOptions().timeZone
-  );
-  if (
-    timezone &&
-    new Date().getTimezoneOffset() !== Math.abs(timezone.dstOffset)
-  ) {
-    return 'Time zone and time zone offset did not match';
-  }
-  return null;
-};
+// const checkTimeZone = () => {
+//   const timezone = ct.getTimezone(
+//     Intl.DateTimeFormat().resolvedOptions().timeZone
+//   );
+//   if (
+//     timezone &&
+//     new Date().getTimezoneOffset() !== Math.abs(timezone.dstOffset)
+//   ) {
+//     return 'Time zone and time zone offset did not match';
+//   }
+//   return null;
+// };
 
 const checkDatePrototype = () => {
   if (!Date.prototype.setDate.toString().includes('[native code]')) {
