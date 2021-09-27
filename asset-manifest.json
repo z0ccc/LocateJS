@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/LocateJS/static/css/main.bb738b73.chunk.css",
-    "main.js": "/LocateJS/static/js/main.5204ab22.chunk.js",
-    "main.js.map": "/LocateJS/static/js/main.5204ab22.chunk.js.map",
+    "main.js": "/LocateJS/static/js/main.d1e5162a.chunk.js",
+    "main.js.map": "/LocateJS/static/js/main.d1e5162a.chunk.js.map",
     "runtime-main.js": "/LocateJS/static/js/runtime-main.9e1d6452.js",
     "runtime-main.js.map": "/LocateJS/static/js/runtime-main.9e1d6452.js.map",
-    "static/js/2.6a689b51.chunk.js": "/LocateJS/static/js/2.6a689b51.chunk.js",
-    "static/js/2.6a689b51.chunk.js.map": "/LocateJS/static/js/2.6a689b51.chunk.js.map",
+    "static/js/2.c8c4f136.chunk.js": "/LocateJS/static/js/2.c8c4f136.chunk.js",
+    "static/js/2.c8c4f136.chunk.js.map": "/LocateJS/static/js/2.c8c4f136.chunk.js.map",
     "index.html": "/LocateJS/index.html",
     "static/css/main.bb738b73.chunk.css.map": "/LocateJS/static/css/main.bb738b73.chunk.css.map",
-    "static/js/2.6a689b51.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.6a689b51.chunk.js.LICENSE.txt",
+    "static/js/2.c8c4f136.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.c8c4f136.chunk.js.LICENSE.txt",
     "static/media/checkCircle.7ccef9af.svg": "/LocateJS/static/media/checkCircle.7ccef9af.svg",
     "static/media/connection.323a224d.svg": "/LocateJS/static/media/connection.323a224d.svg",
     "static/media/logo.eb29cc7a.svg": "/LocateJS/static/media/logo.eb29cc7a.svg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.9e1d6452.js",
-    "static/js/2.6a689b51.chunk.js",
+    "static/js/2.c8c4f136.chunk.js",
     "static/css/main.bb738b73.chunk.css",
-    "static/js/main.5204ab22.chunk.js"
+    "static/js/main.d1e5162a.chunk.js"
   ]
 }
