@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/LocateJS/static/css/main.bb738b73.chunk.css",
-    "main.js": "/LocateJS/static/js/main.d1e5162a.chunk.js",
-    "main.js.map": "/LocateJS/static/js/main.d1e5162a.chunk.js.map",
+    "main.css": "/LocateJS/static/css/main.70b2c25c.chunk.css",
+    "main.js": "/LocateJS/static/js/main.435316ad.chunk.js",
+    "main.js.map": "/LocateJS/static/js/main.435316ad.chunk.js.map",
     "runtime-main.js": "/LocateJS/static/js/runtime-main.9e1d6452.js",
     "runtime-main.js.map": "/LocateJS/static/js/runtime-main.9e1d6452.js.map",
     "static/js/2.c8c4f136.chunk.js": "/LocateJS/static/js/2.c8c4f136.chunk.js",
     "static/js/2.c8c4f136.chunk.js.map": "/LocateJS/static/js/2.c8c4f136.chunk.js.map",
     "index.html": "/LocateJS/index.html",
-    "static/css/main.bb738b73.chunk.css.map": "/LocateJS/static/css/main.bb738b73.chunk.css.map",
+    "static/css/main.70b2c25c.chunk.css.map": "/LocateJS/static/css/main.70b2c25c.chunk.css.map",
     "static/js/2.c8c4f136.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.c8c4f136.chunk.js.LICENSE.txt",
     "static/media/checkCircle.7ccef9af.svg": "/LocateJS/static/media/checkCircle.7ccef9af.svg",
     "static/media/connection.323a224d.svg": "/LocateJS/static/media/connection.323a224d.svg",
@@ -16,12 +16,12 @@
     "static/media/predict.bce80a8c.svg": "/LocateJS/static/media/predict.bce80a8c.svg",
     "static/media/system.f9298e72.svg": "/LocateJS/static/media/system.f9298e72.svg",
     "static/media/x.32a6a29f.svg": "/LocateJS/static/media/x.32a6a29f.svg",
-    "static/media/xCircle.c4be90a4.svg": "/LocateJS/static/media/xCircle.c4be90a4.svg"
+    "static/media/xCircle.660de620.svg": "/LocateJS/static/media/xCircle.660de620.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.9e1d6452.js",
     "static/js/2.c8c4f136.chunk.js",
-    "static/css/main.bb738b73.chunk.css",
-    "static/js/main.d1e5162a.chunk.js"
+    "static/css/main.70b2c25c.chunk.css",
+    "static/js/main.435316ad.chunk.js"
   ]
 }
