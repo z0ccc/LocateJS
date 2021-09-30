@@ -7,11 +7,12 @@
 .logo {
   width: 225px;
   margin: 0 0 14px 0;
+  display: flex;
 }
 
 @media screen and (max-width: 500px) {
   .logo {
     width: 160px;
-    margin: 0 0 8px 0;
+    margin: 0 0 12px 0;
   }
 }
