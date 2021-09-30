@@ -1,5 +1,6 @@
 import './Blocks.css';
 import { useState, useEffect } from 'react';
+import DataContext from './Context';
 import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
@@ -21,18 +22,12 @@ const Blocks = () => {
   return (
     <>
       {connectionData ? (
-        <>
+        <DataContext.Provider value={{ workerData, connectionData }}>
           <NoteBlock />
-          <PredictionBlock
-            workerData={workerData}
-            connectionData={connectionData}
-          />
-          <SystemDataBlock workerData={workerData} />
-          <ConnectionBlock
-            workerData={workerData}
-            connectionData={connectionData}
-          />
-        </>
+          <PredictionBlock />
+          <SystemDataBlock />
+          <ConnectionBlock />
+        </DataContext.Provider>
       ) : (
         <div className="contentBlock">
           <center>Loading...</center>

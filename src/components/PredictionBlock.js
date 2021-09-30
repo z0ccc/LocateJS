@@ -1,10 +1,12 @@
 import './PredictionBlock.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import DataContext from './Context';
 import Block from './Block';
 import PredictionTable from './PredictionTable';
 import { getMap, getPrediction } from '../utils/predict';
 
-const PredictionBlock = ({ workerData, connectionData }) => {
+const PredictionBlock = () => {
+  const { workerData, connectionData } = useContext(DataContext);
   const [data, setData] = useState(getPrediction(connectionData, workerData));
   const handleCheckBox = (e) => {
     setData(
