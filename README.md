@@ -6,7 +6,7 @@ Check it out here: [https://z0ccc.github.io/LocateJS/](https://z0ccc.github.io/L
 
 LocateJS predicts your location by analyzing your connection and system data. This scan allows you to understand how your location can be pinpointed even while using a VPN, location spoofer or private mode.
 
-Accuracy of the location prediction is dependant on how well you have concealed your location data. The prediction can be anywhere from spot-on to inaccurate depending on how much identifiable and authentic info your exposing.
+Accuracy of the location prediction is dependent on how well you have concealed your location data. The prediction can be anywhere from spot-on to inaccurate depending on how much identifiable and authentic info your exposing.
 
 ## How to hide location
 
