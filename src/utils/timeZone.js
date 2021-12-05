@@ -4,6 +4,7 @@ export { getTimeZoneData, getWebWorker };
 const getTimeZoneData = (workerData) => [
   getInitialValue(),
   getDelayedValue(),
+  getFrameValue(),
   getWorkerValue(workerData.timeZone),
 ];
 
@@ -22,6 +23,17 @@ const getDelayedValue = () => ({
   key: 'Delayed',
   code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
   value: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  issues: [
+    // checkWebWorker(initialData.timeZone, workerValue),
+    // checkTimeZone(),
+  ],
+});
+
+const getFrameValue = () => ({
+  key: 'Frame',
+  code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
+  // eslint-disable-next-line no-undef
+  value: frame.contentWindow.Intl.DateTimeFormat().resolvedOptions().timeZone,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),
     // checkTimeZone(),
