@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export { getSystemData, getWebWorker };
 
 // Return object of system data
@@ -10,21 +11,12 @@ const getSystemData = (workerData) => [
   getLanguages(workerData.languages),
 ];
 
-const getLocale = (locale) => ({
-  key: 'Locale',
-  code: 'Intl.DateTimeFormat().resolvedOptions().locale',
-  value: locale,
-  issues: [
-    checkWebWorker(Intl.DateTimeFormat().resolvedOptions().locale, locale),
-  ],
-});
-
-const getTimezone = (timeZone) => ({
+const getTimezone = (workerValue) => ({
   key: 'Time zone',
   code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
-  value: timeZone,
+  value: workerValue,
   issues: [
-    checkWebWorker(Intl.DateTimeFormat().resolvedOptions().timeZone, timeZone),
+    checkWebWorker(initialData.timeZone, workerValue),
     // checkTimeZone(),
   ],
 });
@@ -45,6 +37,15 @@ const getDate = (date) => ({
   code: 'new Date().toString()',
   value: date,
   issues: [checkDatePrototype()],
+});
+
+const getLocale = (locale) => ({
+  key: 'Locale',
+  code: 'Intl.DateTimeFormat().resolvedOptions().locale',
+  value: locale,
+  issues: [
+    checkWebWorker(Intl.DateTimeFormat().resolvedOptions().locale, locale),
+  ],
 });
 
 const getLanguage = (language) => ({

@@ -5,6 +5,8 @@ import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
 import SystemDataBlock from './SystemDataBlock';
+import TimeZoneBlock from './TimeZoneBlock';
+
 import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
 
@@ -23,6 +25,7 @@ const Blocks = () => {
     <>
       {connectionData ? (
         <DataContext.Provider value={{ workerData, connectionData }}>
+          <TimeZoneBlock />
           <NoteBlock />
           <PredictionBlock />
           <SystemDataBlock />

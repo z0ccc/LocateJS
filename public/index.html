@@ -1,3 +1,16 @@
+<script>
+  const initialData = {
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    timezoneOffset: new Date().getTimezoneOffset(),
+    date: new Date().toString(),
+    locale: Intl.DateTimeFormat().resolvedOptions().locale,
+    language: navigator.language,
+    languages: navigator.languages,
+  };
+  var frame = document.createElement("iframe");
+  document.body.appendChild(frame);
+  // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone, frame.contentWindow.Intl.DateTimeFormat().resolvedOptions().timeZone);
+</script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
