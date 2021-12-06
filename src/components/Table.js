@@ -4,7 +4,7 @@ const Table = ({ data }) => (
   <div className="tableWrap">
     <table>
       {data.map((item) => (
-        <tbody key={item.key} title={item.code}>
+        <tbody key={item.key}>
           <TableRow item={item} />
         </tbody>
       ))}

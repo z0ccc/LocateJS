@@ -1,18 +1,18 @@
-export { getTimeZoneData, getWebWorker };
+/* eslint-disable no-unused-vars */
+export { getData, getWebWorker };
 
 // Return object of system data
-const getTimeZoneData = (workerData) => [
-  getInitialValue(),
+const getData = (type, value, workerData) => [
+  // eslint-disable-next-line no-undef
+  getInitialValue(initialData[type]),
   getDelayedValue(),
   getFrameValue(),
-  getWorkerValue(workerData.timeZone),
+  getWorkerValue(workerData),
 ];
 
-const getInitialValue = () => ({
+const getInitialValue = (value) => ({
   key: 'Initial',
-  code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
-  // eslint-disable-next-line no-undef
-  value: initialData.timeZone,
+  value,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),
     // checkTimeZone(),
@@ -21,7 +21,6 @@ const getInitialValue = () => ({
 
 const getDelayedValue = () => ({
   key: 'Delayed',
-  code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
   value: Intl.DateTimeFormat().resolvedOptions().timeZone,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),
@@ -31,7 +30,6 @@ const getDelayedValue = () => ({
 
 const getFrameValue = () => ({
   key: 'Frame',
-  code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
   // eslint-disable-next-line no-undef
   value: frame.contentWindow.Intl.DateTimeFormat().resolvedOptions().timeZone,
   issues: [
@@ -42,7 +40,6 @@ const getFrameValue = () => ({
 
 const getWorkerValue = (workerValue) => ({
   key: 'Web Worker',
-  code: 'Intl.DateTimeFormat().resolvedOptions().timeZone',
   value: workerValue,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),

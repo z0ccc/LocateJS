@@ -5,7 +5,7 @@ import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
 import SystemDataBlock from './SystemDataBlock';
-import TimeZoneBlock from './TimeZoneBlock';
+import DataBlock from './DataBlock';
 
 import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
@@ -24,13 +24,16 @@ const Blocks = () => {
   return (
     <>
       {connectionData ? (
-        <DataContext.Provider value={{ workerData, connectionData }}>
-          <TimeZoneBlock />
-          <NoteBlock />
-          <PredictionBlock />
-          <SystemDataBlock />
-          <ConnectionBlock />
-        </DataContext.Provider>
+        <>
+          <DataBlock title="Intl.DateTimeFormat().resolvedOptions().timeZone" type="timeZone" value={Intl.DateTimeFormat().resolvedOptions().timeZone} workerData={workerData.timeZone} />
+          <DataContext.Provider value={{ workerData, connectionData }}>
+            <NoteBlock />
+            <PredictionBlock />
+            <SystemDataBlock />
+            <ConnectionBlock />
+          </DataContext.Provider>
+        </>
+
       ) : (
         <div className="contentBlock">
           <center>Loading...</center>
