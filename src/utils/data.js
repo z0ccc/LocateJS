@@ -5,8 +5,9 @@ export { getData, getWebWorker };
 const getData = (type, value, workerData) => [
   // eslint-disable-next-line no-undef
   getInitialValue(initialData[type]),
-  getDelayedValue(),
-  getFrameValue(),
+  getDelayedValue(value),
+  // eslint-disable-next-line no-undef
+  getFrameValue(frameData[type]),
   getWorkerValue(workerData),
 ];
 
@@ -19,19 +20,19 @@ const getInitialValue = (value) => ({
   ],
 });
 
-const getDelayedValue = () => ({
+const getDelayedValue = (value) => ({
   key: 'Delayed',
-  value: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  value,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),
     // checkTimeZone(),
   ],
 });
 
-const getFrameValue = () => ({
+const getFrameValue = (value) => ({
   key: 'Frame',
   // eslint-disable-next-line no-undef
-  value: frame.contentWindow.Intl.DateTimeFormat().resolvedOptions().timeZone,
+  value,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),
     // checkTimeZone(),
