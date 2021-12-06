@@ -27,6 +27,9 @@ const Blocks = () => {
         <>
           <DataBlock title="Intl.DateTimeFormat().resolvedOptions().timeZone" type="timeZone" value={Intl.DateTimeFormat().resolvedOptions().timeZone} workerData={workerData.timeZone} />
           <DataBlock title="Intl.DateTimeFormat().resolvedOptions().locale" type="locale" value={Intl.DateTimeFormat().resolvedOptions().locale} workerData={workerData.locale} />
+          <DataBlock title="navigator.language" type="language" value={navigator.language} workerData={workerData.language} />
+          <DataBlock title="navigator.languages" type="languages" value={navigator.languages} workerData={workerData.languages} />
+
           <DataBlock title="new Date().getTimezoneOffset()" type="timezoneOffset" value={new Date().getTimezoneOffset()} workerData={workerData.timezoneOffset} />
           <DataContext.Provider value={{ workerData, connectionData }}>
             <NoteBlock />
