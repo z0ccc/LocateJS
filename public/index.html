@@ -72,15 +72,20 @@
   </body>
   <script>
     const frame = document.createElement("iframe");
-    frame.style.display = 'none';
-    // frame.innerText = 'hello<script>const date = new Date()<script>'
+    // frame.style.display = 'none';
+    // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
     document.body.appendChild(frame);
-    // console.log(frame.contentWindow.date.getTimezoneOffset())
+    // const script = document.createElement('script')
+    let html_string= '<script>let date = new Date().getTimezoneOffset();console.log(date)<\/script>';
+    frame.src = "data:text/html;charset=utf-8," + html_string;
+    setTimeout(function(){
+      console.log(frame.contentWindow.date)
+    }, 2000);
     const frameData = {
       timeZone: frame.contentWindow.Intl.DateTimeFormat().resolvedOptions().timeZone,
       locale: frame.contentWindow.Intl.DateTimeFormat().resolvedOptions().locale,
-      // date: date.toString(),
-      // timezoneOffset: date.getTimezoneOffset(),
+      // date: frame.contentWindow.date.toString(),
+      timezoneOffset: frame.contentWindow.date2,
       language: frame.contentWindow.navigator.language,
       languages: frame.contentWindow.navigator.languages,
     };
