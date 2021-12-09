@@ -1,0 +1,11 @@
+<script>
+    const frameData = {
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        locale: Intl.DateTimeFormat().resolvedOptions().locale,
+        date: new Date().toString(),
+        timezoneOffset: new Date().getTimezoneOffset(),
+        language: navigator.language,
+        languages: navigator.languages,
+    };
+    parent.postMessage(frameData, '*');
+</script>

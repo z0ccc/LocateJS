@@ -15,6 +15,13 @@ const Blocks = () => {
   const [connectionData, setConnectionData] = useState('');
 
   useEffect(() => {
+    const frame = document.createElement('iframe');
+    document.body.appendChild(frame);
+    frame.style.display = 'none';
+    frame.src = '/LocateJS/frame.html';
+    const receiveMessage = (event) => console.log(event.data);
+    window.addEventListener('message', receiveMessage, false);
+
     getWebWorker().onmessage = (event) => {
       setWorkerData(event.data);
       fetchAPI(setConnectionData);
