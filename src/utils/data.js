@@ -1,13 +1,11 @@
-/* eslint-disable no-unused-vars */
-export { getData, getWebWorker, getFrameData };
+export { getData, getWebWorker };
 
 // Return object of system data
-const getData = (type, value, workerData) => [
+const getData = (type, value, frameData, workerData) => [
   // eslint-disable-next-line no-undef
   getInitialValue(initialData[type]),
   getDelayedValue(value),
-  // eslint-disable-next-line no-undef
-  // getFrameValue(frameData[type]),
+  getFrameValue(frameData),
   getWorkerValue(workerData),
 ];
 
@@ -49,14 +47,6 @@ const getWorkerValue = (workerValue) => ({
 });
 
 const getWebWorker = () => {
-  let w;
-  if (typeof w === 'undefined') {
-    w = new Worker('/LocateJS/worker.js');
-  }
-  return w;
-};
-
-const getFrameData = () => {
   let w;
   if (typeof w === 'undefined') {
     w = new Worker('/LocateJS/worker.js');

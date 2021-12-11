@@ -2,7 +2,8 @@
   const initialData = {
     timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     locale: Intl.DateTimeFormat().resolvedOptions().locale,
-    date: new Date().toString(),
+    dateString: new Date().toString(),
+    dateLocale: new Date().toLocaleString(), 
     timezoneOffset: new Date().getTimezoneOffset(),
     language: navigator.language,
     languages: navigator.languages,

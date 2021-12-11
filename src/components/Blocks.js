@@ -12,6 +12,8 @@ import { fetchAPI } from '../utils/connection';
 
 const Blocks = () => {
   const [workerData, setWorkerData] = useState();
+  const [frameData, setFrameData] = useState();
+
   const [connectionData, setConnectionData] = useState('');
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const Blocks = () => {
     document.body.appendChild(frame);
     frame.style.display = 'none';
     frame.src = '/LocateJS/frame.html';
-    const receiveMessage = (event) => console.log(event.data);
+    const receiveMessage = (event) => setFrameData(event.data);
     window.addEventListener('message', receiveMessage, false);
 
     getWebWorker().onmessage = (event) => {
@@ -32,12 +34,13 @@ const Blocks = () => {
     <>
       {connectionData ? (
         <>
-          <DataBlock title="Intl.DateTimeFormat().resolvedOptions().timeZone" type="timeZone" value={Intl.DateTimeFormat().resolvedOptions().timeZone} workerData={workerData.timeZone} />
-          <DataBlock title="Intl.DateTimeFormat().resolvedOptions().locale" type="locale" value={Intl.DateTimeFormat().resolvedOptions().locale} workerData={workerData.locale} />
-          <DataBlock title="navigator.language" type="language" value={navigator.language} workerData={workerData.language} />
-          <DataBlock title="navigator.languages" type="languages" value={navigator.languages} workerData={workerData.languages} />
-
-          <DataBlock title="new Date().getTimezoneOffset()" type="timezoneOffset" value={new Date().getTimezoneOffset()} workerData={workerData.timezoneOffset} />
+          <DataBlock title="Intl.DateTimeFormat().resolvedOptions().timeZone" type="timeZone" value={Intl.DateTimeFormat().resolvedOptions().timeZone} frameData={frameData.timeZone} workerData={workerData.timeZone} />
+          <DataBlock title="Intl.DateTimeFormat().resolvedOptions().locale" type="locale" value={Intl.DateTimeFormat().resolvedOptions().locale} frameData={frameData.locale} workerData={workerData.locale} />
+          <DataBlock title="new Date().toString()" type="dateString" value={new Date().toString()} frameData={frameData.dateString} workerData={workerData.dateString} />
+          <DataBlock title="new Date().toLocaleString()" type="dateLocale" value={new Date().toLocaleString()} frameData={frameData.dateLocale} workerData={workerData.dateLocale} />
+          <DataBlock title="new Date().getTimezoneOffset()" type="timezoneOffset" value={new Date().getTimezoneOffset()} frameData={frameData.timezoneOffset} workerData={workerData.timezoneOffset} />
+          <DataBlock title="navigator.language" type="language" value={navigator.language} frameData={frameData.language} workerData={workerData.language} />
+          <DataBlock title="navigator.languages" type="languages" value={navigator.languages} frameData={frameData.languages} workerData={workerData.languages} />
           <DataContext.Provider value={{ workerData, connectionData }}>
             <NoteBlock />
             <PredictionBlock />
