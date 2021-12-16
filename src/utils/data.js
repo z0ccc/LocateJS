@@ -51,5 +51,6 @@ const getWebWorker = () => {
   if (typeof w === 'undefined') {
     w = new Worker('/LocateJS/worker.js');
   }
+
   return w;
 };
