@@ -7,6 +7,7 @@ import ConnectionBlock from './ConnectionBlock';
 import SystemDataBlock from './SystemDataBlock';
 import DataBlock from './DataBlock';
 import WebRTCBlock from './WebRTCBlock';
+import GeolocationBlock from './GeolocationBlock';
 
 import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
@@ -26,21 +27,17 @@ const Blocks = () => {
     const receiveMessage = (event) => setFrameData(event.data);
     window.addEventListener('message', receiveMessage, false);
     getWebRTC(setWebRTCData);
-
     getWebWorker().onmessage = (event) => {
       setWorkerData(event.data);
       fetchAPI(setConnectionData);
     };
   }, []);
 
-  // useEffect(() => {
-  //   console.log(webRTCData);
-  // }, [webRTCData]);
-
   return (
     <>
-      {connectionData ? (
+      {connectionData && frameData && workerData && webRTCData ? (
         <>
+          <GeolocationBlock data={webRTCData} />
           <WebRTCBlock data={webRTCData} />
           <DataBlock
             title="Intl.DateTimeFormat().resolvedOptions().timeZone"

@@ -1,5 +1,4 @@
 const getWebRTC = (setWebRTCData) => {
-  console.log('1');
   const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
 
   // compatibility for firefox and chrome
@@ -17,7 +16,6 @@ const getWebRTC = (setWebRTCData) => {
             || win.mozRTCPeerConnection
             || win.webkitRTCPeerConnection;
   }
-  console.log('2');
 
   // minimal requirements for data connection
   const mediaConstraints = {
@@ -59,7 +57,6 @@ const getWebRTC = (setWebRTCData) => {
           const ip = ipRegex.exec(line);
           if (ip !== null && ip.length > 1) {
             ips.push(ip[1]);
-            console.log(ips);
             formatWebRTC(setWebRTCData, [...new Set(ips)]);
           }
         }
@@ -73,22 +70,20 @@ const getWebRTC = (setWebRTCData) => {
 };
 
 const formatWebRTC = (setWebRTCData, ips) => {
-  console.log('3');
-
   console.log(ips);
-  let localIP, ipv6IP, publicIP;
+  let localIP, ipv6, publicIP;
   for (let i = 0; i < ips.length; i++) {
     if (ips[i].match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/)) {
       localIP = ips[i];
       console.log(ips[i]);
     } else if (ips[i].match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/)) {
-      ipv6IP = ips[i];
+      ipv6 = ips[i];
     } else {
       publicIP = ips[i];
     }
   }
   console.log(localIP);
-  setWebRTCData([getItem('localIP', localIP), getItem('publicIP', publicIP), getItem('ipv6IP', ipv6IP)]);
+  setWebRTCData([getItem('Local IP', localIP), getItem('Public IP', publicIP), getItem('IPv6', ipv6)]);
 };
 
 const getItem = (name, value) => ({
