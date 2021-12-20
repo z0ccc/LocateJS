@@ -36,7 +36,7 @@ const TableRow = ({ item }) => {
     <>
       <tr className={issues ? 'issue' : ''} onClick={openModal}>
         <td>{item.key}</td>
-        <td>{(Array.isArray(item.value) ? JSON.stringify(item.value) : item.value) || 'N/A'}</td>
+        <td>{(Array.isArray(item.value) ? JSON.stringify(item.value) : item.value) || 'null'}</td>
         <td>
           {issues ? (
             <XCircle className="circleButton" />
