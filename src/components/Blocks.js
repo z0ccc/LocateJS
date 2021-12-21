@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './Blocks.css';
 import { useState, useEffect } from 'react';
 import DataContext from './Context';
@@ -8,7 +9,6 @@ import SystemDataBlock from './SystemDataBlock';
 import DataBlock from './DataBlock';
 import WebRTCBlock from './WebRTCBlock';
 import GeolocationBlock from './GeolocationBlock';
-
 import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
 import getWebRTC from '../utils/webRTC';
@@ -17,7 +17,7 @@ const Blocks = () => {
   const [workerData, setWorkerData] = useState();
   const [frameData, setFrameData] = useState();
   const [connectionData, setConnectionData] = useState('');
-  const [webRTCData, setWebRTCData] = useState();
+  const [webRTCData, setWebRTCData] = useState(true);
 
   useEffect(() => {
     const frame = document.createElement('iframe');
@@ -38,7 +38,7 @@ const Blocks = () => {
       {connectionData && frameData && workerData && webRTCData ? (
         <>
           <GeolocationBlock data={webRTCData} />
-          <WebRTCBlock data={webRTCData} />
+          {/* <WebRTCBlock data={webRTCData} /> */}
           <DataBlock
             title="Intl.DateTimeFormat().resolvedOptions().timeZone"
             type="timeZone"
