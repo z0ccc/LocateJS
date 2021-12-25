@@ -1,12 +1,12 @@
 :root {
-  --main: #943ec5;
+  --main: #943fc5;
   --text: #4b5563;
   --border: #ddd;
   --grey: #c4c4c4;
   --issueBackground: #f8d7da;
   --issueText: #721c24;
   --fill: #9fa6b2;
-  --link: #943ec5;
+  --link: #943fc5;
 }
 
 body {
@@ -111,6 +111,39 @@ h2 {
 input[type='checkbox'] {
   margin: 0 6px 0 0;
 }
+
+.button {
+  display: block;
+  background-color: var(--main);
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin: 24px 0;
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.boxWrap {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.hash {
+  text-align: center;
+  font-weight: 600;
+}
+
 
 @media screen and (max-width: 500px) {
   body {

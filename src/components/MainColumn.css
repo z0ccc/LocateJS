@@ -1,13 +1,11 @@
 .centerBlockOuter {
   display: flex;
   justify-content: center;
-  flex: 1 0 auto;
-  margin: 0 18px;
+  gap: 24px;
 }
 
 .centerBlockInner {
-  width: 650px;
-  margin: 24px 0 0 0;
+  width: 500px;
 }
 
 @media screen and (max-width: 500px) {
