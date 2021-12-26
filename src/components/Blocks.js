@@ -39,10 +39,8 @@ const Blocks = () => {
         <DataContext.Provider value={{ workerData, connectionData }}>
 
           <div className="centerBlockInner">
-
             <PredictionBlock />
-
-            {/* <WebRTCBlock data={webRTCData} /> */}
+            <WebRTCBlock data={webRTCData} />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
               type="timeZone"
@@ -58,6 +56,25 @@ const Blocks = () => {
               workerData={workerData.locale}
             />
             <DataBlock
+              title="navigator.language"
+              type="language"
+              value={navigator.language}
+              frameData={frameData.language}
+              workerData={workerData.language}
+            />
+            <DataBlock
+              title="navigator.languages"
+              type="languages"
+              value={navigator.languages}
+              frameData={frameData.languages}
+              workerData={workerData.languages}
+            />
+
+          </div>
+          <div className="centerBlockInner">
+            <NoteBlock />
+            <ConnectionBlock />
+            <DataBlock
               title="new Date().toString()"
               type="dateString"
               value={new Date().toString()}
@@ -71,33 +88,12 @@ const Blocks = () => {
               frameData={frameData.dateLocale}
               workerData={workerData.dateLocale}
             />
-
-          </div>
-          <div className="centerBlockInner">
-            <NoteBlock />
-
-            <ConnectionBlock />
-
             <DataBlock
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
               value={new Date().getTimezoneOffset()}
               frameData={frameData.timezoneOffset}
               workerData={workerData.timezoneOffset}
-            />
-            <DataBlock
-              title="navigator.language"
-              type="language"
-              value={navigator.language}
-              frameData={frameData.language}
-              workerData={workerData.language}
-            />
-            <DataBlock
-              title="navigator.languages"
-              type="languages"
-              value={navigator.languages}
-              frameData={frameData.languages}
-              workerData={workerData.languages}
             />
             <GeolocationBlock />
 

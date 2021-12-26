@@ -8,7 +8,7 @@ const getGeolocation = (setGeolocationData) => {
       getValue('Longitude', position.coords.longitude),
       getValue('Accuracy', position.coords.accuracy),
       getValue('Altitude', position.coords.altitude),
-      getValue('AltitudeAccuracy', position.coords.altitudeAccuracy),
+      getValue('Altitude Accuracy', position.coords.altitudeAccuracy),
       getValue('Heading', position.coords.heading),
       getValue('Speed', position.coords.speed),
       getValue('Reverse Geocoding', geocode),
