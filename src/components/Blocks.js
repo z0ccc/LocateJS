@@ -36,10 +36,12 @@ const Blocks = () => {
   return (
     <>
       {connectionData && frameData && workerData && webRTCData ? (
-        <>
+        <DataContext.Provider value={{ workerData, connectionData }}>
+
           <div className="centerBlockInner">
 
-            <GeolocationBlock />
+            <PredictionBlock />
+
             {/* <WebRTCBlock data={webRTCData} /> */}
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
@@ -69,8 +71,13 @@ const Blocks = () => {
               frameData={frameData.dateLocale}
               workerData={workerData.dateLocale}
             />
+
           </div>
           <div className="centerBlockInner">
+            <NoteBlock />
+
+            <ConnectionBlock />
+
             <DataBlock
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
@@ -92,13 +99,10 @@ const Blocks = () => {
               frameData={frameData.languages}
               workerData={workerData.languages}
             />
-            <DataContext.Provider value={{ workerData, connectionData }}>
-              <NoteBlock />
-              <PredictionBlock />
-              <ConnectionBlock />
-            </DataContext.Provider>
+            <GeolocationBlock />
+
           </div>
-        </>
+        </DataContext.Provider>
 
       ) : (
         <div className="contentBlock">

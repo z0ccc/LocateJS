@@ -4,8 +4,7 @@
   border: 1px solid var(--border);
   box-sizing: border-box;
   display: block;
-  margin: 0 0 12px 0;
-  height: 240px;
+  margin: 0 0 10px 0;
 }
 
 @media screen and (max-width: 900px) {

@@ -1,11 +1,11 @@
 .listItem {
   display: flex;
-  margin: 24px 0 0 0;
+  margin: 20px 0 0 0;
 }
 
 .contentIcon {
   flex: none;
-  margin: 0 24px 0 0;
+  margin: 0 20px 0 0;
   width: 32px;
   fill: var(--fill);
 }

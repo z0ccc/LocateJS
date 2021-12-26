@@ -1,7 +1,7 @@
 .gitHubButton {
   position: fixed;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
 }
 
 @media screen and (max-width: 900px) {

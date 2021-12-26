@@ -1,6 +1,6 @@
 :root {
   --main: #943fc5;
-  --text: #4b5563;
+  --text: rgb(0, 0, 0, 0.8);
   --border: #ddd;
   --grey: #c4c4c4;
   --issueBackground: #f8d7da;
@@ -16,7 +16,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 24px;
+  line-height: 20px;
+  font-size: 14px;
 }
 
 .background {
@@ -38,13 +39,13 @@ body {
 }
 
 h1 {
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
   font-weight: 600;
-  font-size: 19px;
+  font-size: 16px;
 }
 
 p {
-  margin: 12px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 b {
@@ -60,6 +61,8 @@ table {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
+  font-size: inherit;
+  color: inherit;
 }
 
 tbody:not(:last-child) {
@@ -67,12 +70,12 @@ tbody:not(:last-child) {
 }
 
 td {
-  padding: 12px;
+  padding: 10px;
   word-break: break-all;
 }
 
 td:first-child {
-  width: 180px;
+  width: 100px;
   font-weight: 600;
   word-break: normal;
 }
@@ -104,7 +107,7 @@ h2 {
 }
 
 .checkBox {
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
   display: block;
 }
 
@@ -116,14 +119,14 @@ input[type='checkbox'] {
   display: block;
   background-color: var(--main);
   color: #fff;
-  padding: 12px;
+  padding: 10px;
   border-radius: 6px;
   box-sizing: border-box;
   text-align: center;
   width: 100%;
   border: none;
   cursor: pointer;
-  margin: 24px 0;
+  margin: 20px 0;
   font-family: inherit;
   font-size: inherit;
   -webkit-appearance: none;
@@ -136,7 +139,7 @@ input[type='checkbox'] {
 .boxWrap {
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 12px;
+  padding: 10px;
 }
 
 .hash {
