@@ -100,7 +100,7 @@ const Blocks = () => {
         </DataContext.Provider>
 
       ) : (
-        <div className="contentBlock">
+        <div className="contentBlock loadBlock">
           <center>Loading...</center>
         </div>
       )}
