@@ -38,7 +38,7 @@ const getFrameValue = (value) => ({
 });
 
 const getWorkerValue = (workerValue) => ({
-  key: 'Web Worker',
+  key: 'Web worker',
   value: workerValue,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),

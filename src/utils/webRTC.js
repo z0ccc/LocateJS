@@ -57,10 +57,10 @@ const getWebRTC = (setWebRTCData) => {
           const ip = ipRegex.exec(line);
           if (ip !== null && ip.length > 1) {
             ips.push(ip[1]);
-            formatWebRTC(setWebRTCData, [...new Set(ips)]);
           }
         }
       });
+      formatWebRTC(setWebRTCData, [...new Set(ips)]);
     } else {
       setTimeout(waitForElement, 100);
     }
@@ -70,19 +70,16 @@ const getWebRTC = (setWebRTCData) => {
 };
 
 const formatWebRTC = (setWebRTCData, ips) => {
-  console.log(ips);
   let localIP, ipv6, publicIP;
   for (let i = 0; i < ips.length; i++) {
     if (ips[i].match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/)) {
       localIP = ips[i];
-      console.log(ips[i]);
     } else if (ips[i].match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/)) {
       ipv6 = ips[i];
     } else {
       publicIP = ips[i];
     }
   }
-  console.log(localIP);
   setWebRTCData([getItem('Local IP', localIP), getItem('Public IP', publicIP), getItem('IPv6', ipv6)]);
 };
 

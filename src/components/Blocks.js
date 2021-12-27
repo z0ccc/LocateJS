@@ -5,7 +5,6 @@ import DataContext from './Context';
 import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
-import SystemDataBlock from './SystemDataBlock';
 import DataBlock from './DataBlock';
 import WebRTCBlock from './WebRTCBlock';
 import GeolocationBlock from './GeolocationBlock';
@@ -17,7 +16,7 @@ const Blocks = () => {
   const [workerData, setWorkerData] = useState();
   const [frameData, setFrameData] = useState();
   const [connectionData, setConnectionData] = useState('');
-  const [webRTCData, setWebRTCData] = useState(true);
+  const [webRTCData, setWebRTCData] = useState();
 
   useEffect(() => {
     const frame = document.createElement('iframe');

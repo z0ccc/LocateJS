@@ -16,7 +16,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 20px;
+  line-height: 24px;
   font-size: 14px;
 }
 
@@ -63,6 +63,7 @@ table {
   border-collapse: collapse;
   font-size: inherit;
   color: inherit;
+  line-height: inherit;
 }
 
 tbody:not(:last-child) {
@@ -123,7 +124,7 @@ input[type='checkbox'] {
   box-sizing: border-box;
   text-align: center;
   width: 100%;
-  height: 42px;
+  height: 46px;
   border: none;
   cursor: pointer;
   font-family: inherit;
