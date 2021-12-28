@@ -7,6 +7,7 @@ import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
 import DataBlock from './DataBlock';
 import WebRTCBlock from './WebRTCBlock';
+import TorBlock from './TorBlock';
 import GeolocationBlock from './GeolocationBlock';
 import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
@@ -39,6 +40,8 @@ const Blocks = () => {
 
           <div className="centerBlockInner">
             <PredictionBlock />
+            <TorBlock />
+
             <WebRTCBlock data={webRTCData} />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
