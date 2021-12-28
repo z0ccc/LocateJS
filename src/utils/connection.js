@@ -57,6 +57,21 @@ const getConnection = (connectionData, workerData) => {
       value: connectionData.lon,
       issues: [timeZoneIssue, isProxy],
     },
+    {
+      key: 'ISP',
+      value: connectionData.isp,
+      issues: [timeZoneIssue, isProxy],
+    },
+    {
+      key: 'Org',
+      value: connectionData.org,
+      issues: [timeZoneIssue, isProxy],
+    },
+    {
+      key: 'ASN',
+      value: connectionData.as,
+      issues: [timeZoneIssue, isProxy],
+    },
   ];
 };
 
