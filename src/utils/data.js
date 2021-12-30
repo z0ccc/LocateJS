@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 export { getData, getWebWorker };
 
 // Return object of system data
 const getData = (type, value, frameData, workerData) => [
   // eslint-disable-next-line no-undef
   getInitialValue(initialData[type]),
-  getDelayedValue(value),
+  getDelayedValue(value, type),
   getFrameValue(frameData),
   getWorkerValue(workerData),
 ];
@@ -18,18 +19,14 @@ const getInitialValue = (value) => ({
   ],
 });
 
-const getDelayedValue = (value) => ({
+const getDelayedValue = (value, type) => ({
   key: 'Delayed',
   value,
-  issues: [
-    // checkWebWorker(initialData.timeZone, workerValue),
-    // checkTimeZone(),
-  ],
+  issues: getIssues(type)
 });
 
 const getFrameValue = (value) => ({
   key: 'Frame',
-  // eslint-disable-next-line no-undef
   value,
   issues: [
     // checkWebWorker(initialData.timeZone, workerValue),
@@ -53,4 +50,50 @@ const getWebWorker = () => {
   }
 
   return w;
+};
+
+const getIssues = (type) => {
+  console.log(type);
+  if (type.includes('language')) {
+    console.log('hello');
+    return [checkNavigatorProperties('language'),
+      checkNavigatorValue('language'),
+      checkNavigatorPrototype('language')
+    ];
+  }
+  return [checkDatePrototype()];
+};
+
+const checkDatePrototype = () => {
+  if (!Date.prototype.setDate.toString().includes('[native code]')) {
+    return 'Failed Date.prototype.setDate.toString()';
+  }
+  return null;
+};
+
+const checkNavigatorProperties = (key) => {
+  if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
+    return 'Failed undefined properties';
+  }
+  return null;
+};
+
+const checkNavigatorValue = (key) => {
+  if (
+    Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
+  undefined
+  ) {
+    return 'Failed descriptor.value undefined';
+  }
+  return null;
+};
+
+const checkNavigatorPrototype = (key) => {
+  try {
+  // eslint-disable-next-line no-unused-vars
+    const check = Navigator.prototype[key];
+    return 'Failed Navigator.prototype';
+  } catch (err) {
+    return null;
+  }
 };
