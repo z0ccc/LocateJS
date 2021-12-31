@@ -47,28 +47,28 @@ const Blocks = () => {
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
               type="timeZone"
               value={Intl.DateTimeFormat().resolvedOptions().timeZone}
-              frameData={frameData.timeZone}
+              frameData={frameData}
               workerData={workerData.timeZone}
             />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().locale"
               type="locale"
               value={Intl.DateTimeFormat().resolvedOptions().locale}
-              frameData={frameData.locale}
+              frameData={frameData}
               workerData={workerData.locale}
             />
             <DataBlock
               title="navigator.language"
               type="language"
               value={navigator.language}
-              frameData={frameData.language}
+              frameData={frameData}
               workerData={workerData.language}
             />
             <DataBlock
               title="navigator.languages"
               type="languages"
               value={navigator.languages}
-              frameData={frameData.languages}
+              frameData={frameData}
               workerData={workerData.languages}
             />
 
@@ -80,21 +80,21 @@ const Blocks = () => {
               title="new Date().toString()"
               type="dateString"
               value={new Date().toString()}
-              frameData={frameData.dateString}
+              frameData={frameData}
               workerData={workerData.dateString}
             />
             <DataBlock
               title="new Date().toLocaleString()"
               type="dateLocale"
               value={new Date().toLocaleString()}
-              frameData={frameData.dateLocale}
+              frameData={frameData}
               workerData={workerData.dateLocale}
             />
             <DataBlock
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
               value={new Date().getTimezoneOffset()}
-              frameData={frameData.timezoneOffset}
+              frameData={frameData}
               workerData={workerData.timezoneOffset}
             />
             <GeolocationBlock />

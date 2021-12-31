@@ -1,14 +1,19 @@
 /* eslint-disable no-unused-vars */
 export { getData, getWebWorker };
 
+// eslint-disable-next-line no-undef
+
 // Return object of system data
-const getData = (type, value, frameData, workerData) => [
+const getData = (type, value, frameData, workerData) => {
+  console.log(type.includes('language') ? frameData.issues[type] : frameData.issues.date);
+  return [
   // eslint-disable-next-line no-undef
-  getInitialValue(initialData[type]),
-  getDelayedValue(value, type),
-  getFrameValue(frameData),
-  getWorkerValue(workerData),
-];
+    getInitialValue(initialData[type]),
+    getDelayedValue(value, type),
+    getFrameValue(frameData[type], type.includes('language') ? frameData.issues[type] : frameData.issues.date),
+    getWorkerValue(workerData),
+  ];
+};
 
 const getInitialValue = (value) => ({
   key: 'Initial',
@@ -25,13 +30,10 @@ const getDelayedValue = (value, type) => ({
   issues: getIssues(type)
 });
 
-const getFrameValue = (value) => ({
+const getFrameValue = (value, issues) => ({
   key: 'Frame',
   value,
-  issues: [
-    // checkWebWorker(initialData.timeZone, workerValue),
-    // checkTimeZone(),
-  ],
+  issues: [issues],
 });
 
 const getWorkerValue = (workerValue) => ({
@@ -53,9 +55,7 @@ const getWebWorker = () => {
 };
 
 const getIssues = (type) => {
-  console.log(type);
   if (type.includes('language')) {
-    console.log('hello');
     return [checkNavigatorProperties('language'),
       checkNavigatorValue('language'),
       checkNavigatorPrototype('language')
