@@ -2,6 +2,7 @@ import TableRow from './TableRow';
 
 const Table = ({ data }) => (
   <div className="tableWrap">
+    {data && (
     <table>
       {data.map((item) => (
         <tbody key={item.key}>
@@ -9,6 +10,7 @@ const Table = ({ data }) => (
         </tbody>
       ))}
     </table>
+    )}
   </div>
 );
 

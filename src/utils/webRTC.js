@@ -62,7 +62,7 @@ const getWebRTC = (setWebRTCData) => {
       });
       formatWebRTC(setWebRTCData, [...new Set(ips)]);
     } else {
-      setTimeout(waitForElement, 100);
+      setTimeout(waitForElement, 1000);
     }
   };
 
