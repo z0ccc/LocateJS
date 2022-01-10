@@ -9,11 +9,9 @@ const detectTor = (setIsTor) => {
   css.rel = 'stylesheet';
   document.head.appendChild(css);
   css.onload = () => {
-    console.log(true);
     setIsTor('True');
   };
   css.onerror = () => {
-    console.log(false);
     setIsTor('False');
   };
   document.head.removeChild(css);
