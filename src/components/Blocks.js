@@ -35,7 +35,7 @@ const Blocks = () => {
 
   return (
     <>
-      {connectionData && frameData && workerData ? (
+      {connectionData && frameData && workerData && webRTCData ? (
         <DataContext.Provider value={{ workerData, connectionData }}>
           <div className="centerBlockInner">
             <PredictionBlock />
