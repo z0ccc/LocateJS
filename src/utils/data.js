@@ -1,46 +1,19 @@
-/* eslint-disable no-unused-vars */
 export { getData, getWebWorker };
-
-// eslint-disable-next-line no-undef
 
 // Return object of system data
 const getData = (type, value, frameData, workerData) =>
   [
   // eslint-disable-next-line no-undef
-    getInitialValue(initialData[type]),
-    getDelayedValue(value, type),
-    getFrameValue(frameData[type], type.includes('language') ? frameData.issues[type] : frameData.issues.date),
-    getWorkerValue(workerData),
+    getDataObj('Initial', initialData[type], []),
+    getDataObj('Delayed', value, getIssues(type)),
+    getDataObj('Frame', frameData[type], type.includes('language') ? frameData.issues[type] : frameData.issues.date),
+    getDataObj('Web worker', workerData[type], type.includes('language') ? workerData.issues[type] : workerData.issues.date),
   ];
 
-const getInitialValue = (value) => ({
-  key: 'Initial',
-  value,
-  issues: [
-    // checkWebWorker(initialData.timeZone, workerValue),
-    // checkTimeZone(),
-  ],
-});
-
-const getDelayedValue = (value, type) => ({
-  key: 'Delayed',
-  value,
-  issues: getIssues(type)
-});
-
-const getFrameValue = (value, issues) => ({
-  key: 'Frame',
+const getDataObj = (key, value, issues) => ({
+  key,
   value,
   issues,
-});
-
-const getWorkerValue = (workerValue) => ({
-  key: 'Web worker',
-  value: workerValue,
-  issues: [
-    // checkWebWorker(initialData.timeZone, workerValue),
-    // checkTimeZone(),
-  ],
 });
 
 const getWebWorker = () => {

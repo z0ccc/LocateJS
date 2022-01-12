@@ -46,28 +46,28 @@ const Blocks = () => {
               type="timeZone"
               value={Intl.DateTimeFormat().resolvedOptions().timeZone}
               frameData={frameData}
-              workerData={workerData.timeZone}
+              workerData={workerData}
             />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().locale"
               type="locale"
               value={Intl.DateTimeFormat().resolvedOptions().locale}
               frameData={frameData}
-              workerData={workerData.locale}
+              workerData={workerData}
             />
             <DataBlock
               title="navigator.language"
               type="language"
               value={navigator.language}
               frameData={frameData}
-              workerData={workerData.language}
+              workerData={workerData}
             />
             <DataBlock
               title="navigator.languages"
               type="languages"
               value={navigator.languages}
               frameData={frameData}
-              workerData={workerData.languages}
+              workerData={workerData}
             />
 
           </div>
@@ -79,21 +79,21 @@ const Blocks = () => {
               type="dateString"
               value={new Date().toString()}
               frameData={frameData}
-              workerData={workerData.dateString}
+              workerData={workerData}
             />
             <DataBlock
               title="new Date().toLocaleString()"
               type="dateLocale"
               value={new Date().toLocaleString()}
               frameData={frameData}
-              workerData={workerData.dateLocale}
+              workerData={workerData}
             />
             <DataBlock
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
               value={new Date().getTimezoneOffset()}
               frameData={frameData}
-              workerData={workerData.timezoneOffset}
+              workerData={workerData}
             />
             <GeolocationBlock />
 
