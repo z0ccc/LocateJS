@@ -20,7 +20,10 @@ const GeolocationBlock = () => {
                 </div>
               )
               : (
-                <Table data={geolocationData} />
+                <>
+                  <p style={{ marginBottom: '10px' }}>This data is not included in location prediction</p>
+                  <Table data={geolocationData} />
+                </>
               )}
           </>
         )

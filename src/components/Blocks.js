@@ -39,8 +39,8 @@ const Blocks = () => {
         <DataContext.Provider value={{ frameData, workerData, connectionData }}>
           <div className="centerBlockInner">
             <PredictionBlock />
-            <TorBlock />
             <WebRTCBlock data={webRTCData} />
+            <TorBlock />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
               type="timeZone"
