@@ -12,16 +12,6 @@ const checkNavigatorProperties = (key) => {
   return null;
 };
 
-// const checkNavigatorValue = (key) => {
-//   if (
-//     Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
-//   undefined
-//   ) {
-//     return 'Failed descriptor.value undefined';
-//   }
-//   return null;
-// };
-
 const checkNavigatorPrototype = (key) => {
   try {
   // eslint-disable-next-line no-unused-vars
@@ -34,10 +24,8 @@ const checkNavigatorPrototype = (key) => {
 
 const getIssues = {
   language: [checkNavigatorProperties('language'),
-    // checkNavigatorValue('language'),
     checkNavigatorPrototype('language')],
   languages: [checkNavigatorProperties('languages'),
-    // checkNavigatorValue('languages'),
     checkNavigatorPrototype('languages')],
   date: [checkDatePrototype()]
 };
