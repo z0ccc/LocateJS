@@ -1,13 +1,15 @@
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 export { getData, getWebWorker };
 
 // Return object of system data
 const getData = (type, value, frameData, workerData) =>
   [
-  // eslint-disable-next-line no-undef
+    // eslint-disable-next-line no-undef
     getDataObj('Initial', initialData[type], []),
     getDataObj('Delayed', value, getIssues(type)),
     getDataObj('Frame', frameData[type], type.includes('language') ? frameData.issues[type] : frameData.issues.date),
-    getDataObj('Web worker', workerData[type], type.includes('language') ? workerData.issues[type] : workerData.issues.date),
+    getDataObj('Web worker', workerData[type], []),
   ];
 
 const getDataObj = (key, value, issues) => ({

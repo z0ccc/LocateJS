@@ -27,10 +27,21 @@ const Blocks = () => {
     const receiveMessage = (event) => setFrameData(event.data);
     window.addEventListener('message', receiveMessage, false);
     getWebRTC(setWebRTCData);
-    getWebWorker().onmessage = (event) => {
-      setWorkerData(event.data);
-      fetchAPI(setConnectionData);
-    };
+    if (window.Worker.length) {
+      getWebWorker().onmessage = (event) => {
+        setWorkerData(event.data);
+      };
+    } else {
+      setWorkerData({ locale: null,
+        timeZone: null,
+        timezoneOffset: null,
+        dateString: null,
+        dateLocale: null,
+        language: null,
+        languages: null,
+        issues: [] });
+    }
+    fetchAPI(setConnectionData);
   }, []);
 
   return (
@@ -38,7 +49,7 @@ const Blocks = () => {
       {connectionData && frameData && workerData && webRTCData ? (
         <DataContext.Provider value={{ frameData, workerData, connectionData }}>
           <div className="centerBlockInner">
-            <PredictionBlock />
+            {/* <PredictionBlock /> */}
             <WebRTCBlock data={webRTCData} />
             <TorBlock />
             <DataBlock
