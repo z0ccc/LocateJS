@@ -12,6 +12,7 @@ import GeolocationBlock from './GeolocationBlock';
 import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
 import getWebRTC from '../utils/webRTC';
+import delayedData from '../utils/data';
 
 const Blocks = () => {
   const [workerData, setWorkerData] = useState();
@@ -32,14 +33,7 @@ const Blocks = () => {
         setWorkerData(event.data);
       };
     } else {
-      setWorkerData({ locale: null,
-        timeZone: null,
-        timezoneOffset: null,
-        dateString: null,
-        dateLocale: null,
-        language: null,
-        languages: null,
-        issues: [] });
+      setWorkerData(true);
     }
     fetchAPI(setConnectionData);
   }, []);
@@ -47,7 +41,7 @@ const Blocks = () => {
   return (
     <>
       {connectionData && frameData && workerData && webRTCData ? (
-        <DataContext.Provider value={{ frameData, workerData, connectionData }}>
+        <DataContext.Provider value={{ delayedData, frameData, workerData, connectionData }}>
           <div className="centerBlockInner">
             {/* <PredictionBlock /> */}
             <WebRTCBlock data={webRTCData} />
@@ -55,22 +49,18 @@ const Blocks = () => {
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
               type="timeZone"
-              value={Intl.DateTimeFormat().resolvedOptions().timeZone}
             />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().locale"
               type="locale"
-              value={Intl.DateTimeFormat().resolvedOptions().locale}
             />
             <DataBlock
               title="navigator.language"
               type="language"
-              value={navigator.language}
             />
             <DataBlock
               title="navigator.languages"
               type="languages"
-              value={navigator.languages}
             />
 
           </div>
@@ -80,18 +70,15 @@ const Blocks = () => {
             <DataBlock
               title="new Date().toString()"
               type="dateString"
-              value={new Date().toString()}
 
             />
             <DataBlock
               title="new Date().toLocaleString()"
               type="dateLocale"
-              value={new Date().toLocaleString()}
             />
             <DataBlock
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
-              value={new Date().getTimezoneOffset()}
             />
             <GeolocationBlock />
 

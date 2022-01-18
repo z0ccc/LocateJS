@@ -1,45 +1,13 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-export { getIssues, getData, getWebWorker };
-
-// Return object of system data
-const getData = (type, value, frameData, workerData) =>
-  [
-    // eslint-disable-next-line no-undef
-    getDataObj('Initial', initialData[type], []),
-    getDataObj('Delayed', value, getIssues(type)),
-    getDataObj('Frame', frameData[type], type.includes('language') ? frameData.issues[type] : frameData.issues.date),
-    getDataObj('Web worker', workerData[type], []),
-  ];
-
-const getDataObj = (key, value, issues) => ({
-  key,
-  value,
-  issues,
-});
-
-const getWebWorker = () => {
-  let w;
-  if (typeof w === 'undefined') {
-    w = new Worker('/LocateJS/worker.js');
-  }
-
-  return w;
-};
-
-const getIssues = (type) => {
-  if (type.includes('language')) {
-    return [checkNavigatorProperties(type),
-      checkNavigatorValue(type),
-      checkNavigatorPrototype(type)
-    ];
-  }
-  return [checkDatePrototype()];
-};
-
 const checkDatePrototype = () => {
   if (!Date.prototype.setDate.toString().includes('[native code]')) {
     return 'Failed Date.prototype.setDate.toString()';
+  }
+  return null;
+};
+
+const checkIntlPrototype = () => {
+  if (!Intl.DateTimeFormat.prototype.resolvedOptions.toString().includes('[native code]')) {
+    return 'Failed Intl.DateTimeFormat.prototype.resolvedOptions.toString()';
   }
   return null;
 };
@@ -70,3 +38,31 @@ const checkNavigatorPrototype = (key) => {
     return null;
   }
 };
+
+const getNavigatorValue = (type) =>
+  [checkNavigatorProperties(type),
+    checkNavigatorValue(type),
+    checkNavigatorPrototype(type)];
+
+const getIssues = {
+  timeZone: [checkIntlPrototype()],
+  locale: [checkIntlPrototype()],
+  dateString: [checkDatePrototype()],
+  dateLocale: [checkDatePrototype()],
+  timezoneOffset: [checkDatePrototype()],
+  language: getNavigatorValue('language'),
+  languages: getNavigatorValue('languages'),
+};
+
+const delayedData = {
+  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  locale: Intl.DateTimeFormat().resolvedOptions().locale,
+  dateString: new Date().toString(),
+  dateLocale: new Date().toLocaleString(),
+  timezoneOffset: new Date().getTimezoneOffset(),
+  language: navigator.language,
+  languages: navigator.languages,
+  issues: getIssues
+};
+
+export default delayedData;

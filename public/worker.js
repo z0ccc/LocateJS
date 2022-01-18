@@ -5,6 +5,13 @@ const checkDatePrototype = () => {
   return null;
 };
 
+const checkIntlPrototype = () => {
+  if (!Intl.DateTimeFormat.prototype.resolvedOptions.toString().includes('[native code]')) {
+    return 'Failed Intl.DateTimeFormat.prototype.resolvedOptions.toString()';
+  }
+  return null;
+};
+
 const checkNavigatorProperties = (key) => {
   if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
     return 'Failed undefined properties';
@@ -27,8 +34,8 @@ const getNavigatorValue = (type) =>
     checkNavigatorPrototype(type)];
 
 const getIssues = {
-  timeZone: [checkDatePrototype()],
-  locale: [checkDatePrototype()],
+  timeZone: [checkIntlPrototype()],
+  locale: [checkIntlPrototype()],
   dateString: [checkDatePrototype()],
   dateLocale: [checkDatePrototype()],
   timezoneOffset: [checkDatePrototype()],

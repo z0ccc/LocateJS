@@ -4,23 +4,21 @@ import { useContext } from 'react';
 import DataContext from './Context';
 import Block from './Block';
 import Table from './Table';
-import { getIssues, getData } from '../utils/data';
 import TableRow from './TableRow2';
 
-const DataBlock = ({ title, type, value }) => {
-  const { frameData, workerData } = useContext(DataContext);
+const DataBlock = ({ title, type }) => {
+  const { delayedData, frameData, workerData } = useContext(DataContext);
 
   return (
     <Block>
       <h1>{title}</h1>
-      {/* <Table data={getData(type, value, frameData, workerData)} /> */}
       <div className="tableWrap">
         <table>
           <tbody>
             <TableRow title="Initial" value={initialData[type]} issues={[]} />
-            <TableRow title="Delayed" value={value} issues={getIssues(type)} />
+            <TableRow title="Delayed" value={delayedData[type]} issues={delayedData.issues[type]} />
             <TableRow title="Frame" value={frameData[type]} issues={frameData.issues[type]} />
-            <TableRow title="Web worker" value={workerData[type]} issues={workerData.issues[type]} />
+            <TableRow title="Web worker" value={window.Worker.length ? workerData[type] : null} issues={window.Worker.length ? workerData.issues[type] : ['Web workers blocked']} />
           </tbody>
         </table>
       </div>
