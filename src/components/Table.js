@@ -3,11 +3,11 @@ import TableRow from './TableRow';
 const Table = ({ data }) => (
   <div className="tableWrap">
     <table>
-      {data.map((item) => (
-        <tbody key={item.key}>
-          <TableRow item={item} />
-        </tbody>
-      ))}
+      <tbody>
+        {data.map((item) => (
+          <TableRow item={item} key={item.key} />
+        ))}
+      </tbody>
     </table>
   </div>
 );

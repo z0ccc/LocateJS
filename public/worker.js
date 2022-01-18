@@ -22,12 +22,18 @@ const checkNavigatorPrototype = (key) => {
   }
 };
 
+const getNavigatorValue = (type) =>
+  [checkNavigatorProperties(type),
+    checkNavigatorPrototype(type)];
+
 const getIssues = {
-  language: [checkNavigatorProperties('language'),
-    checkNavigatorPrototype('language')],
-  languages: [checkNavigatorProperties('languages'),
-    checkNavigatorPrototype('languages')],
-  date: [checkDatePrototype()]
+  timeZone: [checkDatePrototype()],
+  locale: [checkDatePrototype()],
+  dateString: [checkDatePrototype()],
+  dateLocale: [checkDatePrototype()],
+  timezoneOffset: [checkDatePrototype()],
+  language: getNavigatorValue('language'),
+  languages: getNavigatorValue('languages'),
 };
 
 const data = {

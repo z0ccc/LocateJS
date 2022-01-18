@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import DataContext from './Context';
 import Block from './Block';
 import Table from './Table';
-import { getData } from '../utils/data';
+import { getIssues, getData } from '../utils/data';
 import TableRow from './TableRow2';
 
 const DataBlock = ({ title, type, value }) => {
@@ -18,9 +18,9 @@ const DataBlock = ({ title, type, value }) => {
         <table>
           <tbody>
             <TableRow title="Initial" value={initialData[type]} issues={[]} />
-            <TableRow title="Delayed" value={value} issues={[]} />
-            <TableRow title="Frame" value={frameData[type]} issues={[]} />
-            <TableRow title="Web worker" value={workerData[type]} issues={[]} />
+            <TableRow title="Delayed" value={value} issues={getIssues(type)} />
+            <TableRow title="Frame" value={frameData[type]} issues={frameData.issues[type]} />
+            <TableRow title="Web worker" value={workerData[type]} issues={workerData.issues[type]} />
           </tbody>
         </table>
       </div>

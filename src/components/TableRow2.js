@@ -22,7 +22,6 @@ const modalStyles = {
 Modal.setAppElement('#root');
 
 const TableRow = ({ title, value, issues }) => {
-  console.log(issues);
   const issuesExist = issues.filter(Boolean).length !== 0;
   const [modalIsOpen, setIsOpen] = useState(false);
 

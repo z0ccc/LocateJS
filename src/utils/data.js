@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-export { getData, getWebWorker };
+export { getIssues, getData, getWebWorker };
 
 // Return object of system data
 const getData = (type, value, frameData, workerData) =>
