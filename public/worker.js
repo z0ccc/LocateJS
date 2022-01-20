@@ -5,6 +5,13 @@ const checkDatePrototype = () => {
   return null;
 };
 
+const checkIntlConstructor = () => {
+  if (!Object.getPrototypeOf(Intl.DateTimeFormat.prototype).constructor.toString().includes('Object')) {
+    return 'Failed Object.getPrototypeOf(Intl.DateTimeFormat.prototype).constructor.toString()';
+  }
+  return null;
+};
+
 const checkIntlPrototype = () => {
   if (!Intl.DateTimeFormat.prototype.resolvedOptions.toString().includes('[native code]')) {
     return 'Failed Intl.DateTimeFormat.prototype.resolvedOptions.toString()';
@@ -14,7 +21,7 @@ const checkIntlPrototype = () => {
 
 const checkNavigatorProperties = (key) => {
   if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
-    return 'Failed undefined properties';
+    return 'Failed Object.getOwnPropertyDescriptor(navigator, key)';
   }
   return null;
 };
@@ -23,7 +30,7 @@ const checkNavigatorPrototype = (key) => {
   try {
   // eslint-disable-next-line no-unused-vars
     const check = Navigator.prototype[key];
-    return 'Failed Navigator.prototype';
+    return 'Failed Navigator.prototype[key]';
   } catch (err) {
     return null;
   }
@@ -34,8 +41,8 @@ const getNavigatorValue = (type) =>
     checkNavigatorPrototype(type)];
 
 const getIssues = {
-  timeZone: [checkIntlPrototype()],
-  locale: [checkIntlPrototype()],
+  timeZone: [checkIntlPrototype(), checkIntlConstructor()],
+  locale: [checkIntlPrototype(), checkIntlConstructor()],
   dateString: [checkDatePrototype()],
   dateLocale: [checkDatePrototype()],
   timezoneOffset: [checkDatePrototype()],

@@ -70,7 +70,6 @@ const Blocks = () => {
             <DataBlock
               title="new Date().toString()"
               type="dateString"
-
             />
             <DataBlock
               title="new Date().toLocaleString()"

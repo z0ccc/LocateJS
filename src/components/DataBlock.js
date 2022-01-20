@@ -1,9 +1,7 @@
 /* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import { useContext } from 'react';
 import DataContext from './Context';
 import Block from './Block';
-import Table from './Table';
 import TableRow from './TableRow2';
 
 const DataBlock = ({ title, type }) => {
