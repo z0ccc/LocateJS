@@ -9,10 +9,17 @@ import DataBlock from './DataBlock';
 import WebRTCBlock from './WebRTCBlock';
 import TorBlock from './TorBlock';
 import GeolocationBlock from './GeolocationBlock';
-import { getWebWorker } from '../utils/system';
 import { fetchAPI } from '../utils/connection';
 import getWebRTC from '../utils/webRTC';
 import delayedData from '../utils/data';
+
+const getWebWorker = () => {
+  let w;
+  if (typeof w === 'undefined') {
+    w = new Worker('/LocateJS/worker.js');
+  }
+  return w;
+};
 
 const Blocks = () => {
   const [workerData, setWorkerData] = useState();
@@ -27,7 +34,11 @@ const Blocks = () => {
     frame.src = '/LocateJS/frame.html';
     const receiveMessage = (event) => setFrameData(event.data);
     window.addEventListener('message', receiveMessage, false);
+
+    fetchAPI(setConnectionData);
+
     getWebRTC(setWebRTCData);
+
     if (window.Worker.length) {
       getWebWorker().onmessage = (event) => {
         setWorkerData(event.data);
@@ -35,7 +46,6 @@ const Blocks = () => {
     } else {
       setWorkerData(true);
     }
-    fetchAPI(setConnectionData);
   }, []);
 
   return (
