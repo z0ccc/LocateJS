@@ -4,15 +4,14 @@ const getGeolocation = (setGeolocationData) => {
   }).then(async (position) => {
     const geocode = await getGeocode(position.coords.latitude, position.coords.longitude);
     setGeolocationData([
-      getValue('Latitude', position.coords.latitude),
-      getValue('Longitude', position.coords.longitude),
-      getValue('Accuracy', position.coords.accuracy),
-      getValue('Altitude', position.coords.altitude),
-      getValue('Altitude accuracy', position.coords.altitudeAccuracy),
-      getValue('Heading', position.coords.heading),
-      getValue('Speed', position.coords.speed),
-      getValue('Reverse geocoding', geocode),
-
+      getObj('Latitude', position.coords.latitude),
+      getObj('Longitude', position.coords.longitude),
+      getObj('Accuracy', position.coords.accuracy),
+      getObj('Altitude', position.coords.altitude),
+      getObj('Altitude accuracy', position.coords.altitudeAccuracy),
+      getObj('Heading', position.coords.heading),
+      getObj('Speed', position.coords.speed),
+      getObj('Reverse geocoding', geocode),
     ]);
   })
     .catch((e) => setGeolocationData(e.message));
@@ -22,13 +21,10 @@ const getGeocode = (lat, long) => fetch(`https://maps.googleapis.com/maps/api/ge
   .then((response) => response.json())
   .then((data) => data.results[0].formatted_address);
 
-const getValue = (key, value) => ({
+const getObj = (key, value) => ({
   key,
   value,
-  issues: [
-    // checkWebWorker(initialData.timeZone, workerValue),
-    // checkTimeZone(),
-  ],
+  issues: [],
 });
 
 export default getGeolocation;
