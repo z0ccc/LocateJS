@@ -6,7 +6,6 @@ import getGeolocation from '../utils/geolocation';
 const GeolocationBlock = () => {
   const [geolocationData, setGeolocationData] = useState();
   const [buttonValue, setbuttonValue] = useState('Allow Geolocation API');
-  console.log(geolocationData);
   return (
     <Block>
       <h1>HTML5 Geolocation API</h1>
