@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Block from './Block';
-import Table from './Table';
+import TableRow from './TableRow2';
 
 const detectTor = (setIsTor) => {
   if (window.chrome) {
@@ -30,12 +30,17 @@ const TorBlock = () => {
     <Block>
       <h1>Tor Browser</h1>
       {isTor && (
-      <Table data={[{
-        key: 'Detected',
-        value: isTor,
-        issues: [],
-      }]}
-      />
+      <div className="tableWrap">
+        <table>
+          <tbody>
+            <TableRow
+              title="Detected"
+              value={isTor}
+              issues={[]}
+            />
+          </tbody>
+        </table>
+      </div>
       )}
       <p>
         <b>Explanation:</b> Date and language data can be used to identify your
