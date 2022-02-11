@@ -1,5 +1,5 @@
 import Block from './Block';
-import TableRow from './TableRow2';
+import TableRow from './TableRow';
 
 const WebRTCBlock = ({ title, data }) => (
   <Block>

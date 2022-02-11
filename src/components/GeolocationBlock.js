@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Block from './Block';
 import getGeolocation from '../utils/geolocation';
-import TableRow from './TableRow2';
+import TableRow from './TableRow';
 
 const GeolocationBlock = () => {
   const [geolocationData, setGeolocationData] = useState();

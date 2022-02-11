@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import DataContext from './Context';
 import Block from './Block';
 import { getConnection } from '../utils/connection';
-import TableRow from './TableRow2';
+import TableRow from './TableRow';
 
 const ConnectionBlock = () => {
   const { workerData, connectionData } = useContext(DataContext);

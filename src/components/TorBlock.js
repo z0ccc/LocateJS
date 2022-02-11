@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Block from './Block';
-import TableRow from './TableRow2';
+import TableRow from './TableRow';
 
 const detectTor = (setIsTor) => {
   if (window.chrome) {

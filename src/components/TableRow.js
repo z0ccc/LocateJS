@@ -21,12 +21,12 @@ const modalStyles = {
 
 Modal.setAppElement('#root');
 
-const TableRow = ({ item }) => {
-  const issues = item.issues.filter(Boolean).length !== 0;
+const TableRow = ({ title, value, issues }) => {
+  const issuesExist = issues.filter(Boolean).length !== 0;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
-    if (issues) setIsOpen(true);
+    if (issuesExist) setIsOpen(true);
   };
 
   const closeModal = () => {
@@ -34,11 +34,11 @@ const TableRow = ({ item }) => {
   };
   return (
     <>
-      <tr className={issues ? 'issue' : ''} onClick={openModal}>
-        <td>{item.key}</td>
-        <td>{(Array.isArray(item.value) ? JSON.stringify(item.value) : item.value) || 'null'}</td>
+      <tr className={issuesExist ? 'issue' : ''} onClick={openModal}>
+        <td>{title}</td>
+        <td>{(Array.isArray(value) ? JSON.stringify(value) : value) || 'null'}</td>
         <td>
-          {issues ? (
+          {issuesExist ? (
             <XCircle className="circleButton" />
           ) : (
             <CheckCircle className="circleButton" />
@@ -52,11 +52,11 @@ const TableRow = ({ item }) => {
         contentLabel="Issues Modal"
       >
         <div className="modalHeader">
-          <div className="modalTitle">{item.key} issues</div>
+          <div className="modalTitle">{title} issues</div>
           <X className="closeButton" onClick={closeModal} />
         </div>
         <ul>
-          {item.issues.filter(Boolean).map((ele, index) => (
+          {issues.filter(Boolean).map((ele, index) => (
             <li key={index}>{ele}</li>
           ))}
         </ul>

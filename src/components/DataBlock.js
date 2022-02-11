@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 import DataContext from './Context';
 import Block from './Block';
-import TableRow from './TableRow2';
+import TableRow from './TableRow';
 
 const DataBlock = ({ title, type }) => {
   const { delayedData, frameData, workerData } = useContext(DataContext);
