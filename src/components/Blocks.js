@@ -21,12 +21,33 @@ const getWebWorker = () => {
   return w;
 };
 
+const detectTor = (setIsTor) => {
+  if (window.chrome) {
+    setIsTor('False');
+  } else {
+    const css = document.createElement('link');
+    css.href = 'resource://torbutton-assets/aboutTor.css';
+    css.type = 'text/css';
+    css.rel = 'stylesheet';
+    document.head.appendChild(css);
+    css.onload = () => {
+      setIsTor('True');
+    };
+    css.onerror = () => {
+      setIsTor('False');
+    };
+    document.head.removeChild(css);
+  }
+};
+
 const Blocks = () => {
   const [workerData, setWorkerData] = useState();
   const [frameData, setFrameData] = useState();
   const [connectionData, setConnectionData] = useState('');
   const [webRTCData, setWebRTCData] = useState();
-
+  const [isTor, setIsTor] = useState();
+  // eslint-disable-next-line no-undef
+  const initialData = initialDataObj;
   useEffect(() => {
     const frame = document.createElement('iframe');
     document.body.appendChild(frame);
@@ -46,16 +67,22 @@ const Blocks = () => {
     } else {
       setWorkerData(true);
     }
+
+    detectTor(setIsTor);
   }, []);
 
   return (
     <>
-      {connectionData && frameData && workerData && webRTCData ? (
-        <DataContext.Provider value={{ delayedData, frameData, workerData, connectionData }}>
+      {connectionData && frameData && workerData && webRTCData && isTor ? (
+        <DataContext.Provider
+          value={{
+            initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
+          }}
+        >
           <div className="centerBlockInner">
-            {/* <PredictionBlock /> */}
+            <PredictionBlock />
             <WebRTCBlock data={webRTCData} />
-            <TorBlock />
+            <TorBlock isTor={isTor} />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
               type="timeZone"

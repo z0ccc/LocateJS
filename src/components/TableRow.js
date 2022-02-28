@@ -22,7 +22,7 @@ const modalStyles = {
 Modal.setAppElement('#root');
 
 const TableRow = ({ title, value, issues }) => {
-  const issuesExist = issues.filter(Boolean).length !== 0;
+  const issuesExist = issues.length !== 0;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {

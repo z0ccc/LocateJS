@@ -49,14 +49,14 @@ const checkNavigatorPrototype = (key) => {
 const getNavigatorValue = (type) =>
   [checkNavigatorProperties(type),
     checkNavigatorValue(type),
-    checkNavigatorPrototype(type)];
+    checkNavigatorPrototype(type)].filter(Boolean);
 
 const getIssues = {
-  timeZone: [checkIntlPrototype(), checkIntlConstructor()],
-  locale: [checkIntlPrototype(), checkIntlConstructor()],
-  dateString: [checkDatePrototype()],
-  dateLocale: [checkDatePrototype()],
-  timezoneOffset: [checkDatePrototype()],
+  timeZone: [checkIntlPrototype(), checkIntlConstructor()].filter(Boolean),
+  locale: [checkIntlPrototype(), checkIntlConstructor()].filter(Boolean),
+  dateString: [checkDatePrototype()].filter(Boolean),
+  dateLocale: [checkDatePrototype()].filter(Boolean),
+  timezoneOffset: [checkDatePrototype()].filter(Boolean),
   language: getNavigatorValue('language'),
   languages: getNavigatorValue('languages'),
 };

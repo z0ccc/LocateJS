@@ -1,46 +1,83 @@
+/* eslint-disable no-unused-vars */
 export { getMap, getPrediction };
 
-const getPrediction = (connectionData, workerData) => {
+const getPrediction = (
+  initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
+) => {
   let country, countryPercent, city, cityPercent, regionNames;
+  console.log(getIntlTimeZone(initialData, delayedData, frameData, workerData));
+  // console.log(webRTCData);
 
-  // if connection timezone equals system data timezone
-  if (connectionData && !connectionData.proxy) {
+  if (isTor === 'False') {
+    if (connectionData.proxy) {
+      return false;
+    }
     country = connectionData.country;
     city = connectionData.city;
-    if (connectionData.timezone === workerData.timeZone) {
-      countryPercent = 90;
-      cityPercent = 90;
-    } else {
-      countryPercent = 80;
-      cityPercent = 60;
-    }
-  } else {
-    try {
-      regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-    } catch (e) {
-      regionNames = null;
-    }
-
-    const countryObj = checkCountry(workerData);
-    const cityObj = checkCity(workerData, countryObj.value);
-    country = regionNames ? regionNames.of(countryObj.value) : countryObj.value;
-    countryPercent = countryObj.percent;
-    city = cityObj.value;
-    cityPercent = cityObj.percent;
   }
-  return [
-    {
-      key: 'Country',
-      value: country,
-      percent: countryPercent,
-    },
-    {
-      key: 'Closest city',
-      value: city,
-      percent: cityPercent,
-    },
-  ];
+  console.log(country, city);
+
+  return false;
 };
+
+const getIntlTimeZone = (initialData, delayedData, frameData, workerData) => {
+  // console.log(frameData.issues.timeZone.length);
+  if (window.Worker.length && !workerData.issues.timeZone.length) {
+    console.log('workerData');
+    return workerData.timeZone;
+  }
+  if (!frameData.issues.timeZone.length) {
+    console.log('frameData');
+
+    return frameData.timeZone;
+  }
+  if (!delayedData.issues.timeZone.length) {
+    console.log('delayedData');
+
+    return delayedData.timeZone;
+  }
+  console.log('initialData');
+
+  return initialData.timeZone;
+};
+// // if connection timezone equals system data timezone
+// if (connectionData && !connectionData.proxy) {
+//   country = connectionData.country;
+//   city = connectionData.city;
+//   if (connectionData.timezone === workerData.timeZone) {
+//     countryPercent =s 90;
+//     cityPercent = 90;
+//   } else {
+//     countryPercent = 80;
+//     cityPercent = 60;s
+//   }
+// } else {
+//   try {
+//     regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+//   } catch (e) {
+//     regionNames = null;
+//   }
+
+//   const countryObj = checkCountry(workerData);
+//   const cityObj = checkCity(workerData, countryObj.value);
+//   country = regionNames ? regionNames.of(countryObj.value) : countryObj.value;
+//   countryPercent = countryObj.percent;
+//   city = cityObj.value;
+//   cityPercent = cityObj.percent;
+// }
+// return [
+//   {
+//     key: 'Country',
+//     value: country,
+//     percent: countryPercent,
+//   },
+//   {
+//     key: 'Closest city',
+//     value: city,
+//     percent: cityPercent,
+//   },
+// ];
+// };
 
 const ct = require('countries-and-timezones');
 const cl = require('country-language');
