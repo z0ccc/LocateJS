@@ -24,6 +24,7 @@ Modal.setAppElement('#root');
 const TableRow = ({ title, value, issues }) => {
   const issuesExist = issues.length !== 0;
   const [modalIsOpen, setIsOpen] = useState(false);
+  const datavalue = !value && value !== 0 ? 'null' : value;
 
   const openModal = () => {
     if (issuesExist) setIsOpen(true);
@@ -36,7 +37,7 @@ const TableRow = ({ title, value, issues }) => {
     <>
       <tr className={issuesExist ? 'issue' : ''} onClick={openModal}>
         <td>{title}</td>
-        <td>{(Array.isArray(value) ? JSON.stringify(value) : value) || 'null'}</td>
+        <td>{Array.isArray(value) ? JSON.stringify(value) : datavalue}</td>
         <td>
           {issuesExist ? (
             <XCircle className="circleButton" />
