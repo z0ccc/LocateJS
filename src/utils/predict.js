@@ -1,45 +1,73 @@
 /* eslint-disable no-unused-vars */
 export { getMap, getPrediction };
 
+function DataGroup(type, initial, delayed, frame, worker) {
+  this.initial = initial;
+  this.delayed = delayed;
+  this.frame = frame;
+  this.worker = worker;
+}
+
+function DataItem(type, value, issues) {
+  this.type = type;
+  this.value = value;
+  this.issues = issues;
+}
+
+// const sortData = (initialData, delayedData, frameData, workerData) => {
+
+// };
+
 const getPrediction = (
   initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
 ) => {
   let country, countryPercent, city, cityPercent, regionNames;
-  console.log(getIntlTimeZone(initialData, delayedData, frameData, workerData));
+
+  const getAccurateData = (type) => {
+    if (window.Worker.length && !workerData[type].issues.length) return workerData[type].value;
+    if (!frameData[type].issues.length) return frameData[type].value;
+    if (!delayedData[type].issues.length) return delayedData[type].value;
+    return initialData[type].value;
+  };
+
+  const locale = getAccurateData('locale');
+  const timeZone = getAccurateData('timeZone');
+  const timezoneOffset = getAccurateData('timezoneOffset');
+  const dateString = getAccurateData('dateString');
+  const dateLocale = getAccurateData('dateLocale');
+  const language = getAccurateData('language');
+  const languages = getAccurateData('languages');
+
   // console.log(webRTCData);
 
-  if (isTor === 'False') {
-    if (connectionData.proxy) {
-      return false;
-    }
-    country = connectionData.country;
-    city = connectionData.city;
-  }
+  // if tor return unknown
+  // get connection country/city , webrtc country/city, system data country/city/percentages
+  // if connection === proxy then discard connection else
+  // if webrtc === proxy then discard webrtc else
+  // if webrtc !== connection then discard connection
+  // if
+
+  // if (isTor === 'True') return false
+  // if (connectionData.proxy === false) {
+  //   // if (webrtc.proxy === false && webrtc !==) {
+  //   // }
+  // }
+
+  //   if(/*compare webrtc with connection*/){
+  //     //if no webrtc or matching webrtc
+  //     country = connectionData.country;
+  //     city = connectionData.city;
+  //   }
+  //   if (connectionData.proxy) {
+  //     //
+  //   }
+  // }
+
   console.log(country, city);
 
   return false;
 };
 
-const getIntlTimeZone = (initialData, delayedData, frameData, workerData) => {
-  // console.log(frameData.issues.timeZone.length);
-  if (window.Worker.length && !workerData.issues.timeZone.length) {
-    console.log('workerData');
-    return workerData.timeZone;
-  }
-  if (!frameData.issues.timeZone.length) {
-    console.log('frameData');
-
-    return frameData.timeZone;
-  }
-  if (!delayedData.issues.timeZone.length) {
-    console.log('delayedData');
-
-    return delayedData.timeZone;
-  }
-  console.log('initialData');
-
-  return initialData.timeZone;
-};
 // // if connection timezone equals system data timezone
 // if (connectionData && !connectionData.proxy) {
 //   country = connectionData.country;

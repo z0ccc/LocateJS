@@ -60,7 +60,7 @@ const getWebRTC = (setWebRTCData) => {
           }
         }
       });
-      formatWebRTC(setWebRTCData, [...new Set(ips)]);
+      setWebRTCData([...new Set(ips)]);
     } else {
       setTimeout(waitForElement, 1000);
     }
@@ -69,27 +69,24 @@ const getWebRTC = (setWebRTCData) => {
   waitForElement();
 };
 
-const formatWebRTC = (setWebRTCData, ips) => {
-  let localIP, ipv6, publicIP;
-  for (let i = 0; i < ips.length; i++) {
-    if (ips[i].match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/)) {
-      localIP = ips[i];
-    } else if (ips[i].match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/)) {
-      ipv6 = ips[i];
-    } else {
-      publicIP = ips[i];
-    }
-  }
-  setWebRTCData([getItem('Local IP', localIP), getItem('Public IP', publicIP), getItem('IPv6', ipv6)]);
-};
+// const formatWebRTC = (setWebRTCData, ips) => {
+//   console.log(ips);
+//   const ipArr = [];
+//   for (let i = 0; i < ips.length; i++) {
+//     ipArr.push(ips[i]);
+//   }
+//   // setWebRTCData([getItem('Local IP', localIP),
+//   // getItem('Public IP', publicIP), getItem('IPv6', ipv6)]);
+//   setWebRTCData(ipArr);
+// };
 
-const getItem = (name, value) => ({
-  key: name,
-  value,
-  issues: [
-    // checkWebWorker(initialData.timeZone, workerValue),
-    // checkTimeZone(),
-  ],
-});
+// const getItem = (name, value) => ({
+//   key: name,
+//   value,
+//   issues: [
+//     // checkWebWorker(initialData.timeZone, workerValue),
+//     // checkTimeZone(),
+//   ],
+// });
 
 export default getWebRTC;

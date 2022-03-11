@@ -12,10 +12,10 @@ const DataBlock = ({ title, type }) => {
       <div className="tableWrap">
         <table>
           <tbody>
-            <TableRow title="Initial" value={initialData[type]} issues={[]} />
-            <TableRow title="Delayed" value={delayedData[type]} issues={delayedData.issues[type]} />
-            <TableRow title="Frame" value={frameData[type]} issues={frameData.issues[type]} />
-            <TableRow title="Web worker" value={window.Worker.length ? workerData[type] : null} issues={window.Worker.length ? workerData.issues[type] : ['Web workers blocked']} />
+            <TableRow title="Initial" value={initialData[type].value} issues={initialData[type].issues} />
+            <TableRow title="Delayed" value={delayedData[type].value} issues={delayedData[type].issues} />
+            <TableRow title="Frame" value={frameData[type].value} issues={frameData[type].issues} />
+            <TableRow title="Web worker" value={window.Worker.length ? workerData[type].value : null} issues={window.Worker.length ? workerData[type].issues : ['Web workers blocked']} />
           </tbody>
         </table>
       </div>

@@ -48,6 +48,7 @@ const Blocks = () => {
   const [isTor, setIsTor] = useState();
   // eslint-disable-next-line no-undef
   const initialData = initialDataObj;
+
   useEffect(() => {
     const frame = document.createElement('iframe');
     document.body.appendChild(frame);
@@ -80,7 +81,7 @@ const Blocks = () => {
           }}
         >
           <div className="centerBlockInner">
-            <PredictionBlock />
+            {/* <PredictionBlock /> */}
             <WebRTCBlock data={webRTCData} />
             <TorBlock isTor={isTor} />
             <DataBlock

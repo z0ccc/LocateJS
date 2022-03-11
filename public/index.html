@@ -1,13 +1,34 @@
 <script>
-  const initialDataObj = {
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    locale: Intl.DateTimeFormat().resolvedOptions().locale,
-    dateString: new Date().toString(),
-    dateLocale: new Date().toLocaleString(), 
-    timezoneOffset: new Date().getTimezoneOffset(),
-    language: navigator.language,
-    languages: navigator.languages,
-  };
+const initialDataObj = {
+  locale: {
+    value: Intl.DateTimeFormat().resolvedOptions().locale,
+    issues: [],
+  },
+  timeZone: {
+    value: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    issues: [],
+  },
+  timezoneOffset: {
+    value: new Date().getTimezoneOffset(),
+    issues: [],
+  },
+  dateString: {
+    value: new Date().toString(),
+    issues: [],
+  },
+  dateLocale: {
+    value: new Date().toLocaleString(),
+    issues: [],
+  },
+  language: {
+    value: navigator.language,
+    issues: [],
+  },
+  languages: {
+    value: navigator.languages,
+    issues: [],
+  },
+};
 </script>
 <!DOCTYPE html>
 <html lang="en">
