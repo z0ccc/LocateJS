@@ -13,7 +13,7 @@ const WebRTCBlock = ({ data }) => (
       : (
         <div style={{ display: 'grid', gap: '24px' }}>
           {data.map((ipData) => (
-            <div className="tableWrap">
+            <div className="tableWrap" key={ipData.query}>
               <table>
                 <tbody>
                   {getConnection(ipData).map((item) => (
