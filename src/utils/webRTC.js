@@ -27,7 +27,8 @@ const getWebRTC = (setWebRTCData) => {
   // construct a new RTCPeerConnection
   const pc = new RTCPeerConnection(servers, mediaConstraints);
 
-  const ips = [];
+  let ips = [];
+  const ipsData = [];
 
   // listen for candidate events
   pc.onicecandidate = (ice) => {
@@ -49,7 +50,7 @@ const getWebRTC = (setWebRTCData) => {
     pc.setLocalDescription(result, () => {}, () => {});
   }, () => {});
 
-  const waitForElement = () => {
+  const waitForElement = async () => {
     if (pc.localDescription) {
       const lines = pc.localDescription.sdp.split('\n');
       lines.forEach((line) => {
@@ -60,7 +61,13 @@ const getWebRTC = (setWebRTCData) => {
           }
         }
       });
-      setWebRTCData([...new Set(ips)]);
+      ips = [...new Set(ips)];
+      for (let i = 0; i < ips.length; i++) {
+        ipsData.push(fetch(`https://api.locatejs.com/ip/${ips[i]}`)
+          .then((response) => response.json())
+          .then((json) => json));
+      }
+      setWebRTCData(await Promise.all(ipsData));
     } else {
       setTimeout(waitForElement, 1000);
     }
@@ -68,25 +75,5 @@ const getWebRTC = (setWebRTCData) => {
 
   waitForElement();
 };
-
-// const formatWebRTC = (setWebRTCData, ips) => {
-//   console.log(ips);
-//   const ipArr = [];
-//   for (let i = 0; i < ips.length; i++) {
-//     ipArr.push(ips[i]);
-//   }
-//   // setWebRTCData([getItem('Local IP', localIP),
-//   // getItem('Public IP', publicIP), getItem('IPv6', ipv6)]);
-//   setWebRTCData(ipArr);
-// };
-
-// const getItem = (name, value) => ({
-//   key: name,
-//   value,
-//   issues: [
-//     // checkWebWorker(initialData.timeZone, workerValue),
-//     // checkTimeZone(),
-//   ],
-// });
 
 export default getWebRTC;

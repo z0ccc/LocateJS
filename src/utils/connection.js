@@ -2,7 +2,7 @@ export { fetchAPI, getConnection };
 
 // Gets connection values
 const fetchAPI = (setData) => {
-  fetch('https://api.vytal.io/ip/')
+  fetch('https://api.locatejs.com/')
     .then((response) => response.json())
     .then((json) => {
       setData(json);

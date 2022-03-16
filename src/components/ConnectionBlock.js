@@ -5,7 +5,7 @@ import { getConnection } from '../utils/connection';
 import TableRow from './TableRow';
 
 const ConnectionBlock = () => {
-  const { workerData, connectionData } = useContext(DataContext);
+  const { connectionData } = useContext(DataContext);
 
   return (
     <Block>
@@ -13,7 +13,7 @@ const ConnectionBlock = () => {
       <div className="tableWrap">
         <table>
           <tbody>
-            {getConnection(connectionData, workerData).map((item) => (
+            {getConnection(connectionData).map((item) => (
               <TableRow key={item.key} title={item.key} value={item.value} issues={item.issues} />
             ))}
           </tbody>
