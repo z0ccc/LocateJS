@@ -83,7 +83,6 @@ const Blocks = () => {
           <div className="centerBlockInner">
             {/* <PredictionBlock /> */}
             <WebRTCBlock data={webRTCData} />
-            <TorBlock isTor={isTor} />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"
               type="timeZone"
@@ -117,8 +116,8 @@ const Blocks = () => {
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
             />
+            <TorBlock isTor={isTor} />
             <GeolocationBlock />
-
           </div>
         </DataContext.Provider>
 
