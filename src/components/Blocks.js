@@ -81,7 +81,7 @@ const Blocks = () => {
           }}
         >
           <div className="centerBlockInner">
-            {/* <PredictionBlock /> */}
+            <PredictionBlock />
             <WebRTCBlock data={webRTCData} />
             <DataBlock
               title="Intl.DateTimeFormat().resolvedOptions().timeZone"

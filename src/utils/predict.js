@@ -38,19 +38,18 @@ const getPrediction = (
   const language = getAccurateData('language');
   const languages = getAccurateData('languages');
 
-  // console.log(webRTCData);
+  const webRTCIP = checkWebRTC(webRTCData);
+
+  console.log(webRTCIP);
 
   // if tor return unknown
   // get connection country/city , webrtc country/city, system data country/city/percentages
   // if connection === proxy then discard connection else
-  // if webrtc === proxy then discard webrtc else
-  // if webrtc !== connection then discard connection
-  // if
-
-  // if (isTor === 'True') return false
+  //
+  if (isTor === 'True') return false;
   // if (connectionData.proxy === false) {
-  //   // if (webrtc.proxy === false && webrtc !==) {
-  //   // }
+  //   if (webrtc.proxy === false) {
+  //   }
   // }
 
   //   if(/*compare webrtc with connection*/){
@@ -66,6 +65,25 @@ const getPrediction = (
   console.log(country, city);
 
   return false;
+};
+
+const checkWebRTC = (webRTCData) => {
+  let localIP, ipv6, publicIP;
+  for (let i = 0; i < webRTCData.length; i++) {
+    if (webRTCData[i].proxy === false) {
+      if (webRTCData[i].query.match(/^(192\.168\.|169\.254\.|10\.|172\.(1[6-9]|2\d|3[01]))/)) {
+        localIP = webRTCData[i];
+      } else if (webRTCData[i].query.match(/^[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}$/)) {
+        ipv6 = webRTCData[i];
+      } else {
+        publicIP = webRTCData[i];
+      }
+    }
+  }
+  if (publicIP) return publicIP;
+  if (ipv6) return ipv6;
+  if (localIP) return localIP;
+  return null;
 };
 
 // // if connection timezone equals system data timezone
