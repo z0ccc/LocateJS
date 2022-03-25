@@ -30,39 +30,47 @@ const getPrediction = (
     return initialData[type].value;
   };
 
-  const locale = getAccurateData('locale');
-  const timeZone = getAccurateData('timeZone');
-  const timezoneOffset = getAccurateData('timezoneOffset');
-  const dateString = getAccurateData('dateString');
-  const dateLocale = getAccurateData('dateLocale');
-  const language = getAccurateData('language');
-  const languages = getAccurateData('languages');
+  const accurateData = {
+    locale: getAccurateData('locale'),
+    timeZone: getAccurateData('timeZone'),
+    timezoneOffset: getAccurateData('timezoneOffset'),
+    dateString: getAccurateData('dateString'),
+    dateLocale: getAccurateData('dateLocale'),
+    language: getAccurateData('language'),
+    languages: getAccurateData('languages'),
+  };
 
   const webRTCIP = checkWebRTC(webRTCData);
 
-  console.log(webRTCIP);
+  console.log(checkCountry(accurateData));
 
-  // if tor return unknown
-  // get connection country/city , webrtc country/city, system data country/city/percentages
-  // if connection === proxy then discard connection else
-  //
   if (isTor === 'True') return false;
-  // if (connectionData.proxy === false) {
-  //   if (webrtc.proxy === false) {
-  //   }
-  // }
 
-  //   if(/*compare webrtc with connection*/){
-  //     //if no webrtc or matching webrtc
-  //     country = connectionData.country;
-  //     city = connectionData.city;
-  //   }
-  //   if (connectionData.proxy) {
-  //     //
-  //   }
-  // }
+  if (!connectionData.proxy) {
+    if (webRTCIP && !webRTCIP.proxy) {
+      if (webRTCIP.query === connectionData.query) {
+        countryPercent = 90;
+        cityPercent = 90;
+      } else {
+        countryPercent = 80;
+        cityPercent = 80;
+      }
+      country = webRTCIP.country;
+      city = webRTCIP.city;
+    } else {
+      country = connectionData.country;
+      city = connectionData.city;
+      countryPercent = 80;
+      cityPercent = 80;
+    }
+  } else if (webRTCIP && !webRTCIP.proxy) {
+    countryPercent = 85;
+    cityPercent = 85;
+    country = webRTCIP.country;
+    city = webRTCIP.city;
+  }
 
-  console.log(country, city);
+  console.log(country, countryPercent, city, cityPercent);
 
   return false;
 };
@@ -128,29 +136,56 @@ const checkWebRTC = (webRTCData) => {
 const ct = require('countries-and-timezones');
 const cl = require('country-language');
 
-const checkCountry = (workerData) => {
-  const timezone = ct.getTimezone(workerData.timeZone);
-  const countryArr = checkLanguages(workerData).concat(checkTimezone(timezone));
+const checkCountry = (data) => {
+  const countryArr = checkLanguages(data);
+  console.log(checkLocale(data.locale));
+  console.log(checkTimezone(data.timeZone));
+  console.log(checkTimezoneOffset(data.timezoneOffset));
 
-  const countryObj = handleCountryArr(countryArr);
-  // Use the keys of the object to get all the values of the array
-  // and sort those keys by their counts
-  const sorted = Object.keys(countryObj).sort(
-    (a, b) => countryObj[b] - countryObj[a]
-  );
+  // countryArr.concat(checkTimezone(data.timezone));
 
-  const percent = countryArr.filter((x) => x === sorted[0]).length * 14;
+  // countryArr.concat(checkTimezone(timezone), checkLocale(data.locale));
 
-  return {
-    value: sorted[0],
-    percent: percent > 90 ? 90 : percent,
-  };
+  // const countryObj = handleCountryArr(countryArr);
+  // // Use the keys of the object to get all the values of the array
+  // // and sort those keys by their counts
+  // const sorted = Object.keys(countryObj).sort(
+  //   (a, b) => countryObj[b] - countryObj[a]
+  // );
+
+  // console.log(countryArr);
+
+  // const percent = countryArr.filter((x) => x === sorted[0]).length * 14;
+
+  // return {
+  //   value: sorted[0],
+  //   percent: percent > 90 ? 90 : percent,
+  // };
+  return false;
 };
 
-const checkLanguages = (workerData) => {
+// Get country from locale
+const checkLocale = (locale) => {
+  const IntlLocale = new Intl.Locale(locale);
+  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+  return regionNames.of(IntlLocale.region);
+};
+
+const langNames = new Intl.DisplayNames(['en'], { type: 'language' });
+console.log(langNames.of('en'));
+
+// Get countries of timezone
+const checkTimezone = (timeZone) => {
+  if (timeZone) {
+    return ct.getTimezone(timeZone).countries;
+  }
+  return [];
+};
+
+const checkLanguages = (data) => {
   const countryArr = [];
   // loop thru system data languages
-  workerData.languages.forEach((language) => {
+  data.languages.forEach((language) => {
     if (language.length > 2) {
       countryArr.push(language.slice(-2));
     }
@@ -167,22 +202,10 @@ const checkLanguages = (workerData) => {
   });
 
   // Checks if main language has country code
-  if (workerData.language.length > 2) {
-    countryArr.push(workerData.language.slice(-2));
+  if (data.language.length > 2) {
+    countryArr.push(data.language.slice(-2));
   }
 
-  return countryArr;
-};
-
-// Get countries of timezone
-const checkTimezone = (timezone) => {
-  let countryArr = [];
-  if (timezone) {
-    countryArr = countryArr // Concat multiple times to assing a greater weight to timezones
-      .concat(timezone.countries)
-      .concat(timezone.countries)
-      .concat(timezone.countries);
-  }
   return countryArr;
 };
 

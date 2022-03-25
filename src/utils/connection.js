@@ -16,64 +16,64 @@ const getConnection = (connectionData) => {
     {
       key: 'IP address',
       value: connectionData.query,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'Country',
       value: connectionData.country,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'Region',
       value: connectionData.regionName,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'City',
       value: connectionData.city,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'Time zone',
       value: connectionData.timezone,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'Zip code',
       value: connectionData.zip,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'Latitude',
       value: connectionData.lat,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'Longitude',
       value: connectionData.lon,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'ISP',
       value: connectionData.isp,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'Org',
       value: connectionData.org,
-      issues: [isProxy],
+      issues: isProxy,
     },
     {
       key: 'ASN',
       value: connectionData.as,
-      issues: [isProxy],
+      issues: isProxy,
     },
   ];
 };
 
 const checkProxy = (proxy) => {
   if (proxy) {
-    return 'VPN/proxy has been detected';
+    return ['VPN/proxy has been detected'];
   }
-  return null;
+  return [];
 };
