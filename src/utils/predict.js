@@ -134,50 +134,33 @@ const checkWebRTC = (webRTCData) => {
 // };
 
 const ct = require('countries-and-timezones');
-const cl = require('country-language');
+// const cl = require('country-language');
 
 const checkCountry = (data) => {
-  const countryArr = checkLanguages(data);
-  console.log(checkLocale(data.locale));
-  console.log(checkTimezone(data.timeZone));
-  console.log(checkTimezoneOffset(data.timezoneOffset));
+  const countryArr =
+    checkLocale(data.locale).concat(checkTimezone(data.timeZone), checkLanguages(data));
 
-  // countryArr.concat(checkTimezone(data.timezone));
+  const countryObj = handleCountryArr(countryArr);
 
-  // countryArr.concat(checkTimezone(timezone), checkLocale(data.locale));
+  const topCountry =
+  Object.keys(countryObj).reduce((a, b) => (countryObj[a] > countryObj[b] ? a : b));
 
-  // const countryObj = handleCountryArr(countryArr);
-  // // Use the keys of the object to get all the values of the array
-  // // and sort those keys by their counts
-  // const sorted = Object.keys(countryObj).sort(
-  //   (a, b) => countryObj[b] - countryObj[a]
-  // );
-
-  // console.log(countryArr);
-
-  // const percent = countryArr.filter((x) => x === sorted[0]).length * 14;
-
-  // return {
-  //   value: sorted[0],
-  //   percent: percent > 90 ? 90 : percent,
-  // };
-  return false;
+  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+  return regionNames.of(topCountry);
 };
 
 // Get country from locale
 const checkLocale = (locale) => {
   const IntlLocale = new Intl.Locale(locale);
-  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-  return regionNames.of(IntlLocale.region);
+  // const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+  return [IntlLocale.region];
 };
-
-const langNames = new Intl.DisplayNames(['en'], { type: 'language' });
-console.log(langNames.of('en'));
 
 // Get countries of timezone
 const checkTimezone = (timeZone) => {
   if (timeZone) {
-    return ct.getTimezone(timeZone).countries;
+    const countryArr = ct.getTimezone(timeZone).countries;
+    return countryArr.concat(countryArr);
   }
   return [];
 };
@@ -189,22 +172,12 @@ const checkLanguages = (data) => {
     if (language.length > 2) {
       countryArr.push(language.slice(-2));
     }
-    // loop thru countries found in system data timezone
-    cl.getLanguageCountries(language.slice(0, 2), (err, languages) => {
-      if (err) {
-        // console.log(err);
-      } else {
-        languages.forEach((languageCodes) => {
-          countryArr.push(languageCodes.code_2);
-        });
-      }
-    });
   });
 
   // Checks if main language has country code
-  if (data.language.length > 2) {
-    countryArr.push(data.language.slice(-2));
-  }
+  // if (data.language.length > 2) {
+  //   countryArr.push(data.language.slice(-2));
+  // }
 
   return countryArr;
 };
