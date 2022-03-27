@@ -16,7 +16,7 @@ const TorBlock = ({ isTor }) => (
       </table>
     </div>
     <p>
-      Tor Browser is a web broswer that hides your location info,
+      Tor Browser is a web browser that hides your location info,
       causing the location prediction to be inaccurate.
     </p>
   </Block>
