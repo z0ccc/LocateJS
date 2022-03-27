@@ -1,9 +1,6 @@
 /* eslint-disable no-unused-vars */
 export { getMap, getPrediction };
-
-// const sortData = (initialData, delayedData, frameData, workerData) => {
-
-// };
+const ct = require('countries-and-timezones');
 
 const getPrediction = (
   initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
@@ -92,9 +89,7 @@ const getPrediction = (
   const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
   country = regionNames.of(country);
 
-  console.log(country, countryPercent, city, cityPercent);
-
-  return false;
+  return { country, countryPercent, city, cityPercent };
 };
 
 const checkWebRTC = (webRTCData) => {
@@ -115,48 +110,6 @@ const checkWebRTC = (webRTCData) => {
   if (localIP) return localIP;
   return null;
 };
-
-// // if connection timezone equals system data timezone
-// if (connectionData && !connectionData.proxy) {
-//   country = connectionData.country;
-//   city = connectionData.city;
-//   if (connectionData.timezone === workerData.timeZone) {
-//     countryPercent =s 90;
-//     cityPercent = 90;
-//   } else {
-//     countryPercent = 80;
-//     cityPercent = 60;s
-//   }
-// } else {
-//   try {
-//     regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-//   } catch (e) {
-//     regionNames = null;
-//   }
-
-//   const countryObj = checkCountry(workerData);
-//   const cityObj = checkCity(workerData, countryObj.value);
-//   country = regionNames ? regionNames.of(countryObj.value) : countryObj.value;
-//   countryPercent = countryObj.percent;
-//   city = cityObj.value;
-//   cityPercent = cityObj.percent;
-// }
-// return [
-//   {
-//     key: 'Country',
-//     value: country,
-//     percent: countryPercent,
-//   },
-//   {
-//     key: 'Closest city',
-//     value: city,
-//     percent: cityPercent,
-//   },
-// ];
-// };
-
-const ct = require('countries-and-timezones');
-// const cl = require('country-language');
 
 const checkCountry = (data) => {
   const countryArr =
