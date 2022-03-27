@@ -1,19 +1,6 @@
 /* eslint-disable no-unused-vars */
 export { getMap, getPrediction };
 
-function DataGroup(type, initial, delayed, frame, worker) {
-  this.initial = initial;
-  this.delayed = delayed;
-  this.frame = frame;
-  this.worker = worker;
-}
-
-function DataItem(type, value, issues) {
-  this.type = type;
-  this.value = value;
-  this.issues = issues;
-}
-
 // const sortData = (initialData, delayedData, frameData, workerData) => {
 
 // };
@@ -21,7 +8,7 @@ function DataItem(type, value, issues) {
 const getPrediction = (
   initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
 ) => {
-  let country, countryPercent, city, cityPercent, regionNames;
+  let country, countryPercent, city, cityPercent, timeZone;
 
   const getAccurateData = (type) => {
     if (window.Worker.length && !workerData[type].issues.length) return workerData[type].value;
@@ -42,7 +29,9 @@ const getPrediction = (
 
   const webRTCIP = checkWebRTC(webRTCData);
 
-  console.log(checkCountry(accurateData));
+  const systemCountry = checkCountry(accurateData);
+
+  const systemCity = checkCity(accurateData.timeZone, country);
 
   if (isTor === 'True') return false;
 
@@ -55,20 +44,53 @@ const getPrediction = (
         countryPercent = 80;
         cityPercent = 80;
       }
-      country = webRTCIP.country;
+      country = webRTCIP.countryCode;
       city = webRTCIP.city;
+      timeZone = webRTCIP.timeZone;
     } else {
-      country = connectionData.country;
+      country = connectionData.countryCode;
       city = connectionData.city;
+      timeZone = connectionData.timeZone;
+
       countryPercent = 80;
       cityPercent = 80;
     }
   } else if (webRTCIP && !webRTCIP.proxy) {
     countryPercent = 85;
     cityPercent = 85;
-    country = webRTCIP.country;
+    country = webRTCIP.countryCode;
     city = webRTCIP.city;
+    timeZone = webRTCIP.timeZone;
   }
+
+  if (country && systemCountry === country) {
+    countryPercent = 95;
+  } else if (country && systemCountry !== country) {
+    countryPercent -= 40;
+  } else {
+    countryPercent = 40;
+    country = systemCountry;
+  }
+
+  if (city && systemCity === city) {
+    cityPercent = 95;
+  } else if (city && systemCity !== city) {
+    cityPercent -= 20;
+  } else {
+    cityPercent = 20;
+    city = systemCity;
+  }
+
+  if (timeZone && timeZone !== accurateData.timeZone) {
+    countryPercent -= 20;
+  }
+
+  if (cityPercent > countryPercent) {
+    cityPercent = countryPercent - 5;
+  }
+
+  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+  country = regionNames.of(country);
 
   console.log(country, countryPercent, city, cityPercent);
 
@@ -142,11 +164,12 @@ const checkCountry = (data) => {
 
   const countryObj = handleCountryArr(countryArr);
 
+  console.log(countryObj);
+
   const topCountry =
   Object.keys(countryObj).reduce((a, b) => (countryObj[a] > countryObj[b] ? a : b));
 
-  const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-  return regionNames.of(topCountry);
+  return topCountry;
 };
 
 // Get country from locale
@@ -160,7 +183,7 @@ const checkLocale = (locale) => {
 const checkTimezone = (timeZone) => {
   if (timeZone) {
     const countryArr = ct.getTimezone(timeZone).countries;
-    return countryArr.concat(countryArr);
+    return countryArr.concat(countryArr, countryArr);
   }
   return [];
 };
@@ -190,28 +213,23 @@ const handleCountryArr = (countryArr) =>
     return obj;
   }, {});
 
-const checkCity = (workerData, country) => {
-  const timezone = ct.getTimezone(workerData.timeZone);
+const checkCity = (timeZone, country) => {
+  console.log(timeZone);
+  console.log(country);
+
   let city = null;
-  let percent = 0;
 
   // Check if timezone contains city info
   if (
-    workerData.timeZone.includes('/') &&
-    workerData.timeZone.match(/universal|GMT|UCT|UTC/g) === null &&
-    !/\d/.test(workerData.timeZone)
+    timeZone.includes('/') &&
+    timeZone.match(/universal|GMT|UCT|UTC/g) === null &&
+    !/\d/.test(timeZone)
   ) {
-    // Check if city is in country
-    if (timezone && timezone.countries.includes(country)) {
-      city = workerData.timeZone.split('/');
-      city = city[city.length - 1].replace('_', ' ');
-      percent = 30;
-    }
+    city = timeZone.split('/');
+    city = city[city.length - 1].replace('_', ' ');
   }
-  return {
-    value: city,
-    percent,
-  };
+
+  return city;
 };
 
 // Return url for static map imgage
