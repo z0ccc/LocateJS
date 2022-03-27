@@ -16,8 +16,8 @@ const TorBlock = ({ isTor }) => (
       </table>
     </div>
     <p>
-      <b>Explanation:</b> Date and language data can be used to identify your
-      location. Changing the settings on your computer can prevent this.
+      Tor Browser is a web broswer that hides your location info,
+      causing the location prediction to be inaccurate.
     </p>
   </Block>
 );

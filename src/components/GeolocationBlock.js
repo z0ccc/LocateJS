@@ -8,7 +8,7 @@ const GeolocationBlock = () => {
   const [buttonValue, setbuttonValue] = useState('Allow Geolocation API');
   return (
     <Block>
-      <h1>HTML5 Geolocation API</h1>
+      <h1>HTML Geolocation API</h1>
       {geolocationData ? (
         <>
           {typeof geolocationData === 'string' ? (
@@ -49,8 +49,9 @@ const GeolocationBlock = () => {
         />
       )}
       <p>
-        <b>Explanation:</b> Date and language data can be used to identify your
-        location. Changing the settings on your computer can prevent this.
+        HTML Geolocation API is used to get the geographical position of a user.
+        Since this can compromise privacy, its not available unless the user
+        approves it.
       </p>
     </Block>
   );

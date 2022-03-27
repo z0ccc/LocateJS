@@ -32,8 +32,8 @@ const WebRTCBlock = ({ data }) => (
       )}
 
     <p>
-      <b>Explanation:</b> Date and language data can be used to identify your
-      location. Changing the settings on your computer can prevent this.
+      WebRTC leaks are a vulnerability that can expose your real IP address.
+      Using a quality VPN or blocking WebRTC will stop the leaks.
     </p>
   </Block>
 );

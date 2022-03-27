@@ -20,7 +20,7 @@ const DataBlock = ({ title, type }) => {
         </table>
       </div>
       <p>
-        <b>Explanation:</b> Date and language data can be used to identify your
+        Date and language data can be used to identify your
         location. Changing the settings on your computer can prevent this.
       </p>
     </Block>
