@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export { getMap, getPrediction };
 const ct = require('countries-and-timezones');
 
@@ -29,8 +28,6 @@ const getPrediction = (
   const systemCountry = checkCountry(accurateData);
 
   const systemCity = checkCity(accurateData.timeZone, country);
-
-  if (isTor === 'True') return false;
 
   if (!connectionData.proxy) {
     if (webRTCIP && !webRTCIP.proxy) {
@@ -84,6 +81,11 @@ const getPrediction = (
 
   if (cityPercent > countryPercent) {
     cityPercent = countryPercent - 5;
+  }
+
+  if (isTor === 'True') {
+    countryPercent = 5;
+    cityPercent = 5;
   }
 
   const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -164,7 +166,7 @@ const handleCountryArr = (countryArr) =>
     return obj;
   }, {});
 
-const checkCity = (timeZone, country) => {
+const checkCity = (timeZone) => {
   let city = null;
 
   // Check if timezone contains city info
@@ -180,7 +182,7 @@ const checkCity = (timeZone, country) => {
   return city;
 };
 
-// Return url for static map imgage
+// Return url for static map image
 const getMap = (prediction) => {
   let location, zoom;
   if (!prediction.city) {
