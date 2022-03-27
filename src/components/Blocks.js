@@ -2,7 +2,6 @@
 import './Blocks.css';
 import { useState, useEffect } from 'react';
 import DataContext from './Context';
-import NoteBlock from './NoteBlock';
 import PredictionBlock from './PredictionBlock';
 import ConnectionBlock from './ConnectionBlock';
 import DataBlock from './DataBlock';
@@ -102,7 +101,6 @@ const Blocks = () => {
 
           </div>
           <div className="centerBlockInner">
-            <NoteBlock />
             <ConnectionBlock />
             <DataBlock
               title="new Date().toString()"

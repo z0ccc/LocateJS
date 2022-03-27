@@ -44,8 +44,18 @@ const PredictionBlock = () => {
         </table>
       </div>
       <p>
-        <b>Explanation:</b> Your connection and system data can be combined and
-        analyzed to reveal your location.
+        Accuracy of the location prediction is dependant on how much
+        authentic info you&apos;re exposing. To learn about how to hide your location visit the{' '}
+        <a
+          className="link"
+          target="_blank"
+          rel="noreferrer"
+          alt="Link to GitHub repo"
+          href="https://github.com/z0ccc/LocateJS#locatejs"
+        >
+          GitHub repo
+        </a>
+        .
       </p>
     </Block>
   );
