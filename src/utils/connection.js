@@ -11,7 +11,7 @@ const fetchAPI = (setData) => {
 
 // Returns object with connection data
 const getConnection = (connectionData) => {
-  const isProxy = checkProxy(connectionData.proxy);
+  const isProxy = checkProxy(connectionData);
   return [
     {
       key: 'IP address',
@@ -36,11 +36,6 @@ const getConnection = (connectionData) => {
     {
       key: 'Time zone',
       value: connectionData.timezone,
-      issues: isProxy,
-    },
-    {
-      key: 'Zip code',
-      value: connectionData.zip,
       issues: isProxy,
     },
     {
@@ -71,9 +66,22 @@ const getConnection = (connectionData) => {
   ];
 };
 
-const checkProxy = (proxy) => {
-  if (proxy) {
-    return ['VPN/proxy has been detected'];
+const checkProxy = (data) => {
+  const issues = [];
+  if (data.security.proxy) {
+    issues.push('VPN has been detected');
   }
-  return [];
+  if (data.security.proxy) {
+    issues.push('Proxy has been detected');
+  }
+  if (data.security.tor) {
+    issues.push('TOR node has been detected');
+  }
+  if (data.security.relay) {
+    issues.push('Relay has been detected');
+  }
+  if (issues.length === 0 && data.proxy) {
+    issues.push('VPN/proxy has been detected');
+  }
+  return issues;
 };
