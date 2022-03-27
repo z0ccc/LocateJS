@@ -1,8 +1,8 @@
-const PredictionTableRow = ({ item }) => (
+const PredictionTableRow = ({ title, value, percent }) => (
   <tr>
-    <td>{item.key}</td>
-    <td>{item.value || 'N/A'}</td>
-    <td>{item.percent}%</td>
+    <td>{title}</td>
+    <td>{value || 'N/A'}</td>
+    <td>{percent}%</td>
   </tr>
 );
 

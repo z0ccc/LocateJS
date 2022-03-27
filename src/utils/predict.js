@@ -117,8 +117,6 @@ const checkCountry = (data) => {
 
   const countryObj = handleCountryArr(countryArr);
 
-  console.log(countryObj);
-
   const topCountry =
   Object.keys(countryObj).reduce((a, b) => (countryObj[a] > countryObj[b] ? a : b));
 
@@ -167,9 +165,6 @@ const handleCountryArr = (countryArr) =>
   }, {});
 
 const checkCity = (timeZone, country) => {
-  console.log(timeZone);
-  console.log(country);
-
   let city = null;
 
   // Check if timezone contains city info
@@ -186,13 +181,13 @@ const checkCity = (timeZone, country) => {
 };
 
 // Return url for static map imgage
-const getMap = (data) => {
+const getMap = (prediction) => {
   let location, zoom;
-  if (data[1].value === null) {
-    location = data[0].value;
+  if (!prediction.city) {
+    location = prediction.country;
     zoom = 3;
   } else {
-    location = `${data[1].value},${data[0].value}`;
+    location = `${prediction.city},${prediction.country}`;
     zoom = 7;
   }
   return `https://maps.googleapis.com/maps/api/staticmap?center=0,${location}&markers=color:red%7Clabel:%7C${location}&size=460x185&zoom=${zoom}&key=AIzaSyB-YN-X8PGBSPd7NOaQu4csVhgJUnF3ZGk`;

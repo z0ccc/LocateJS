@@ -3,13 +3,13 @@ import './PredictionBlock.css';
 import { useState, useContext } from 'react';
 import DataContext from './Context';
 import Block from './Block';
-import PredictionTable from './PredictionTable';
 import { getMap, getPrediction } from '../utils/predict';
-import TableRow from './TableRow';
+import PredictionTableRow from './PredictionTableRow';
 
 const PredictionBlock = () => {
   const { initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor } =
     useContext(DataContext);
+
   const prediction =
   getPrediction(initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor);
   // const [data, setData] = useState(getPrediction(connectionData, workerData));
@@ -30,20 +30,19 @@ const PredictionBlock = () => {
         />
         Only use system data for prediction
       </label> */}
-      {/* <img
+      <img
         className="mapImg"
-        src={getMap(data)}
-        alt="Map of current location"
-      /> */}
+        src={getMap(prediction)}
+        alt="Map of location prediction"
+      />
       <div className="tableWrap">
         <table>
           <tbody>
-            <TableRow title="Country" value={prediction.country} issues={[]} />
-            <TableRow title="Closest city" value={prediction.city} issues={[]} />
+            <PredictionTableRow title="Country" value={prediction.country} percent={prediction.countryPercent} />
+            <PredictionTableRow title="Closest city" value={prediction.city} percent={prediction.cityPercent} />
           </tbody>
         </table>
       </div>
-      {/* <PredictionTable prediction={prediction} /> */}
       <p>
         <b>Explanation:</b> Your connection and system data can be combined and
         analyzed to reveal your location.
