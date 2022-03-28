@@ -117,6 +117,41 @@ const Blocks = () => {
             <TorBlock isTor={isTor} />
             <GeolocationBlock />
           </div>
+          <div className="centerBlockMobile">
+            <PredictionBlock />
+            <ConnectionBlock />
+            <WebRTCBlock data={webRTCData} />
+            <DataBlock
+              title="Intl.DateTimeFormat().resolvedOptions().timeZone"
+              type="timeZone"
+            />
+            <DataBlock
+              title="Intl.DateTimeFormat().resolvedOptions().locale"
+              type="locale"
+            />
+            <DataBlock
+              title="navigator.language"
+              type="language"
+            />
+            <DataBlock
+              title="navigator.languages"
+              type="languages"
+            />
+            <DataBlock
+              title="new Date().toString()"
+              type="dateString"
+            />
+            <DataBlock
+              title="new Date().toLocaleString()"
+              type="dateLocale"
+            />
+            <DataBlock
+              title="new Date().getTimezoneOffset()"
+              type="timezoneOffset"
+            />
+            <TorBlock isTor={isTor} />
+            <GeolocationBlock />
+          </div>
         </DataContext.Provider>
 
       ) : (

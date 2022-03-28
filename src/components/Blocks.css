@@ -9,9 +9,15 @@
   min-width: 500px;
 }
 
-@media screen and (max-width: 500px) {
+.loadBlock {
+  margin: 0 12px 12px 12px !important;
+}
+
+@media screen and (max-width: 575px) {
   .contentBlock {
     padding: 18px;
-    margin: 0 0 18px 0;
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 12px 0;
   }
 }

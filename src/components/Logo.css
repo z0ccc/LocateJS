@@ -9,9 +9,9 @@
   margin: 24px 0;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 575px) {
   .logo {
     width: 160px;
-    margin: 0 0 8px 0;
+    margin: 18px 0;
   }
 }
