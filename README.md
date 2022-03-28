@@ -1,6 +1,6 @@
 # LocateJS
 
-Check it out here: [https://z0ccc.github.io/LocateJS/](https://z0ccc.github.io/LocateJS/).
+Check it out here: [https://locatejs.com/](https://locatejs.com/).
 
 ## About
 
