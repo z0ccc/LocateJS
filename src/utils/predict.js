@@ -83,7 +83,7 @@ const getPrediction = (
     cityPercent = countryPercent - 5;
   }
 
-  if (isTor === 'True') {
+  if (isTor) {
     countryPercent = 5;
     cityPercent = 5;
   }

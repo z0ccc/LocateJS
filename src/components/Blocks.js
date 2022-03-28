@@ -89,7 +89,7 @@ const Blocks = () => {
       {connectionData && frameData && workerData && webRTCData ? (
         <DataContext.Provider
           value={{
-            initialData, delayedData, frameData, workerData, connectionData, webRTCData
+            initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
           }}
         >
           <div className="centerBlockInner">
