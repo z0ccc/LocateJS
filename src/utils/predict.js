@@ -88,6 +88,8 @@ const getPrediction = (
     cityPercent = 5;
   }
 
+  if (!city) cityPercent = 0;
+
   const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
   country = regionNames.of(country);
 
