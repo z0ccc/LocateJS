@@ -25,6 +25,12 @@ body {
   width: 100%;
   height: 100%;
   background: var(--main);
+  background: linear-gradient(
+    165deg,
+    rgba(87, 35, 117, 1) 0%,
+    rgba(148, 62, 197, 1) 40%,
+    rgba(169, 100, 208, 1) 100%
+  );
   z-index: -1;
 }
 
