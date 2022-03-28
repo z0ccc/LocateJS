@@ -20,23 +20,37 @@ const getWebWorker = () => {
   return w;
 };
 
-const detectTor = (setIsTor) => {
-  if (window.chrome) {
-    setIsTor('False');
-  } else {
-    const css = document.createElement('link');
-    css.href = 'resource://torbutton-assets/aboutTor.css';
-    css.type = 'text/css';
-    css.rel = 'stylesheet';
-    document.head.appendChild(css);
-    css.onload = () => {
-      setIsTor('True');
-    };
-    css.onerror = () => {
-      setIsTor('False');
-    };
-    document.head.removeChild(css);
+// breaks safari
+// const detectTor = (setIsTor) => {
+//   if (window.chrome) {
+//     setIsTor('False');
+//   } else {
+//     const css = document.createElement('link');
+//     css.href = 'resource://torbutton-assets/aboutTor.css';
+//     css.type = 'text/css';
+//     css.rel = 'stylesheet';
+//     document.head.appendChild(css);
+//     css.onload = () => {
+//       setIsTor('True');
+//     };
+//     css.onerror = () => {
+//       setIsTor('False');
+//     };
+//     document.head.removeChild(css);
+//   }
+// };
+
+const detectTor = () => {
+  const date = new Date();
+  if (
+    navigator.plugins.length === 0 &&
+    date.getTimezoneOffset() === 0 &&
+    window.outerWidth === window.screen.availWidth &&
+    window.outerHeight === window.screen.availHeight
+  ) {
+    return true;
   }
+  return false;
 };
 
 const Blocks = () => {
@@ -44,7 +58,6 @@ const Blocks = () => {
   const [frameData, setFrameData] = useState();
   const [connectionData, setConnectionData] = useState('');
   const [webRTCData, setWebRTCData] = useState();
-  const [isTor, setIsTor] = useState();
   // eslint-disable-next-line no-undef
   const initialData = initialDataObj;
 
@@ -67,9 +80,9 @@ const Blocks = () => {
     } else {
       setWorkerData(true);
     }
-
-    // detectTor(setIsTor);
   }, []);
+
+  const isTor = detectTor();
 
   return (
     <>
@@ -114,7 +127,7 @@ const Blocks = () => {
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
             />
-            {/* <TorBlock isTor={isTor} /> */}
+            <TorBlock isTor={isTor} />
             <GeolocationBlock />
           </div>
           <div className="centerBlockMobile">
@@ -149,7 +162,7 @@ const Blocks = () => {
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
             />
-            {/* <TorBlock isTor={isTor} /> */}
+            <TorBlock isTor={isTor} />
             <GeolocationBlock />
           </div>
         </DataContext.Provider>

@@ -9,7 +9,7 @@ const TorBlock = ({ isTor }) => (
         <tbody>
           <TableRow
             title="Detected"
-            value={isTor}
+            value={isTor ? 'True' : 'False'}
             issues={[]}
           />
         </tbody>
