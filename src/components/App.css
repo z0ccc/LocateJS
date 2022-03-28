@@ -89,12 +89,6 @@ ul {
   margin: 0px;
 }
 
-h2 {
-  margin: 0 0 4px 0;
-  font-weight: 600;
-  font-size: 17px;
-}
-
 .link {
   color: var(--link);
   text-decoration: none;
@@ -150,11 +144,6 @@ input[type="checkbox"] {
   }
 
   h1 {
-    font-size: 15px;
-  }
-
-  h2 {
-    margin: 0 0 3px 0;
     font-size: 15px;
   }
 
