@@ -1,11 +1,5 @@
 const getWebRTC = (setWebRTCData) => {
-  const isWebRTCSupported = navigator.getUserMedia ||
-  navigator.webkitGetUserMedia ||
-  navigator.mozGetUserMedia ||
-  navigator.msGetUserMedia ||
-  window.RTCPeerConnection;
-
-  if (isWebRTCSupported) {
+  if (navigator.getUserMedia) {
     const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/;
 
     // compatibility for firefox and chrome

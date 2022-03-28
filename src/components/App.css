@@ -1,12 +1,12 @@
 :root {
-  --main: #943fc5;
+  --main: #943ec5;
   --text: rgb(0, 0, 0, 0.8);
   --border: #ddd;
   --grey: #c4c4c4;
   --issueBackground: #f8d7da;
   --issueText: #721c24;
   --fill: #9fa6b2;
-  --link: #943fc5;
+  --link: #943ec5;
 }
 
 body {
@@ -24,7 +24,7 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #943ec5;
+  background: var(--main);
   z-index: -1;
 }
 
