@@ -1,3 +1,4 @@
+<script>
 const checkDatePrototype = () => {
   if (!Date.prototype.setDate.toString().includes('[native code]')) {
     return 'Failed Date.prototype.setDate.toString()';
@@ -26,9 +27,19 @@ const checkNavigatorProperties = (key) => {
   return null;
 };
 
+const checkNavigatorValue = (key) => {
+  if (
+    Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
+  undefined
+  ) {
+    return 'Failed object.getOwnPropertyDescriptor(Navigator.prototype, key).value';
+  }
+  return null;
+};
+
 const checkNavigatorPrototype = (key) => {
   try {
-  // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars
     const check = Navigator.prototype[key];
     return 'Failed Navigator.prototype[key]';
   } catch (err) {
@@ -38,6 +49,7 @@ const checkNavigatorPrototype = (key) => {
 
 const getNavigatorValue = (type) =>
   [checkNavigatorProperties(type),
+    checkNavigatorValue(type),
     checkNavigatorPrototype(type)].filter(Boolean);
 
 const data = {
@@ -71,4 +83,6 @@ const data = {
   },
 };
 
-postMessage(data);
+parent.postMessage(data, '*');
+
+</script>

@@ -1,27 +1,24 @@
 {
   "files": {
-    "main.css": "/LocateJS/static/css/main.f1977309.chunk.css",
-    "main.js": "/LocateJS/static/js/main.0141725b.chunk.js",
-    "main.js.map": "/LocateJS/static/js/main.0141725b.chunk.js.map",
-    "runtime-main.js": "/LocateJS/static/js/runtime-main.9e1d6452.js",
-    "runtime-main.js.map": "/LocateJS/static/js/runtime-main.9e1d6452.js.map",
-    "static/js/2.4fa5a1c5.chunk.js": "/LocateJS/static/js/2.4fa5a1c5.chunk.js",
-    "static/js/2.4fa5a1c5.chunk.js.map": "/LocateJS/static/js/2.4fa5a1c5.chunk.js.map",
+    "main.css": "/LocateJS/static/css/main.0b2f22b5.chunk.css",
+    "main.js": "/LocateJS/static/js/main.17b7e2d7.chunk.js",
+    "main.js.map": "/LocateJS/static/js/main.17b7e2d7.chunk.js.map",
+    "runtime-main.js": "/LocateJS/static/js/runtime-main.2bfd0df6.js",
+    "runtime-main.js.map": "/LocateJS/static/js/runtime-main.2bfd0df6.js.map",
+    "static/js/2.af8bb138.chunk.js": "/LocateJS/static/js/2.af8bb138.chunk.js",
+    "static/js/2.af8bb138.chunk.js.map": "/LocateJS/static/js/2.af8bb138.chunk.js.map",
     "index.html": "/LocateJS/index.html",
-    "static/css/main.f1977309.chunk.css.map": "/LocateJS/static/css/main.f1977309.chunk.css.map",
-    "static/js/2.4fa5a1c5.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.4fa5a1c5.chunk.js.LICENSE.txt",
+    "static/css/main.0b2f22b5.chunk.css.map": "/LocateJS/static/css/main.0b2f22b5.chunk.css.map",
+    "static/js/2.af8bb138.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.af8bb138.chunk.js.LICENSE.txt",
     "static/media/checkCircle.d97551f1.svg": "/LocateJS/static/media/checkCircle.d97551f1.svg",
-    "static/media/connection.323a224d.svg": "/LocateJS/static/media/connection.323a224d.svg",
     "static/media/logo.1777930c.svg": "/LocateJS/static/media/logo.1777930c.svg",
-    "static/media/predict.bce80a8c.svg": "/LocateJS/static/media/predict.bce80a8c.svg",
-    "static/media/system.f9298e72.svg": "/LocateJS/static/media/system.f9298e72.svg",
     "static/media/x.32a6a29f.svg": "/LocateJS/static/media/x.32a6a29f.svg",
     "static/media/xCircle.c07e1f04.svg": "/LocateJS/static/media/xCircle.c07e1f04.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9e1d6452.js",
-    "static/js/2.4fa5a1c5.chunk.js",
-    "static/css/main.f1977309.chunk.css",
-    "static/js/main.0141725b.chunk.js"
+    "static/js/runtime-main.2bfd0df6.js",
+    "static/js/2.af8bb138.chunk.js",
+    "static/css/main.0b2f22b5.chunk.css",
+    "static/js/main.17b7e2d7.chunk.js"
   ]
 }
