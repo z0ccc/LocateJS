@@ -69,9 +69,8 @@ const Blocks = () => {
     }
 
     // detectTor(setIsTor);
-    console.log(connectionData, frameData, workerData, webRTCData);
   }, []);
-  console.log(connectionData, frameData, workerData, webRTCData);
+
   return (
     <>
       {connectionData && frameData && workerData && webRTCData ? (
