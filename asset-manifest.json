@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/LocateJS/static/css/main.0b2f22b5.chunk.css",
-    "main.js": "/LocateJS/static/js/main.17b7e2d7.chunk.js",
-    "main.js.map": "/LocateJS/static/js/main.17b7e2d7.chunk.js.map",
-    "runtime-main.js": "/LocateJS/static/js/runtime-main.2bfd0df6.js",
-    "runtime-main.js.map": "/LocateJS/static/js/runtime-main.2bfd0df6.js.map",
-    "static/js/2.af8bb138.chunk.js": "/LocateJS/static/js/2.af8bb138.chunk.js",
-    "static/js/2.af8bb138.chunk.js.map": "/LocateJS/static/js/2.af8bb138.chunk.js.map",
-    "index.html": "/LocateJS/index.html",
-    "static/css/main.0b2f22b5.chunk.css.map": "/LocateJS/static/css/main.0b2f22b5.chunk.css.map",
-    "static/js/2.af8bb138.chunk.js.LICENSE.txt": "/LocateJS/static/js/2.af8bb138.chunk.js.LICENSE.txt",
-    "static/media/checkCircle.d97551f1.svg": "/LocateJS/static/media/checkCircle.d97551f1.svg",
-    "static/media/logo.1777930c.svg": "/LocateJS/static/media/logo.1777930c.svg",
-    "static/media/x.32a6a29f.svg": "/LocateJS/static/media/x.32a6a29f.svg",
-    "static/media/xCircle.c07e1f04.svg": "/LocateJS/static/media/xCircle.c07e1f04.svg"
+    "main.css": "/static/css/main.0b2f22b5.chunk.css",
+    "main.js": "/static/js/main.17b7e2d7.chunk.js",
+    "main.js.map": "/static/js/main.17b7e2d7.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d48aad82.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d48aad82.js.map",
+    "static/js/2.af8bb138.chunk.js": "/static/js/2.af8bb138.chunk.js",
+    "static/js/2.af8bb138.chunk.js.map": "/static/js/2.af8bb138.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.0b2f22b5.chunk.css.map": "/static/css/main.0b2f22b5.chunk.css.map",
+    "static/js/2.af8bb138.chunk.js.LICENSE.txt": "/static/js/2.af8bb138.chunk.js.LICENSE.txt",
+    "static/media/checkCircle.d97551f1.svg": "/static/media/checkCircle.d97551f1.svg",
+    "static/media/logo.1777930c.svg": "/static/media/logo.1777930c.svg",
+    "static/media/x.32a6a29f.svg": "/static/media/x.32a6a29f.svg",
+    "static/media/xCircle.c07e1f04.svg": "/static/media/xCircle.c07e1f04.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2bfd0df6.js",
+    "static/js/runtime-main.d48aad82.js",
     "static/js/2.af8bb138.chunk.js",
     "static/css/main.0b2f22b5.chunk.css",
     "static/js/main.17b7e2d7.chunk.js"
