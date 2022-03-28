@@ -15,7 +15,7 @@ import delayedData from '../utils/data';
 const getWebWorker = () => {
   let w;
   if (typeof w === 'undefined') {
-    w = new Worker('/LocateJS/worker.js');
+    w = new Worker('/worker.js');
   }
   return w;
 };
@@ -52,7 +52,7 @@ const Blocks = () => {
     const frame = document.createElement('iframe');
     document.body.appendChild(frame);
     frame.style.display = 'none';
-    frame.src = '/LocateJS/frame.html';
+    frame.src = '/frame.html';
     const receiveMessage = (event) => setFrameData(event.data);
     window.addEventListener('message', receiveMessage, false);
 
