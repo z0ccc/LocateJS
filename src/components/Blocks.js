@@ -68,15 +68,15 @@ const Blocks = () => {
       setWorkerData(true);
     }
 
-    detectTor(setIsTor);
+    // detectTor(setIsTor);
   }, []);
 
   return (
     <>
-      {connectionData && frameData && workerData && webRTCData && isTor ? (
+      {connectionData && frameData && workerData && webRTCData ? (
         <DataContext.Provider
           value={{
-            initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
+            initialData, delayedData, frameData, workerData, connectionData, webRTCData
           }}
         >
           <div className="centerBlockInner">
@@ -114,7 +114,7 @@ const Blocks = () => {
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
             />
-            <TorBlock isTor={isTor} />
+            {/* <TorBlock isTor={isTor} /> */}
             <GeolocationBlock />
           </div>
           <div className="centerBlockMobile">
@@ -149,7 +149,7 @@ const Blocks = () => {
               title="new Date().getTimezoneOffset()"
               type="timezoneOffset"
             />
-            <TorBlock isTor={isTor} />
+            {/* <TorBlock isTor={isTor} /> */}
             <GeolocationBlock />
           </div>
         </DataContext.Provider>
