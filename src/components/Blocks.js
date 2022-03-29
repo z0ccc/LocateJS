@@ -66,7 +66,11 @@ const Blocks = () => {
     document.body.appendChild(frame);
     frame.style.display = 'none';
     frame.src = '/frame.html';
-    const receiveMessage = (event) => setFrameData(event.data);
+    const receiveMessage = (event) => {
+      if (event.data.type === 'frameData') {
+        setFrameData(event.data.data);
+      }
+    };
     window.addEventListener('message', receiveMessage, false);
 
     fetchAPI(setConnectionData);
