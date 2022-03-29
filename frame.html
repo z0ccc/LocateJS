@@ -55,34 +55,37 @@ const getNavigatorValue = (type) =>
     checkNavigatorPrototype(type)].filter(Boolean);
 
 const data = {
-  locale: {
-    value: Intl.DateTimeFormat().resolvedOptions().locale,
-    issues: [checkIntlPrototype(), checkIntlConstructor()].filter(Boolean)
-  },
-  timeZone: {
-    value: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    issues: [checkIntlPrototype(), checkIntlConstructor()].filter(Boolean)
-  },
-  timezoneOffset: {
-    value: new Date().getTimezoneOffset(),
-    issues: [checkDatePrototype()].filter(Boolean),
-  },
-  dateString: {
-    value: new Date().toString(),
-    issues: [checkDatePrototype()].filter(Boolean)
-  },
-  dateLocale: {
-    value: new Date().toLocaleString(),
-    issues: [checkDatePrototype()].filter(Boolean),
-  },
-  language: {
-    value: navigator.language,
-    issues: getNavigatorValue('language'),
-  },
-  languages: {
-    value: navigator.languages,
-    issues: getNavigatorValue('languages'),
-  },
+  type: 'frameData',
+  data: {
+    locale: {
+      value: Intl.DateTimeFormat().resolvedOptions().locale,
+      issues: [checkIntlPrototype(), checkIntlConstructor()].filter(Boolean)
+    },
+    timeZone: {
+      value: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      issues: [checkIntlPrototype(), checkIntlConstructor()].filter(Boolean)
+    },
+    timezoneOffset: {
+      value: new Date().getTimezoneOffset(),
+      issues: [checkDatePrototype()].filter(Boolean),
+    },
+    dateString: {
+      value: new Date().toString(),
+      issues: [checkDatePrototype()].filter(Boolean)
+    },
+    dateLocale: {
+      value: new Date().toLocaleString(),
+      issues: [checkDatePrototype()].filter(Boolean),
+    },
+    language: {
+      value: navigator.language,
+      issues: getNavigatorValue('language'),
+    },
+    languages: {
+      value: navigator.languages,
+      issues: getNavigatorValue('languages'),
+    },
+  }
 };
 
 parent.postMessage(data, '*');
