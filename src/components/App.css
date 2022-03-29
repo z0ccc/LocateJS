@@ -3,6 +3,7 @@
   --text: rgb(0, 0, 0, 0.8);
   --border: #ddd;
   --grey: #c4c4c4;
+  --lightGrey: #eaeaea;
   --issueBackground: #f8d7da;
   --issueText: #721c24;
   --fill: #9fa6b2;
@@ -161,11 +162,5 @@ input[type="checkbox"] {
 
   td:first-child {
     width: 70px;
-  }
-
-  td:nth-child(3) {
-    width: 25px;
-    font-weight: 600;
-    word-break: normal;
   }
 }

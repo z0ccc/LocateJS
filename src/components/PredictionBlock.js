@@ -39,7 +39,7 @@ const PredictionBlock = () => {
         <table>
           <tbody>
             <PredictionTableRow title="Country" value={prediction.country} percent={prediction.countryPercent} />
-            <PredictionTableRow title="Closest city" value={prediction.city} percent={prediction.cityPercent} />
+            <PredictionTableRow title="City" value={prediction.city} percent={prediction.cityPercent} />
           </tbody>
         </table>
       </div>

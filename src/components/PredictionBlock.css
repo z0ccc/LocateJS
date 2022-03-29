@@ -6,6 +6,7 @@
   box-sizing: border-box;
   display: block;
   margin: 0 0 10px 0;
+  background-color: var(--lightGrey);
 }
 
 @media screen and (max-width: 900px) {
