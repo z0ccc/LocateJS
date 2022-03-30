@@ -33,7 +33,7 @@ const WebRTCBlock = ({ data }) => (
 
     <p>
       WebRTC leaks are a vulnerability that can expose your real IP address.
-      Using a quality VPN or blocking WebRTC will stop the leaks.
+      Using a quality VPN or disabling WebRTC will stop the leaks.
     </p>
   </Block>
 );

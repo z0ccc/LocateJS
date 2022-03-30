@@ -68,17 +68,17 @@ const getConnection = (connectionData) => {
 
 const checkProxy = (data) => {
   const issues = [];
-  if (data.security.proxy) {
+  if (data.security.vpn) {
     issues.push('VPN has been detected');
   }
   if (data.security.proxy) {
     issues.push('Proxy has been detected');
   }
   if (data.security.tor) {
-    issues.push('TOR node has been detected');
+    issues.push('Tor node has been detected');
   }
   if (data.security.relay) {
-    issues.push('Relay has been detected');
+    issues.push('Private relay has been detected');
   }
   if (issues.length === 0 && data.proxy) {
     issues.push('VPN/proxy has been detected');

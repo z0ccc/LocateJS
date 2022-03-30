@@ -6,7 +6,6 @@ import TableRow from './TableRow';
 
 const ConnectionBlock = () => {
   const { connectionData } = useContext(DataContext);
-
   return (
     <Block>
       <h1>Connection</h1>

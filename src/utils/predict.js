@@ -29,8 +29,8 @@ const getPrediction = (
 
   const systemCity = checkCity(accurateData.timeZone, country);
 
-  if (!connectionData.proxy) {
-    if (webRTCIP && !webRTCIP.proxy) {
+  if (!connectionData.isProxy) {
+    if (webRTCIP && !webRTCIP.isProxy) {
       if (webRTCIP.query === connectionData.query) {
         countryPercent = 90;
         cityPercent = 90;
@@ -49,7 +49,7 @@ const getPrediction = (
       countryPercent = 80;
       cityPercent = 80;
     }
-  } else if (webRTCIP && !webRTCIP.proxy) {
+  } else if (webRTCIP && !webRTCIP.isProxy) {
     countryPercent = 85;
     cityPercent = 85;
     country = webRTCIP.countryCode;
