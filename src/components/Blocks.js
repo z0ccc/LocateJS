@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './Blocks.css';
 import { useState, useEffect } from 'react';
 import DataContext from './Context';
@@ -11,6 +10,7 @@ import GeolocationBlock from './GeolocationBlock';
 import { fetchAPI } from '../utils/connection';
 import getWebRTC from '../utils/webRTC';
 import delayedData from '../utils/data';
+import { getMapUrl, getPrediction } from '../utils/predict';
 
 const getWebWorker = () => {
   let w;
@@ -58,8 +58,13 @@ const Blocks = () => {
   const [frameData, setFrameData] = useState();
   const [connectionData, setConnectionData] = useState('');
   const [webRTCData, setWebRTCData] = useState();
+  const [prediction, setPrediction] = useState();
+  const [mapUrl, setMapUrl] = useState();
+
   // eslint-disable-next-line no-undef
   const initialData = initialDataObj;
+
+  const isTor = detectTor();
 
   useEffect(() => {
     const frame = document.createElement('iframe');
@@ -86,14 +91,35 @@ const Blocks = () => {
     }
   }, []);
 
-  const isTor = detectTor();
+  useEffect(() => {
+    if (connectionData && frameData && workerData && webRTCData) {
+      setPrediction(
+        getPrediction(
+          initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
+        )
+      );
+    }
+  }, [connectionData, frameData, workerData, webRTCData]);
+
+  useEffect(() => {
+    if (prediction) {
+      setMapUrl(getMapUrl(prediction));
+    }
+  }, [prediction]);
 
   return (
     <>
-      {connectionData && frameData && workerData && webRTCData ? (
+      {mapUrl ? (
         <DataContext.Provider
           value={{
-            initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
+            initialData,
+            delayedData,
+            frameData,
+            workerData,
+            connectionData,
+            webRTCData,
+            prediction,
+            mapUrl,
           }}
         >
           <div className="centerBlockInner">

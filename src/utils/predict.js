@@ -1,4 +1,4 @@
-export { getMap, getPrediction };
+export { getMapUrl, getPrediction };
 const ct = require('countries-and-timezones');
 
 const getPrediction = (
@@ -185,7 +185,7 @@ const checkCity = (timeZone) => {
 };
 
 // Return url for static map image
-const getMap = (prediction) => {
+const getMapUrl = (prediction) => {
   let location, zoom;
   if (!prediction.city) {
     location = prediction.country;
