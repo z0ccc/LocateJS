@@ -1,5 +1,7 @@
 # LocateJS
 
+## Note: This readme is out of date. Will update soon.
+
 Check it out here: [https://locatejs.com/](https://locatejs.com/).
 
 ## About
