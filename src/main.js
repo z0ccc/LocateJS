@@ -1,41 +1,90 @@
 import systemData from './systemData';
 import getWorkerData from './workerData';
 import detectTor from './detectTor';
+import getWebRTCData from './webRtc';
 
 getWorkerData().then((workerData) => {
   const data = {
     systemData: {
       dateLocale: {
-        topWindow: systemData.dateLocale.value,
-        webWorker: workerData.dateLocale.value,
+        topWindow: {
+          value: systemData.dateLocale.value,
+          tampered: systemData.dateLocale.tampered,
+        },
+        webWorker: {
+          value: workerData.dateLocale.value,
+          tampered: workerData.dateLocale.tampered,
+        },
       },
       dateString: {
-        topWindow: systemData.dateString.value,
-        webWorker: workerData.dateString.value,
+        topWindow: {
+          value: systemData.dateString.value,
+          tampered: systemData.dateString.tampered,
+        },
+        webWorker: {
+          value: workerData.dateString.value,
+          tampered: workerData.dateString.tampered,
+        },
       },
       language: {
-        topWindow: systemData.language.value,
-        webWorker: workerData.language.value,
+        topWindow: {
+          value: systemData.language.value,
+          tampered: systemData.language.tampered,
+        },
+        webWorker: {
+          value: workerData.language.value,
+          tampered: workerData.language.tampered,
+        },
       },
       languages: {
-        topWindow: systemData.languages.value,
-        webWorker: workerData.languages.value,
+        topWindow: {
+          value: systemData.languages.value,
+          tampered: systemData.languages.tampered,
+        },
+        webWorker: {
+          value: workerData.languages.value,
+          tampered: workerData.languages.tampered,
+        },
       },
       locale: {
-        topWindow: systemData.locale.value,
-        webWorker: workerData.locale.value,
+        topWindow: {
+          value: systemData.locale.value,
+          tampered: systemData.locale.tampered,
+        },
+        webWorker: {
+          value: workerData.locale.value,
+          tampered: workerData.locale.tampered,
+        },
       },
       timeZone: {
-        topWindow: systemData.timeZone.value,
-        webWorker: workerData.timeZone.value,
+        topWindow: {
+          value: systemData.timeZone.value,
+          tampered: systemData.timeZone.tampered,
+        },
+        webWorker: {
+          value: workerData.timeZone.value,
+          tampered: workerData.timeZone.tampered,
+        },
       },
       timezoneOffset: {
-        topWindow: systemData.timezoneOffset.value,
-        webWorker: workerData.timezoneOffset.value,
+        topWindow: {
+          value: systemData.timezoneOffset.value,
+          tampered: systemData.timezoneOffset.tampered,
+        },
+        webWorker: {
+          value: workerData.timezoneOffset.value,
+          tampered: workerData.timezoneOffset.tampered,
+        },
       },
     },
-    torFingerprint: detectTor(),
+    tor: detectTor(),
   };
 
   console.log(data);
 });
+
+Promise.all([
+  getWebRTCData(),
+]).then((data) => {
+ console.log(data);
+})
