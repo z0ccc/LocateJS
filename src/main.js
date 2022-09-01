@@ -3,7 +3,9 @@ import getWorkerData from './workerData';
 import detectTor from './detectTor';
 import getWebRTCData from './webRtc';
 
-getWorkerData().then((workerData) => {
+Promise.all([getWorkerData(), getWebRTCData()]).then((promiseValues) => {
+  const workerData = promiseValues[0];
+  const webRtc = promiseValues[1];
   const data = {
     systemData: {
       dateLocale: {
@@ -78,13 +80,8 @@ getWorkerData().then((workerData) => {
       },
     },
     tor: detectTor(),
+    webRtc,
   };
 
   console.log(data);
 });
-
-Promise.all([
-  getWebRTCData(),
-]).then((data) => {
- console.log(data);
-})

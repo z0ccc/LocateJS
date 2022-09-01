@@ -1,15 +1,16 @@
+// eslint-disable-next-line import/no-unresolved
 import Worker from './worker?worker';
 
 const getWebWorker = async () => {
-  if (window.Worker) {
-    const worker = new Worker();
-    return new Promise((resolve, reject) => {
-      worker.onmessage = (event) => {
-        resolve(event.data);
-        worker.terminate();
-      };
-    });
-  }
+  // if (window.Worker) {
+  const worker = new Worker();
+  return new Promise((resolve) => {
+    worker.onmessage = (event) => {
+      resolve(event.data);
+      worker.terminate();
+    };
+  });
+  // }
 };
 
 export default getWebWorker;
