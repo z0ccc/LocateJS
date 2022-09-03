@@ -82,8 +82,8 @@ const systemData = {
     value: Intl.DateTimeFormat().resolvedOptions().locale,
     tampered: !!(checkIntlPrototype() || checkIntlConstructor()),
   },
-  timeZone: {
-    value: Intl.DateTimeFormat().resolvedOptions().timeZone,
+  timezone: {
+    value: Intl.DateTimeFormat().resolvedOptions().timezone,
     tampered: !!(checkIntlPrototype() || checkIntlConstructor()),
   },
   timezoneOffset: {
