@@ -27,7 +27,7 @@ Promise.all([getWorkerData(), getWebRTCData(), getHtmlGeolocation()]).then(
     });
 
     data = {
-      ...data,
+      systemData: { ...data },
       webRtc,
       tor: detectTor(),
       htmlGeolocation,
