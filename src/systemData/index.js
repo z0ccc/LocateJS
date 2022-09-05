@@ -34,15 +34,16 @@ const checkNavigatorProperties = (key) => {
   return false;
 };
 
-// const checkNavigatorValue = (key) => {
-//   // if (
-//   //   Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
-//   //   undefined
-//   // ) {
-//   //   true;
-//   // }
-//   return false;
-// };
+const checkNavigatorValue = (key) => {
+  if (
+    typeof Navigator !== 'undefined' &&
+    Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
+      undefined
+  ) {
+    return true;
+  }
+  return false;
+};
 
 const checkNavigatorPrototype = (key) => {
   try {
@@ -57,7 +58,7 @@ const checkNavigatorPrototype = (key) => {
 const getNavigatorValue = (type) =>
   !!(
     checkNavigatorProperties(type) ||
-    // checkNavigatorValue(type) ||
+    checkNavigatorValue(type) ||
     checkNavigatorPrototype(type)
   );
 
@@ -83,7 +84,7 @@ const systemData = {
     tampered: !!(checkIntlPrototype() || checkIntlConstructor()),
   },
   timezone: {
-    value: Intl.DateTimeFormat().resolvedOptions().timezone,
+    value: Intl.DateTimeFormat().resolvedOptions().timeZone,
     tampered: !!(checkIntlPrototype() || checkIntlConstructor()),
   },
   timezoneOffset: {
