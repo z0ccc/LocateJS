@@ -2,7 +2,7 @@
 import Worker from './worker?worker';
 
 const getWebWorker = async () => {
-  // if (window.Worker) {
+  if (!window.Worker) return null;
   const worker = new Worker();
   return new Promise((resolve) => {
     worker.onmessage = (event) => {
@@ -10,7 +10,6 @@ const getWebWorker = async () => {
       worker.terminate();
     };
   });
-  // }
 };
 
 export default getWebWorker;

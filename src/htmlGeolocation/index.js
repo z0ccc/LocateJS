@@ -12,7 +12,7 @@ const getHtmlGeolocation = async () =>
     });
   })
     .then(async (position) => {
-      const geocode = await getGeocode(
+      const reverseGeocode = await getGeocode(
         position.coords.latitude,
         position.coords.longitude
       );
@@ -24,7 +24,7 @@ const getHtmlGeolocation = async () =>
         altitudeAccuracy: position.coords.altitudeAccuracy,
         heading: position.coords.heading,
         speed: position.coords.speed,
-        geocoding: geocode,
+        reverseGeocode,
       };
 
       return htmlGeolocation;
