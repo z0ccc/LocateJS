@@ -1,4 +1,4 @@
 const getServerData = () =>
-  fetch('http://localhost:8000/api/ip').then((response) => response.json());
+  fetch('http://localhost:8000/api/ip').then((response) => response.json())
 
-export default getServerData;
+export default getServerData

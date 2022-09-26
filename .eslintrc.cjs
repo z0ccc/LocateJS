@@ -15,5 +15,6 @@ module.exports = {
     'comma-dangle': 'off',
     'function-paren-newline': 'off',
     'no-plusplus': 'off',
+    semi: ['error', 'never'],
   },
-};
+}

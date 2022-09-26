@@ -1,9 +1,9 @@
 const checkDatePrototype = () => {
   if (!Date.prototype.setDate.toString().includes('[native code]')) {
-    return true;
+    return true
   }
-  return false;
-};
+  return false
+}
 
 const checkIntlConstructor = () => {
   if (
@@ -11,10 +11,10 @@ const checkIntlConstructor = () => {
       .constructor.toString()
       .includes('Object')
   ) {
-    return true;
+    return true
   }
-  return false;
-};
+  return false
+}
 
 const checkIntlPrototype = () => {
   if (
@@ -22,17 +22,17 @@ const checkIntlPrototype = () => {
       .toString()
       .includes('[native code]')
   ) {
-    return true;
+    return true
   }
-  return false;
-};
+  return false
+}
 
 const checkNavigatorProperties = (key) => {
   if (Object.getOwnPropertyDescriptor(navigator, key) !== undefined) {
-    return true;
+    return true
   }
-  return false;
-};
+  return false
+}
 
 const checkNavigatorValue = (key) => {
   if (
@@ -40,27 +40,27 @@ const checkNavigatorValue = (key) => {
     Object.getOwnPropertyDescriptor(Navigator.prototype, key).value !==
       undefined
   ) {
-    return true;
+    return true
   }
-  return false;
-};
+  return false
+}
 
 const checkNavigatorPrototype = (key) => {
   try {
     // eslint-disable-next-line no-unused-vars
-    const check = Navigator.prototype[key];
-    return true;
+    const check = Navigator.prototype[key]
+    return true
   } catch (err) {
-    return false;
+    return false
   }
-};
+}
 
 const getNavigatorValue = (type) =>
   !!(
     checkNavigatorProperties(type) ||
     checkNavigatorValue(type) ||
     checkNavigatorPrototype(type)
-  );
+  )
 
 const systemData = {
   dateLocale: {
@@ -91,6 +91,6 @@ const systemData = {
     value: new Date().getTimezoneOffset(),
     tampered: checkDatePrototype(),
   },
-};
+}
 
-export default systemData;
+export default systemData

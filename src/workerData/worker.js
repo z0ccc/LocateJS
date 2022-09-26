@@ -1,3 +1,3 @@
-import systemData from '../systemData';
+import systemData from '../systemData'
 
-postMessage(systemData);
+postMessage(systemData)
