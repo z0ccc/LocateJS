@@ -1,10 +1,12 @@
-import systemData from './systemData'
-import getServerData from './getServerData'
-import getWorkerData from './workerData'
-import detectTor from './detectTor'
-import getWebRTCData from './webRtc'
-import getHtmlGeolocation from './htmlGeolocation'
-import getPrediction from './prediction'
+import {
+  systemData,
+  getServerData,
+  getWorkerData,
+  detectTor,
+  getWebRTCData,
+  getHtmlGeolocation,
+  getPrediction,
+} from './locationData'
 
 Promise.all([
   getServerData(),
@@ -37,7 +39,7 @@ Promise.all([
     serverData,
     clientData,
     webRtc,
-    tor: detectTor(),
+    torDetected: detectTor(),
     htmlGeolocation,
   }
 
