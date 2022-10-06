@@ -20,6 +20,19 @@ const getWebWorker = () => {
   return w;
 };
 
+async function askServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    await navigator.serviceWorker.register('/sw.js');
+    const messageChannel = new MessageChannel();
+    return new Promise(resolve => {
+      messageChannel.port1.onmessage = (event) => {
+        resolve(event.data);
+      }
+    });
+    navigator.serviceWorker.controller.postMessage({message: 'ask'}, [messageChannel.port2]);
+  }
+}
+
 // breaks safari
 // const detectTor = (setIsTor) => {
 //   if (window.chrome) {
@@ -54,6 +67,7 @@ const detectTor = () => {
 };
 
 const Blocks = () => {
+  const [serviceWorkerData, setServiceWorkerData] = useState();
   const [workerData, setWorkerData] = useState();
   const [frameData, setFrameData] = useState();
   const [connectionData, setConnectionData] = useState('');
@@ -66,7 +80,9 @@ const Blocks = () => {
 
   const isTor = detectTor();
 
-  useEffect(() => {
+  useEffect(async () => {
+    const serviceWorkerData = await askServiceWorker();
+    setServiceWorkerData(serviceWorkerData);
     const frame = document.createElement('iframe');
     document.body.appendChild(frame);
     frame.style.display = 'none';
@@ -92,14 +108,14 @@ const Blocks = () => {
   }, []);
 
   useEffect(() => {
-    if (connectionData && frameData && workerData && webRTCData) {
+    if (connectionData && frameData && workerData && webRTCData, serviceWorkerData) {
       setPrediction(
         getPrediction(
-          initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor
+          initialData, delayedData, frameData, workerData, connectionData, webRTCData, isTor, serviceWorkerData
         )
       );
     }
-  }, [connectionData, frameData, workerData, webRTCData]);
+  }, [connectionData, frameData, workerData, webRTCData, serviceWorkerData]);
 
   useEffect(() => {
     if (prediction) {
@@ -120,6 +136,7 @@ const Blocks = () => {
             webRTCData,
             prediction,
             mapUrl,
+            serviceWorkerData
           }}
         >
           <div className="centerBlockInner">
