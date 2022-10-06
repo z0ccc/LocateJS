@@ -29,7 +29,7 @@ async function askServiceWorker() {
         resolve(event.data);
       }
     });
-    navigator.serviceWorker.controller.postMessage({message: 'ask'}, [messageChannel.port1]);
+    navigator.serviceWorker.controller.postMessage({message: 'ask'}, [messageChannel.port2);
   }
 }
 
